@@ -10,7 +10,6 @@ export default defineConfig({
                 'resources/sass/app.scss',
                 'resources/js/app.js',
             ],
-            // reactivityTransform: true,
             refresh: true,
         }),
         vue({
@@ -22,13 +21,13 @@ export default defineConfig({
             },
         }),
     ],
-    // build: {
-    //     chunkSizeWarningLimit: 1600,
-    // },
     resolve: {
         alias: {
             vue: 'vue/dist/vue.esm-bundler.js',
             '@': path.resolve(__dirname, './resources/js'),
         },
-    }
+    },
+    server: {
+        host: true,
+    },
 });

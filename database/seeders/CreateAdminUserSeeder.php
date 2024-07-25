@@ -19,8 +19,8 @@ class CreateAdminUserSeeder extends Seeder
     public function run()
     {
         $user = User::create([
-            'name' => 'Fazle',
-            'email' => 'admin@demo.com',
+            'name' => 'Administrator',
+            'email' => 'admin@example.com',
             'password' => bcrypt('12345678')
         ]);
 
@@ -33,8 +33,8 @@ class CreateAdminUserSeeder extends Seeder
             'post-delete'
             ];
         $role2->syncPermissions($permissions);
-        Category::create(['name' => 'Vue.js']);
-        Category::create(['name' => 'Cat 2']);
+        Category::create(['name' => 'VueJs']);
+        Category::create(['name' => 'AngularJS']);
 
         $permissions = Permission::pluck('id','id')->all();
 
