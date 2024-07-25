@@ -1,5 +1,5 @@
 <template>
-<h1>Admin</h1>
+    <h2>Вход выполнен</h2>
 </template>
 
 <script setup>

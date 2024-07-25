@@ -8,7 +8,7 @@
                             <div class="">
                                 <!-- Email -->
                                 <div class="mb-3">
-                                    <label for="email" class="form-label">{{ $t('email') }}</label>
+                                    <label for="email" class="form-label">{{ $t('login_page.email') }}</label>
                                     <input v-model="forgotForm.email" id="email" type="email" class="form-control" required autofocus autocomplete="username">
                                     <!-- Validation Errors -->
                                     <div class="text-danger mt-1">
@@ -20,7 +20,7 @@
                                 <!-- Buttons -->
                                 <div class="flex items-center justify-end mt-4">
                                     <button class="btn btn-primary" :class="{ 'opacity-25': processing }" :disabled="processing">
-                                        {{ $t('send_password_reset_link') }}
+                                        {{ $t('login_page.send_password_reset_link') }}
                                     </button>
                                 </div>
                             </div>

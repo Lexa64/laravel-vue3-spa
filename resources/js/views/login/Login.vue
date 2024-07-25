@@ -8,7 +8,7 @@
                             <div class="">
                                 <!-- Email -->
                                 <div class="mb-3">
-                                    <label for="email" class="form-label">{{ $t('email') }}</label>
+                                    <label for="email" class="form-label">{{ $t('login_page.email') }}</label>
                                     <input v-model="loginForm.email" id="email" type="email" class="form-control" required autofocus autocomplete="username">
                                     <!-- Validation Errors -->
                                     <div class="text-danger mt-1">
@@ -20,7 +20,7 @@
                                 <!-- Password -->
                                 <div class="mb-4">
                                     <label for="password" class="form-label">
-                                        {{ $t('password') }}
+                                        {{ $t('login_page.password') }}
                                     </label>
                                     <input v-model="loginForm.password" id="password" type="password" class="form-control" required autocomplete="current-password">
                                     <!-- Validation Errors -->
@@ -34,18 +34,21 @@
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" v-model="loginForm.remember" id="flexCheckIndeterminate">
                                     <label class="form-check-label" for="flexCheckIndeterminate">
-                                        {{ $t('remember_me') }}
+                                        {{ $t('login_page.remember_me') }}
                                     </label>
                                 </div>
 
-                                <!-- Buttons -->
-                                <div class="flex items-center justify-end mt-4">
-                                    <button class="btn btn-primary" :class="{ 'opacity-25': processing }" :disabled="processing">
-                                        {{ $t('login') }}
+                                <div class="mt-4">
+                                    <button class="btn btn-primary" :class="{ 'opacity-25': processing }"
+                                            :disabled="processing">
+                                        {{ $t('login_page.login') }}
                                     </button>
+                                    <router-link :to="{name: 'auth.forgot-password'}" style="margin-left: 10px;"
+                                                 :disabled="processing">
+                                        {{ $t('login_page.forgot_password') }}
+                                    </router-link>
                                 </div>
                             </div>
-                            <router-link :to="{name: 'auth.forgot-password'}">{{ $t('forgot_password')}}</router-link>
                         </form>
                     </div>
                 </div>

@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel Vue 3 Stater'),
+    'name' => env('APP_NAME', 'Laravel Vue 3 SPA'),
 
     /*
     |--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://localhost:8001/'),
 
     'asset_url' => env('ASSET_URL'),
 
@@ -82,14 +82,11 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'ru',
     'locales' => [
         'en' => 'EN',
-        'bn' => 'BN',
-        'es' => 'ES',
-        'fr' => 'FR',
-        'pt-BR' => 'BR',
-        'zh-CN' => '中文',
+        'ru' => 'RU',
+        'by' => 'BY',
     ],
 
     /*
