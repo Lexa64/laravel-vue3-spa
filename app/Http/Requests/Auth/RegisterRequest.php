@@ -29,4 +29,28 @@ class RegisterRequest extends FormRequest
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        ///home/alexey/Projects/laravel-vue-crud-starter-main/app/Http/Controllers/Auth/RegisterController.php
+        return [
+            'name.required' => __('validation.required'),
+            'name.string' => __('validation.string'),
+            'name.max' => __('validation.max'),
+            'email.required' => __('validation.required'),
+            'email.string' => __('validation.string'),
+            'email.email' => __('validation.unique'),
+            'email.max' => __('validation.max'),
+            'email.unique' => __('validation.unique'),
+            'password.required' => __('validation.required'),
+            'password.string' => __('validation.string'),
+            'password.min' => __('validation.min'),
+            'password.confirmed' => __('validation.confirmed'),
+        ];
+    }
 }
