@@ -37,20 +37,19 @@ class RegisterRequest extends FormRequest
      */
     public function messages(): array
     {
-        ///home/alexey/Projects/laravel-vue-crud-starter-main/app/Http/Controllers/Auth/RegisterController.php
         return [
-            'name.required' => __('validation.required'),
-            'name.string' => __('validation.string'),
-            'name.max' => __('validation.max'),
-            'email.required' => __('validation.required'),
-            'email.string' => __('validation.string'),
-            'email.email' => __('validation.unique'),
-            'email.max' => __('validation.max'),
-            'email.unique' => __('validation.unique'),
-            'password.required' => __('validation.required'),
-            'password.string' => __('validation.string'),
-            'password.min' => __('validation.min'),
-            'password.confirmed' => __('validation.confirmed'),
+            'name.required' => __('validation.required', ['attribute' => __('registration.name')]),
+            'name.string' => __('validation.string', ['attribute' => __('registration.name')]),
+            'name.max' => __('validation.max', ['attribute' => __('registration.name')]),
+            'email.required' => __('validation.required', ['attribute' => __('registration.email')]),
+            'email.string' => __('validation.string', ['attribute' => __('registration.email')]),
+            'email.email' => __('validation.email', ['attribute' => __('registration.email')]),
+            'email.max' => __('validation.max', ['attribute' => __('registration.email')]),
+            'email.unique' => __('validation.unique', ['attribute' => __('registration.email')]),
+            'password.required' => __('validation.required', ['attribute' => __('registration.password')]),
+            'password.string' => __('validation.string', ['attribute' => __('registration.password')]),
+            'password.min' => __('validation.min', ['attribute' => __('registration.password')]),
+            'password.confirmed' => __('validation.confirmed', ['attribute' => __('registration.password')]),
         ];
     }
 }

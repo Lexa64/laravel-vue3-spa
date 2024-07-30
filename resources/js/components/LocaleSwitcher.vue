@@ -31,6 +31,7 @@ function setLocale(locale) {
     if (i18n.locale !== locale) {
         loadMessages(locale)
         store.dispatch('lang/setLocale', { locale })
+        axios.get('lang/', {params: {change_language: locale}});
     }
 }
 
