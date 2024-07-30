@@ -1,6 +1,7 @@
 {
     "main_page": {
-        "welcome_starter_title": "Добро пожаловать"
+        "welcome_starter_title": "Добро пожаловать",
+        "dashboard": "Главная страница"
     },
     "main_page_navbar": {
         "company_name": "РУП ''СТРОЙТЕХНОРМ''",
@@ -30,5 +31,14 @@
         "register": "Регистрация",
         "complete_register": "Зарегистрироваться",
         "confirm_password": "Подтвердите пароль"
+    },
+    "profile": {
+        "name": "Имя",
+        "email": "Email",
+        "profile": "Профиль",
+        "update": "Обновить",
+        "in_progress": "В процессе",
+        "updated": "Профиль успешно обновлён",
+        "confirm_button": "Ok"
     }
 }

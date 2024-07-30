@@ -1,6 +1,7 @@
-import { ref, inject } from 'vue'
-import { useRouter } from 'vue-router'
+import {ref, inject} from 'vue';
+import {useRouter} from 'vue-router';
 import store from "../store";
+import {useI18n} from 'vue-i18n';
 
 export default function useProfile() {
     const profile = ref({
@@ -12,6 +13,7 @@ export default function useProfile() {
     const validationErrors = ref({})
     const isLoading = ref(false)
     const swal = inject('$swal')
+    const { t } = useI18n()
 
     const getProfile = async () => {
         profile.value = store.getters["auth/user"]
@@ -34,7 +36,8 @@ export default function useProfile() {
                     // router.push({name: 'profile.index'})
                     swal({
                         icon: 'success',
-                        title: 'Profile updated successfully'
+                        title: t('profile.updated'),
+                        confirmButtonText: t('profile.confirm_button'),
                     })
                 }
             })

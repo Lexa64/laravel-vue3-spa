@@ -19,17 +19,19 @@
 
 <script setup>
 import {computed} from "vue";
-import { useRoute } from "vue-router";
+import {useRoute} from "vue-router";
 import AdminNavbar from "../components/includes/AdminNavbar.vue";
 import AdminSidebar from "../components/includes/AdminSidebar.vue";
 import Breadcrumb from "../components/includes/Breadcrumb.vue";
+import {useI18n} from 'vue-i18n';
 
 const route = useRoute();
+const {t} = useI18n();
 
 const crumbs = computed(() => {
     let pathArray = route.path.split('/')
       pathArray.shift()
-      const breadCrumbs = [{ "href": "/admin", "disabled": false, "text": "Dashboard" }]
+      const breadCrumbs = [{ "href": "/admin", "disabled": false, "text": t('main_page.dashboard') }];
       // needed to handle the intermediary entries for nested vue routes
       let breadcrumb = ''
       let lastIndexFound = 0
@@ -43,7 +45,7 @@ const crumbs = computed(() => {
               ? '/' + pathArray[i - (i - lastIndexFound)] + breadcrumb
               : breadcrumb,
             disabled: i + 1 === pathArray.length,
-            text: route.matched[i].meta.breadCrumb || pathArray[i]
+            text: t('profile.' + route.matched[i].meta.breadCrumb) || pathArray[i]
           })
           lastIndexFound = i
           breadcrumb = ''

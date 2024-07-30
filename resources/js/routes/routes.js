@@ -100,7 +100,7 @@ export default [
                 name: 'profile.index',
                 path: 'profile',
                 component: () => import('../views/admin/profile/index.vue'),
-                meta: { breadCrumb: 'Profile' }
+                meta: { breadCrumb: 'profile' }
             },
             {
                 name: 'posts.index',

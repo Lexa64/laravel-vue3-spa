@@ -1,6 +1,7 @@
 {
     "main_page": {
-        "welcome_starter_title": "Welcome"
+        "welcome_starter_title": "Welcome",
+        "dashboard": "Dashboard"
     },
     "main_page_navbar": {
         "company_name": "RUE ''STROYTECHNORM''",
@@ -30,5 +31,14 @@
         "register": "Register",
         "complete_register": "Register",
         "confirm_password": "Confirm Password"
+    },
+    "profile": {
+        "name": "Name",
+        "email": "Email",
+        "profile": "Profile",
+        "update": "Update",
+        "in_progress": "Processing",
+        "updated": "Profile updated successfully",
+        "confirm_button": "Ok"
     }
 }

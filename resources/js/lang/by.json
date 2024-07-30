@@ -1,6 +1,7 @@
 {
     "main_page": {
-        "welcome_starter_title": "Сардэчна запрашаем"
+        "welcome_starter_title": "Сардэчна запрашаем",
+        "dashboard": "Галоўная старонка"
     },
     "main_page_navbar": {
         "company_name": "РУП ''БУДТЭХНОРМ''",
@@ -30,5 +31,14 @@
         "register": "Рэгістрацыя",
         "complete_register": "Зарэгістравацца",
         "confirm_password": "Пацвердзіце пароль"
+    },
+    "profile": {
+        "name": "Імя",
+        "email": "Email",
+        "profile": "Профіль",
+        "update": "Абнавіць",
+        "in_progress": "У працэсе",
+        "updated": "Профіль паспяхова абноўлены",
+        "confirm_button": "Ok"
     }
 }
