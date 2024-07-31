@@ -18,6 +18,12 @@
         "logout": "Выход",
         "settings": "Настройки"
     },
+    "admin_sidebar": {
+        "user_manager": "Пользователи",
+        "list": "Список",
+        "permissions": "Разрешения",
+        "roles": "Роли"
+    },
     "login_page": {
         "login": "Вход",
         "email": "Email",

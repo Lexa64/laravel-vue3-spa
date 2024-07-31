@@ -18,6 +18,12 @@
         "logout": "Вынахад",
         "settings": "Налады"
     },
+    "admin_sidebar": {
+        "user_manager": "Карыстальнікі",
+        "list": "Спіс",
+        "permissions": "Дазволы",
+        "roles": "Ролі"
+    },
     "login_page": {
         "login": "Увайсці",
         "email": "Email",

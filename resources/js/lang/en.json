@@ -18,6 +18,12 @@
         "logout": "Logout",
         "settings": "Settings"
     },
+    "admin_sidebar": {
+        "user_manager": "Users",
+        "list": "List",
+        "permissions": "Permissions",
+        "roles": "Roles"
+    },
     "login_page": {
         "login": "Login",
         "email": "Email",
