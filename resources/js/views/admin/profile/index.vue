@@ -42,37 +42,73 @@
 </template>
 
 <script setup>
-import { onMounted, reactive, watchEffect } from "vue";
-import { useForm, useField, defineRule } from "vee-validate";
-import { required, min } from "@/validation/rules"
+import {onMounted, reactive, watchEffect} from "vue";
+import {configure, defineRule, useField, useForm} from "vee-validate";
+import {min} from '@vee-validate/rules';
+import {email as emailCheck} from '@vee-validate/rules';
+//import {required} from "@/validation/rules"
 import useProfile from "@/composables/profile";
-defineRule('required', required)
-// defineRule('email', email)
+import {useI18n} from 'vue-i18n';
+
+const {t} = useI18n();
+
+//defineRule('required', required);
+defineRule('required', value => {
+    if (!value || !value.length) {
+        return t('global_validation.required');
+    }
+    return true;
+});
+
 defineRule('min', min);
+defineRule('email', emailCheck);
 
-    const schema = {
-        name: 'required|min:3',
-        email: 'required',
+configure({
+    generateMessage: ({rule, field}) => {
+        const messages = {
+            min: t("global_validation.min", {
+                field: t("profile." + field),
+                min: rule.params[0],
+            }),
+            email: t("global_validation.email", {
+                email: t("profile." + field),
+            }),
+        }
+        return messages[rule.name]
     }
-    // Create a form context with the validation schema
-    const { validate, errors } = useForm({ validationSchema: schema })
-    // Define actual fields for validation
-    const { value: name } = useField('name', null, { initialValue: '' });
-    const { value: email } = useField('email', null, { initialValue: '' });
-    const { profile: profileData, getProfile, updateProfile, validationErrors, isLoading } = useProfile()
-    const profile = reactive({
-        name,
-        email
-    })
-    function submitForm() {
-        validate().then(form => { if (form.valid) updateProfile(profile) })
-    }
-    onMounted(() => {
-        getProfile()
-    })
+});
 
-    watchEffect(() => {
-        profile.name = profileData.value.name
-        profile.email = profileData.value.email
-    })
+const schema = {
+    name: 'required|min:3',
+    email: 'required|email',
+}
+
+const {validate, errors} = useForm({validationSchema: schema});
+
+// Define actual fields for validation
+const {value: name} = useField('name', null, {initialValue: ''});
+const {value: email} = useField('email', null, {initialValue: ''});
+const {profile: profileData, getProfile, updateProfile, validationErrors, isLoading} = useProfile();
+
+const profile = reactive({
+    name,
+    email
+});
+
+function submitForm() {
+    validate().then(form => {
+        if (form.valid) {
+            updateProfile(profile);
+        }
+    });
+}
+
+onMounted(() => {
+    getProfile();
+});
+
+watchEffect(() => {
+    profile.name = profileData.value.name;
+    profile.email = profileData.value.email;
+});
 </script>

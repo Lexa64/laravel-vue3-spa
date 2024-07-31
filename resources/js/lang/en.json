@@ -40,5 +40,10 @@
         "in_progress": "Processing",
         "updated": "Profile updated successfully",
         "confirm_button": "Ok"
+    },
+    "global_validation": {
+        "required": "This field is required.",
+        "min": "Minimum number of characters in the field {field}: {min}.",
+        "email": "{email}: data is incorrect."
     }
 }
