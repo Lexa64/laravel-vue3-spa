@@ -30,7 +30,8 @@
         "remember_me": "Remember Me",
         "password": "Password",
         "forgot_password": "Forgot Your Password?",
-        "send_password_reset_link": "Send Password Reset Link"
+        "send_password_reset_link": "Send Password Reset Link",
+        "login_successfully": "Login successfully"
     },
     "register_page": {
         "name": "Name",
@@ -61,6 +62,9 @@
         "name": "Name",
         "email": "Email",
         "created_at": "Created date",
-        "actions": "Actions"
+        "actions": "Actions",
+        "add_new": "Add",
+        "edit": "Edit",
+        "delete": "Delete"
     }
 }

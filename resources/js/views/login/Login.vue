@@ -9,7 +9,8 @@
                                 <!-- Email -->
                                 <div class="mb-3">
                                     <label for="email" class="form-label">{{ $t('login_page.email') }}</label>
-                                    <input v-model="loginForm.email" id="email" type="email" class="form-control" required autofocus autocomplete="username">
+                                    <input v-model="loginForm.email" id="email" type="email" class="form-control"
+                                           required autofocus autocomplete="username">
                                     <!-- Validation Errors -->
                                     <div class="text-danger mt-1">
                                         <div v-for="message in validationErrors?.email">
@@ -22,7 +23,9 @@
                                     <label for="password" class="form-label">
                                         {{ $t('login_page.password') }}
                                     </label>
-                                    <input v-model="loginForm.password" id="password" type="password" class="form-control" required autocomplete="current-password">
+                                    <input v-model="loginForm.password" id="password" type="password"
+                                           class="form-control"
+                                           required autocomplete="current-password">
                                     <!-- Validation Errors -->
                                     <div class="text-danger-600 mt-1">
                                         <div v-for="message in validationErrors?.password">
@@ -32,7 +35,8 @@
                                 </div>
                                 <!-- Remember me -->
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" v-model="loginForm.remember" id="flexCheckIndeterminate">
+                                    <input class="form-check-input" type="checkbox" name="remember"
+                                           v-model="loginForm.remember" id="flexCheckIndeterminate">
                                     <label class="form-check-label" for="flexCheckIndeterminate">
                                         {{ $t('login_page.remember_me') }}
                                     </label>
@@ -58,9 +62,10 @@
 </template>
 
 <script setup>
+import {useI18n} from 'vue-i18n';
+import useAuth from '@/composables/auth';
 
-import useAuth from '@/composables/auth'
-
-const { loginForm, validationErrors, processing, submitLogin } = useAuth();
+const {t} = useI18n();
+const {loginForm, validationErrors, processing, submitLogin} = useAuth();
 
 </script>

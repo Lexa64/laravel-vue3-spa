@@ -1,7 +1,7 @@
-import { ref, reactive, inject } from 'vue'
-import { useRouter } from "vue-router";
-import { AbilityBuilder, createMongoAbility } from '@casl/ability';
-import { ABILITY_TOKEN } from '@casl/vue';
+import {ref, reactive, inject} from 'vue'
+import {useRouter} from "vue-router";
+import {AbilityBuilder, createMongoAbility} from '@casl/ability';
+import {ABILITY_TOKEN} from '@casl/vue';
 import store from '../store'
 
 let user = reactive({
@@ -52,7 +52,7 @@ export default function useAuth() {
                 await loginUser()
                 swal({
                     icon: 'success',
-                    title: 'Login successfully',
+                    title: t('login_successfully'),
                     showConfirmButton: false,
                     timer: 1500
                 })

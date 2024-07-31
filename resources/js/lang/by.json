@@ -30,7 +30,8 @@
         "remember_me": "Запомніць",
         "password": "Пароль",
         "forgot_password": "Забыліся пароль?",
-        "send_password_reset_link": "Адправіць спасылку для скіду пароляя"
+        "send_password_reset_link": "Адправіць спасылку для скіду пароляя",
+        "login_successfully": "Уваход выкананы паспяхова"
     },
     "register_page": {
         "name": "Імя",
@@ -61,6 +62,9 @@
         "name": "Імя",
         "email": "Email",
         "created_at": "Дата стварэння",
-        "actions": "Дзеянні"
+        "actions": "Дзеянні",
+        "add_new": "Дадаць",
+        "edit": "Змяніць",
+        "delete": "Выдаліць"
     }
 }

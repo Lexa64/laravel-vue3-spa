@@ -30,7 +30,8 @@
         "remember_me": "Запомнить",
         "password": "Пароль",
         "forgot_password": "Забыли пароль?",
-        "send_password_reset_link": "Отправить ссылку для восстановления пароля"
+        "send_password_reset_link": "Отправить ссылку для восстановления пароля",
+        "login_successfully": "Вход выполнен успешно"
     },
     "register_page": {
         "name": "Имя",
@@ -61,6 +62,9 @@
         "name": "Имя",
         "email": "Email",
         "created_at": "Дата создания",
-        "actions": "Действия"
+        "actions": "Действия",
+        "add_new": "Добавить",
+        "edit": "Изменить",
+        "delete": "Удалить"
     }
 }
