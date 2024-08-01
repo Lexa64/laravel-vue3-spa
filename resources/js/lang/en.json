@@ -84,6 +84,10 @@
         "actions": "Actions",
         "add_new": "Add",
         "edit": "Edit",
-        "delete": "Delete"
+        "delete": "Delete",
+
+        "role": "Role",
+        "save": "Save",
+        "password": "Password"
     }
 }

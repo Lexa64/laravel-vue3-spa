@@ -27,4 +27,16 @@ class StoreUserRequest extends FormRequest
             'password' => ['required', 'string', 'min:8'],
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'email.unique' => __('validation.unique', ['attribute' => __('registration.email')]),
+        ];
+    }
 }
