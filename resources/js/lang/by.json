@@ -24,6 +24,25 @@
         "permissions": "Дазволы",
         "roles": "Ролі"
     },
+    "breadcrumb_labels_admin": {
+        "admin": "Адміністратар",
+        "profile": "Профіль",
+        "posts": "Пасты",
+        "add_new_post": "Дадаць пост",
+        "edit_post": "Змяніць пост",
+        "categories": "Катэгорыі",
+        "add_new_category": "Дадаць катэгорыю",
+        "edit_category": "Змяніць катэгорыю",
+        "permissions": "Дазволы",
+        "create_permission": "Стварыць дазвол",
+        "edit_permission": "Змяніць дазвол",
+        "roles": "Ролі",
+        "create_role": "Стварыць ролю",
+        "edit_role": "Змяніць ролю",
+        "users": "Карыстальнікі",
+        "add_user": "Дадаць карыстальніка",
+        "edit_user": "Змяніць карыстальніка"
+    },
     "login_page": {
         "login": "Увайсці",
         "email": "Email",

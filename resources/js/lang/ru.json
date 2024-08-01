@@ -24,6 +24,25 @@
         "permissions": "Разрешения",
         "roles": "Роли"
     },
+    "breadcrumb_labels_admin": {
+        "admin": "Администратор",
+        "profile": "Профиль",
+        "posts": "Посты",
+        "add_new_post": "Добавить пост",
+        "edit_post": "Изменить пост",
+        "categories": "Категории",
+        "add_new_category": "Добавить категорию",
+        "edit_category": "Изменить категорию",
+        "permissions": "Разрешения",
+        "create_permission": "Создать разрешение",
+        "edit_permission": "Изменить разрешение",
+        "roles": "Роли",
+        "create_role": "Создать роль",
+        "edit_role": "Изменить роль",
+        "users": "Пользователи",
+        "add_user": "Добавить пользователя",
+        "edit_user": "Изменить пользователя"
+    },
     "login_page": {
         "login": "Вход",
         "email": "Email",

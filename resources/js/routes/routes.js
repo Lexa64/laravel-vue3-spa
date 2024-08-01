@@ -1,21 +1,21 @@
 import Cookies from 'js-cookie'
 import store from "../store";
 
-const AuthenticatedLayout = () => import('../layouts/Authenticated.vue')
-const GuestLayout = ()  => import('../layouts/Guest.vue');
+const AuthenticatedLayout = () => import('../layouts/Authenticated.vue');
+const GuestLayout = () => import('../layouts/Guest.vue');
 
-const PostsIndex  = ()  => import('../views/admin/posts/Index.vue');
-const PostsCreate  = ()  => import('../views/admin/posts/Create.vue');
-const PostsEdit  = ()  => import('../views/admin/posts/Edit.vue');
+const PostsIndex = () => import('../views/admin/posts/Index.vue');
+const PostsCreate = () => import('../views/admin/posts/Create.vue');
+const PostsEdit = () => import('../views/admin/posts/Edit.vue');
 
 function requireLogin(to, from, next) {
     let isLogin = false;
     isLogin = !!store.state.auth.authenticated;
 
     if (isLogin) {
-        next()
+        next();
     } else {
-        next('/login')
+        next('/login');
     }
 }
 
@@ -24,9 +24,9 @@ function guest(to, from, next) {
     isLogin = !!store.state.auth.authenticated;
 
     if (isLogin) {
-        next('/')
+        next('/');
     } else {
-        next()
+        next();
     }
 }
 
@@ -85,6 +85,7 @@ export default [
     {
         path: '/admin',
         component: AuthenticatedLayout,
+        //meta: {breadCrumb: 'Dashboard'},
         // redirect: {
         //     name: 'admin.index'
         // },
@@ -94,103 +95,103 @@ export default [
                 name: 'admin.index',
                 path: '',
                 component: () => import('../views/admin/index.vue'),
-                meta: { breadCrumb: 'Admin' }
+                meta: {breadCrumb: 'breadcrumb_labels_admin.admin'}
             },
             {
                 name: 'profile.index',
                 path: 'profile',
                 component: () => import('../views/admin/profile/index.vue'),
-                meta: { breadCrumb: 'profile' }
+                meta: {breadCrumb: 'breadcrumb_labels_admin.profile'}
             },
             {
                 name: 'posts.index',
                 path: 'posts',
                 component: PostsIndex,
-                meta: { breadCrumb: 'Posts' }
+                meta: {breadCrumb: 'breadcrumb_labels_admin.posts'}
             },
             {
                 name: 'posts.create',
                 path: 'posts/create',
                 component: PostsCreate,
-                meta: { breadCrumb: 'Add new post' }
+                meta: {breadCrumb: 'breadcrumb_labels_admin.add_new_post'}
             },
             {
                 name: 'posts.edit',
                 path: 'posts/edit/:id',
                 component: PostsEdit,
-                meta: { breadCrumb: 'Edit post' }
+                meta: {breadCrumb: 'breadcrumb_labels_admin.edit_post'}
             },
             {
                 name: 'categories.index',
                 path: 'categories',
                 component: () => import('../views/admin/categories/Index.vue'),
-                meta: { breadCrumb: 'Categories' }
+                meta: {breadCrumb: 'breadcrumb_labels_admin.categories'}
             },
             {
                 name: 'categories.create',
                 path: 'categories/create',
                 component: () => import('../views/admin/categories/Create.vue'),
-                meta: { breadCrumb: 'Add new category' }
+                meta: {breadCrumb: 'breadcrumb_labels_admin.add_new_category'}
             },
             {
                 name: 'categories.edit',
                 path: 'categories/edit/:id',
                 component: () => import('../views/admin/categories/Edit.vue'),
-                meta: { breadCrumb: 'Edit Category' }
+                meta: {breadCrumb: 'breadcrumb_labels_admin.edit_category'}
             },
             {
                 name: 'permissions.index',
                 path: 'permissions',
                 component: () => import('../views/admin/permissions/Index.vue'),
-                meta: { breadCrumb: 'Permissions' }
+                meta: {breadCrumb: 'breadcrumb_labels_admin.permissions'}
             },
             {
                 name: 'permissions.create',
                 path: 'permissions/create',
                 component: () => import('../views/admin/permissions/Create.vue'),
-                meta: { breadCrumb: 'Create Permission' }
+                meta: {breadCrumb: 'breadcrumb_labels_admin.create_permission'}
             },
             {
                 name: 'permissions.edit',
                 path: 'permissions/edit/:id',
                 component: () => import('../views/admin/permissions/Edit.vue'),
-                meta: { breadCrumb: 'Permission Edit' }
+                meta: {breadCrumb: 'breadcrumb_labels_admin.edit_permission'}
             },
             {
                 name: 'roles.index',
                 path: 'roles',
                 component: () => import('../views/admin/roles/Index.vue'),
-                meta: { breadCrumb: 'Roles' }
+                meta: {breadCrumb: 'breadcrumb_labels_admin.roles'}
             },
             {
                 name: 'roles.create',
                 path: 'roles/create',
                 component: () => import('../views/admin/roles/Create.vue'),
-                meta: { breadCrumb: 'Create Role' }
+                meta: {breadCrumb: 'breadcrumb_labels_admin.create_role'}
             },
             {
                 name: 'roles.edit',
                 path: 'roles/edit/:id',
                 component: () => import('../views/admin/roles/Edit.vue'),
-                meta: { breadCrumb: 'Role Edit' }
+                meta: {breadCrumb: 'breadcrumb_labels_admin.edit_role'}
             },
             {
                 name: 'users.index',
                 path: 'users',
                 component: () => import('../views/admin/users/Index.vue'),
-                meta: { breadCrumb: 'Users' }
+                meta: { breadCrumb: 'breadcrumb_labels_admin.users' }
             },
             {
                 name: 'users.create',
                 path: 'users/create',
                 component: () => import('../views/admin/users/Create.vue'),
-                meta: { breadCrumb: 'Add New' }
+                meta: {breadCrumb: 'breadcrumb_labels_admin.add_user'}
             },
             {
                 name: 'users.edit',
                 path: 'users/edit/:id',
                 component: () => import('../views/admin/users/Edit.vue'),
-                meta: { breadCrumb: 'User Edit' }
+                meta: {breadCrumb: 'breadcrumb_labels_admin.edit_user'}
             },
         ]
     },

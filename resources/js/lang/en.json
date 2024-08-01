@@ -24,6 +24,25 @@
         "permissions": "Permissions",
         "roles": "Roles"
     },
+    "breadcrumb_labels_admin": {
+        "admin": "Admin",
+        "profile": "Profile",
+        "posts": "Posts",
+        "add_new_post": "Add new post",
+        "edit_post": "Edit post",
+        "categories": "Categories",
+        "add_new_category": "Add new category",
+        "edit_category": "Edit category",
+        "permissions": "Permissions",
+        "create_permission": "Create permission",
+        "edit_permission": "Edit permission",
+        "roles": "Roles",
+        "create_role": "Create role",
+        "edit_role": "Edit role",
+        "users": "Users",
+        "add_user": "Add user",
+        "edit_user": "Edit user"
+    },
     "login_page": {
         "login": "Login",
         "email": "Email",

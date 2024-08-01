@@ -1,16 +1,16 @@
 <template>
-    <AdminNavbar />
+    <AdminNavbar/>
     <div class="d-flex align-items-stretch w-100">
-        <AdminSidebar />
+        <AdminSidebar/>
         <div class="container-fluid">
-            <Breadcrumb class="row justify-content-center mt-4" :crumbs="crumbs" @selected="selected" />
+            <Breadcrumb class="row justify-content-center mt-4" :crumbs="crumbs" @selected="selected"/>
             <!-- <h2 class="fw-semibold">
                 {{ crumbs }}
             </h2> -->
             <!-- Page Content -->
             <div class="main">
                 <Suspense>
-                <router-view></router-view>
+                    <router-view></router-view>
                 </Suspense>
             </div>
         </div>
@@ -29,29 +29,38 @@ const route = useRoute();
 const {t} = useI18n();
 
 const crumbs = computed(() => {
-    let pathArray = route.path.split('/')
-      pathArray.shift()
-      const breadCrumbs = [{ "href": "/admin", "disabled": false, "text": t('main_page.dashboard') }];
-      // needed to handle the intermediary entries for nested vue routes
-      let breadcrumb = ''
-      let lastIndexFound = 0
-      for (let i = 0; i < pathArray.length; ++i) {
-        breadcrumb = `${breadcrumb}${'/'}${pathArray[i]}`
+    let pathArray = route.path.split('/');
+    pathArray.shift();
+    const breadCrumbs = [{"href": "/admin", "disabled": false, "text": t('main_page.dashboard')}];
+    let breadCrumb = '';
+    let lastIndexFound = 0;
+    for (let i = 0; i < pathArray.length; ++i) {
+        breadCrumb = `${breadCrumb}${'/'}${pathArray[i]}`;
         if (route.matched[i] &&
-          Object.hasOwnProperty.call(route.matched[i], 'meta') &&
-          Object.hasOwnProperty.call(route.matched[i].meta, 'breadCrumb')) {
-          breadCrumbs.push({
-            href: i !== 0 && pathArray[i - (i - lastIndexFound)]
-              ? '/' + pathArray[i - (i - lastIndexFound)] + breadcrumb
-              : breadcrumb,
-            disabled: i + 1 === pathArray.length,
-            text: t('profile.' + route.matched[i].meta.breadCrumb) || pathArray[i]
-          })
-          lastIndexFound = i
-          breadcrumb = ''
+            Object.hasOwnProperty.call(route.matched[i], 'meta') &&
+            Object.hasOwnProperty.call(route.matched[i].meta, 'breadCrumb')) {
+            breadCrumbs.push({
+                href: i !== 0 && pathArray[i - (i - lastIndexFound)]
+                    ? '/' + pathArray[i - (i - lastIndexFound)] + breadCrumb
+                    : breadCrumb,
+                disabled: i + 1 === pathArray.length,
+                text: t(route.matched[i].meta.breadCrumb) || pathArray[i]
+            });
+            lastIndexFound = i;
+            breadCrumb = '';
         }
-      }
-      return breadCrumbs
+    }
+    /*pathArray.shift();
+    const breadCrumbs = [];
+    for (let i = 0; i < route.matched.length; i++) {
+        breadCrumbs.push({
+            href: route.matched[i].path,
+            disabled: i === 0,
+            text: route.matched[i].meta.breadCrumb
+        });
+    }*/
+
+    return breadCrumbs;
 });
 
 function selected(crumb) {
