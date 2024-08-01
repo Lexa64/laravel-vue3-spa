@@ -62,10 +62,9 @@
 </template>
 
 <script setup>
-import {useI18n} from 'vue-i18n';
+
 import useAuth from '@/composables/auth';
 
-const {t} = useI18n();
 const {loginForm, validationErrors, processing, submitLogin} = useAuth();
 
 </script>

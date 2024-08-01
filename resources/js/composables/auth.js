@@ -2,7 +2,8 @@ import {ref, reactive, inject} from 'vue'
 import {useRouter} from "vue-router";
 import {AbilityBuilder, createMongoAbility} from '@casl/ability';
 import {ABILITY_TOKEN} from '@casl/vue';
-import store from '../store'
+import store from '../store';
+import {useI18n} from 'vue-i18n';
 
 let user = reactive({
     name: '',
@@ -10,11 +11,12 @@ let user = reactive({
 })
 
 export default function useAuth() {
-    const processing = ref(false)
-    const validationErrors = ref({})
-    const router = useRouter()
-    const swal = inject('$swal')
-    const ability = inject(ABILITY_TOKEN)
+    const processing = ref(false);
+    const validationErrors = ref({});
+    const router = useRouter();
+    const swal = inject('$swal');
+    const ability = inject(ABILITY_TOKEN);
+    const {t} = useI18n();
 
     const loginForm = reactive({
         email: '',
@@ -52,9 +54,9 @@ export default function useAuth() {
                 await loginUser()
                 swal({
                     icon: 'success',
-                    title: t('login_successfully'),
+                    title: t('login_page.login_successfully'),
                     showConfirmButton: false,
-                    timer: 1500
+                    timer: 2000
                 })
                 await router.push({ name: 'admin.index' })
             })

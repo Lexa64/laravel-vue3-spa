@@ -1,5 +1,5 @@
-import { ref, inject } from 'vue'
-import { useRouter } from 'vue-router'
+import {ref, inject} from 'vue';
+import {useRouter} from 'vue-router';
 
 export default function useUsers() {
     const users = ref([])
@@ -28,7 +28,7 @@ export default function useUsers() {
             '&order_direction=' + order_direction)
             .then(response => {
                 users.value = response.data;
-            })
+            });
     }
 
     const getUser = async (id) => {

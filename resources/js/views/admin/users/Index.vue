@@ -146,7 +146,7 @@
                 </div>
                 <div class="card-footer">
                     <Pagination :data="users" :limit="3" class="mt-4"
-                                @pagination-change-page="page => getUsers(page, search_id, search_title, search_global, orderColumn, orderDirection)"
+                        @pagination-change-page="page => getUsers(page, search_id, search_title, search_global, orderColumn, orderDirection)"
                     />
                 </div>
             </div>
