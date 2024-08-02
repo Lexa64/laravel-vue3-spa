@@ -74,7 +74,8 @@ configure({
                 email: t("profile." + field),
             }),
         }
-        return messages[rule.name]
+
+        return messages[rule.name];
     }
 });
 

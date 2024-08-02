@@ -40,7 +40,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Role -->
                         <div class="mb-3">
                             <label for="post-category" class="form-label">
                                 {{ $t('users.role') }}
@@ -94,17 +93,18 @@ defineRule('min', min);
 defineRule('email', emailCheck);
 
 configure({
-    generateMessage: ({rule, field}) => {
+    generateMessage: (context) => {
         const messages = {
             min: t('global_validation.min', {
-                field: t('users.' + field),
-                min: rule.params[0],
+                field: t('users.' + context.field),
+                min: context.rule.params[0],
             }),
             email: t('global_validation.email', {
-                email: t('profile.' + field),
+                email: t('users.' + context.field),
             }),
         }
-        return messages[rule.name]
+
+        return messages[context.rule.name];
     }
 });
 
