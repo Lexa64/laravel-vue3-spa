@@ -81,7 +81,6 @@
         "name": "Имя",
         "email": "Email",
         "created_at": "Дата создания",
-
         "role": "Роль",
         "save": "Сохранить",
         "password": "Пароль",
@@ -91,6 +90,14 @@
         "update_successfully": "Пользователь успешно обновлён!",
         "save_successfully": "Пользователь успешно сохранён!"
     },
+    "roles": {
+        "roles": "Роли",
+        "filter_by_id": "Фильтр по ID...",
+        "filter_by_title": "Фильтр по названию...",
+        "id": "ID",
+        "title": "Название роли",
+        "created_at": "Дата создания"
+    },
     "global_buttons": {
         "delete_confirmation": "Вы уверены?",
         "delete_warning": "Вы не сможете отменить это действие!",
@@ -99,5 +106,8 @@
         "add_new": "Добавить",
         "edit": "Изменить",
         "delete": "Удалить"
+    },
+    "global_filters": {
+        "search_global": "Поиск..."
     }
 }

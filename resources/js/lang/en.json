@@ -81,7 +81,6 @@
         "name": "Name",
         "email": "Email",
         "created_at": "Created date",
-
         "role": "Role",
         "save": "Save",
         "password": "Password",
@@ -91,6 +90,14 @@
         "update_successfully": "User updated successfully!",
         "save_successfully": "User saved successfully!"
     },
+    "roles": {
+        "roles": "Roles",
+        "filter_by_id": "Filter by ID...",
+        "filter_by_title": "Filter by title...",
+        "id": "ID",
+        "title": "Role name",
+        "created_at": "Created date"
+    },
     "global_buttons": {
         "delete_confirmation": "Are you sure?",
         "delete_warning": "You will not be able to undo this action!",
@@ -99,5 +106,8 @@
         "add_new": "Add",
         "edit": "Edit",
         "delete": "Delete"
+    },
+    "global_filters": {
+        "search_global": "Search..."
     }
 }

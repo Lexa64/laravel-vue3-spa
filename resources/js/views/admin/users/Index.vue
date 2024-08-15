@@ -10,7 +10,7 @@
                 </div>
                 <div class="card-body shadow-sm">
                     <div class="mb-4">
-                        <input v-model="search_global" type="text" :placeholder="$t('users.search_global')"
+                        <input v-model="search_global" type="text" :placeholder="$t('global_filters.search_global')"
                                class="form-control w-25">
                     </div>
                     <div class="table-responsive">
@@ -64,11 +64,11 @@
                                                 <span :class="{
                                                     'text-blue-600': orderDirection === 'asc' && orderColumn === 'title',
                                                     'hidden': orderDirection !== '' && orderDirection !== 'asc' && orderColumn === 'title',
-                                                }">&uarr;</span>
+                                                    }">&uarr;</span>
                                                 <span :class="{
                                                     'text-blue-600': orderDirection === 'desc' && orderColumn === 'title',
                                                     'hidden': orderDirection !== '' && orderDirection !== 'desc' && orderColumn === 'title',
-                                                }">&darr;</span>
+                                                    }">&darr;</span>
                                             </div>-->
                                         </div>
                                     </th>
