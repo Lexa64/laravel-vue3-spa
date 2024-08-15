@@ -112,6 +112,7 @@ const schema = {
     name: 'required|min:3',
     email: 'required|email',
     password: 'required|min:8',
+    //role_id: 'required',
 }
 
 const {validate, errors} = useForm({validationSchema: schema})
@@ -138,5 +139,6 @@ function submitForm() {
 
 onMounted(() => {
     getRoleList();
+    //console.log(roleList)
 })
 </script>
