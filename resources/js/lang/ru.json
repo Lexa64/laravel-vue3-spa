@@ -95,8 +95,14 @@
         "filter_by_id": "Фильтр по ID...",
         "filter_by_title": "Фильтр по названию...",
         "id": "ID",
-        "title": "Название роли",
-        "created_at": "Дата создания"
+        "name": "Название роли",
+        "created_at": "Дата создания",
+        "save_successfully": "Роль успешно создана!",
+        "update_successfully": "Роль успешно обновлена!",
+        "delete_successfully": "Роль успешно удалена!",
+        "delete_error": "Произошла ошибка",
+        "available_permissions": "Доступные разрешения",
+        "current_permissions": "Имеющиеся разрешения"
     },
     "global_buttons": {
         "delete_confirmation": "Вы уверены?",
@@ -105,7 +111,8 @@
         "actions": "Действия",
         "add_new": "Добавить",
         "edit": "Изменить",
-        "delete": "Удалить"
+        "delete": "Удалить",
+        "save": "Сохранить"
     },
     "global_filters": {
         "search_global": "Поиск..."

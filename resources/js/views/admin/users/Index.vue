@@ -53,10 +53,10 @@
                                         </div>
                                     </th>
                                     <th class="px-6 py-3 text-left" style="cursor: pointer;"
-                                        @click="updateOrdering('title')">
+                                        @click="updateOrdering('name')">
                                         <div class="flex flex-row">
                                             <div class="font-medium"
-                                                 :class="{ 'font-bold text-blue-600': orderColumn === 'title' }">
+                                                 :class="{ 'font-bold text-blue-600': orderColumn === 'name' }">
                                                 {{ $t('users.name') }}
                                                 <i class="bi bi-chevron-expand"></i>
                                             </div>

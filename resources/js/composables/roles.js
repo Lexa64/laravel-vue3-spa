@@ -1,17 +1,19 @@
-import {ref, inject} from 'vue'
-import {useRouter} from 'vue-router'
+import {ref, inject} from 'vue';
+import {useRouter} from 'vue-router';
+import {useI18n} from 'vue-i18n';
 
 export default function useRoles() {
-    const roles = ref([])
+    const roles = ref([]);
     const role = ref({
         name: ''
-    })
-    const roleList = ref([])
-    const rolePermissionList = ref([])
-    const router = useRouter()
-    const validationErrors = ref({})
-    const isLoading = ref(false)
-    const swal = inject('$swal')
+    });
+    const roleList = ref([]);
+    const rolePermissionList = ref([]);
+    const router = useRouter();
+    const validationErrors = ref({});
+    const isLoading = ref(false);
+    const swal = inject('$swal');
+    const {t} = useI18n();
 
     const getRoles = async (
         page = 1,
@@ -29,98 +31,97 @@ export default function useRoles() {
             '&order_direction=' + order_direction)
             .then(response => {
                 roles.value = response.data;
-            })
+            });
     }
 
     const getRole = async (id) => {
         axios.get('/api/roles/' + id)
             .then(response => {
                 role.value = response.data.data;
-            })
+            });
     }
     const getRolePermissions = async (id) => {
-
         axios.get('/api/role-permissions/' + id)
             .then(response => {
                 rolePermissionList.value = response.data.data;
-            })
+            });
     }
     const storeRole = async (role) => {
-        if (isLoading.value) return;
+        if (isLoading.value) {
+            return;
+        }
 
-        isLoading.value = true
-        validationErrors.value = {}
+        isLoading.value = true;
+        validationErrors.value = {};
 
         axios.post('/api/roles', role)
             .then(response => {
-                router.push({name: 'roles.index'})
+                router.push({name: 'roles.index'});
                 swal({
                     icon: 'success',
-                    title: 'Role saved successfully'
-                })
+                    title: t('roles.save_successfully')
+                });
             })
             .catch(error => {
                 if (error.response?.data) {
-                    validationErrors.value = error.response.data.errors
+                    validationErrors.value = error.response.data.errors;
                 }
             })
-            .finally(() => isLoading.value = false)
+            .finally(() => isLoading.value = false);
     }
 
     const updateRole = async (role) => {
-        if (isLoading.value) return;
+        if (isLoading.value) {
+            return;
+        }
 
-        isLoading.value = true
-        validationErrors.value = {}
+        isLoading.value = true;
+        validationErrors.value = {};
 
         axios.put('/api/roles/' + role.id, role)
             .then(response => {
-                router.push({name: 'roles.index'})
+                router.push({name: 'roles.index'});
                 swal({
                     icon: 'success',
-                    title: 'Role updated successfully'
-                })
+                    title: t('roles.update_successfully')
+                });
             })
             .catch(error => {
                 if (error.response?.data) {
-                    validationErrors.value = error.response.data.errors
+                    validationErrors.value = error.response.data.errors;
                 }
             })
-            .finally(() => isLoading.value = false)
+            .finally(() => isLoading.value = false);
     }
 
     const updateRolePermissions = async (role, permissions) => {
-        if (isLoading.value) return;
+        if (isLoading.value) {
+            return;
+        }
 
-        isLoading.value = true
-        validationErrors.value = {}
+        isLoading.value = true;
+        validationErrors.value = {};
+
         axios.put('/api/role-permissions', {permissions: JSON.stringify(permissions), role_id: role.id})
-            // .then(response => {
-            //     router.push({name: 'roles.index'})
-            //     swal({
-            //         icon: 'success',
-            //         title: 'Role updated successfully'
-            //     })
-            // })
             .catch(error => {
                 if (error.response?.data) {
-                    validationErrors.value = error.response.data.errors
+                    validationErrors.value = error.response.data.errors;
                 }
             })
             .finally(() => {
-                isLoading.value = false
-                updateRole(role)
-            })
+                isLoading.value = false;
+                updateRole(role);
+            });
     }
-
 
     const deleteRole = async (id) => {
         swal({
-            title: 'Are you sure?',
-            text: 'You won\'t be able to revert this action!',
+            title: t('global_buttons.delete_confirmation'),
+            text: t('global_buttons.delete_warning'),
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'Yes, delete it!',
+            confirmButtonText: t('global_buttons.delete'),
+            cancelButtonText: t('global_buttons.delete_confirm_cancel'),
             confirmButtonColor: '#ef4444',
             timer: 20000,
             timerProgressBar: true,
@@ -131,27 +132,27 @@ export default function useRoles() {
                     axios.delete('/api/roles/' + id)
                         .then(response => {
                             getRoles()
-                            router.push({name: 'roles.index'})
+                            router.push({name: 'roles.index'});
                             swal({
                                 icon: 'success',
-                                title: 'Role deleted successfully'
-                            })
+                                title: t('roles.delete_successfully')
+                            });
                         })
                         .catch(error => {
                             swal({
                                 icon: 'error',
-                                title: 'Something went wrong'
-                            })
-                        })
+                                title: t('roles.delete_error')
+                            });
+                        });
                 }
-            })
+            });
     }
 
     const getRoleList = async () => {
         axios.get('/api/role-list')
             .then(response => {
                 roleList.value = response.data.data;
-            })
+            });
     }
 
     return {

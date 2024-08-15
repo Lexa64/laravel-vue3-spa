@@ -95,8 +95,14 @@
         "filter_by_id": "Фільтр па ID...",
         "filter_by_title": "Фільтр па назве...",
         "id": "ID",
-        "title": "Назва ролі",
-        "created_at": "Дата стварэння"
+        "name": "Назва ролі",
+        "created_at": "Дата стварэння",
+        "save_successfully": "Роля паспяхова створана!",
+        "update_successfully": "Роля паспяхова абноўлена!",
+        "delete_successfully": "Роля паспяхова выдалена!",
+        "delete_error": "Адбылася памылка",
+        "available_permissions": "Даступныя дазволы",
+        "current_permissions": "Існуючыя дазволы"
     },
     "global_buttons": {
         "delete_confirmation": "Вы ўпэўнены?",
@@ -105,7 +111,8 @@
         "actions": "Дзеянні",
         "add_new": "Дадаць",
         "edit": "Змяніць",
-        "delete": "Выдаліць"
+        "delete": "Выдаліць",
+        "save": "Захаваць"
     },
     "global_filters": {
         "search_global": "Пошук..."

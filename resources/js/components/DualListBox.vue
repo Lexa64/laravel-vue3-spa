@@ -97,7 +97,7 @@ function moveRight() {
 
 .container {
   display: grid;
-  grid-template-columns: 30% 10% 30%;
+  grid-template-columns: 40% 10% 40%;
   align-items: center;
 }
 

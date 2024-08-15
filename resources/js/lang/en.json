@@ -95,8 +95,14 @@
         "filter_by_id": "Filter by ID...",
         "filter_by_title": "Filter by title...",
         "id": "ID",
-        "title": "Role name",
-        "created_at": "Created date"
+        "name": "Role name",
+        "created_at": "Created date",
+        "save_successfully": "Role created successfully!",
+        "update_successfully": "Role updated successfully!",
+        "delete_successfully": "Role deleted successfully!",
+        "delete_error": "An error has occurred",
+        "available_permissions": "Available permissions",
+        "current_permissions": "Current Permissions"
     },
     "global_buttons": {
         "delete_confirmation": "Are you sure?",
@@ -105,7 +111,8 @@
         "actions": "Actions",
         "add_new": "Add",
         "edit": "Edit",
-        "delete": "Delete"
+        "delete": "Delete",
+        "save": "Save"
     },
     "global_filters": {
         "search_global": "Search..."
