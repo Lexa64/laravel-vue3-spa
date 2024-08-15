@@ -81,13 +81,23 @@
         "name": "Имя",
         "email": "Email",
         "created_at": "Дата создания",
-        "actions": "Действия",
-        "add_new": "Добавить",
-        "edit": "Изменить",
-        "delete": "Удалить",
 
         "role": "Роль",
         "save": "Сохранить",
-        "password": "Пароль"
+        "password": "Пароль",
+        "delete_confirm_ok": "Да, удалить",
+        "delete_successfully": "Пользователь успешно удалён!",
+        "delete_error": "Произошла ошибка",
+        "update_successfully": "Пользователь успешно обновлён!",
+        "save_successfully": "Пользователь успешно сохранён!"
+    },
+    "global_buttons": {
+        "delete_confirmation": "Вы уверены?",
+        "delete_warning": "Вы не сможете отменить это действие!",
+        "delete_confirm_cancel": "Отмена",
+        "actions": "Действия",
+        "add_new": "Добавить",
+        "edit": "Изменить",
+        "delete": "Удалить"
     }
 }

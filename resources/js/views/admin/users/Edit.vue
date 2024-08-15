@@ -5,7 +5,7 @@
                 <div class="card-body">
                     <form @submit.prevent="submitForm">
                         <div class="mb-3">
-                            <label for="user-title" class="form-label">Name</label>
+                            <label for="user-title" class="form-label">{{ $t('users.name') }}</label>
                             <input v-model="user.name" id="user-title" type="text" class="form-control">
                             <div class="text-danger mt-1">
                                 {{ errors.name }}
@@ -17,7 +17,7 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
+                            <label for="email" class="form-label">{{ $t('users.email') }}</label>
                             <input v-model="user.email" id="email" type="email" class="form-control">
                             <div class="text-danger mt-1">
                                 {{ errors.email }}
@@ -29,7 +29,7 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
+                            <label for="password" class="form-label">{{ $t('login_page.password') }}</label>
                             <input v-model="user.password" id="password" type="password" class="form-control">
                             <div class="text-danger mt-1">
                                 {{ errors.password }}
@@ -40,10 +40,9 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Role -->
                         <div class="mb-3">
                             <label for="user-category" class="form-label">
-                                Role
+                                {{ $t('users.role') }}
                             </label>
                             <v-select multiple  v-model="user.role_id" :options="roleList" :reduce="role => role.id" label="name" class="form-control" />
                             <div class="text-danger mt-1">
@@ -55,12 +54,11 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Buttons -->
                         <div class="mt-4">
                             <button :disabled="isLoading" class="btn btn-primary">
                                 <div v-show="isLoading" class=""></div>
-                                <span v-if="isLoading">Processing...</span>
-                                <span v-else>Save</span>
+                                <span v-if="isLoading">{{ $t('profile.in_progress') }}...</span>
+                                <span v-else>{{ $t('users.save') }}</span>
                             </button>
                         </div>
                     </form>
@@ -90,9 +88,7 @@
         password: 'min:8',
     }
 
-    // Create a form context with the validation schema
     const { validate, errors, resetForm } = useForm({ validationSchema: schema })
-    // Define actual fields for validation
     const { value: name } = useField('name', null, { initialValue: '' });
     const { value: email } = useField('email', null, { initialValue: '' });
     const { value: password } = useField('password', null, { initialValue: '' });

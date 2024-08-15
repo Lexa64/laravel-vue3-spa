@@ -81,13 +81,23 @@
         "name": "Name",
         "email": "Email",
         "created_at": "Created date",
-        "actions": "Actions",
-        "add_new": "Add",
-        "edit": "Edit",
-        "delete": "Delete",
 
         "role": "Role",
         "save": "Save",
-        "password": "Password"
+        "password": "Password",
+        "delete_confirm_ok": "Yes, delete",
+        "delete_successfully": "User successfully deleted!",
+        "delete_error": "An error has occurred",
+        "update_successfully": "User updated successfully!",
+        "save_successfully": "User saved successfully!"
+    },
+    "global_buttons": {
+        "delete_confirmation": "Are you sure?",
+        "delete_warning": "You will not be able to undo this action!",
+        "delete_confirm_cancel": "Cancel",
+        "actions": "Actions",
+        "add_new": "Add",
+        "edit": "Edit",
+        "delete": "Delete"
     }
 }

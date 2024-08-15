@@ -1,16 +1,18 @@
 import {ref, inject} from 'vue';
 import {useRouter} from 'vue-router';
+import {useI18n} from 'vue-i18n';
 
 export default function useUsers() {
-    const users = ref([])
+    const users = ref([]);
     const user = ref({
         name: ''
-    })
+    });
 
-    const router = useRouter()
-    const validationErrors = ref({})
-    const isLoading = ref(false)
-    const swal = inject('$swal')
+    const router = useRouter();
+    const validationErrors = ref({});
+    const isLoading = ref(false);
+    const swal = inject('$swal');
+    const {t} = useI18n();
 
     const getUsers = async (
         page = 1,
@@ -35,67 +37,70 @@ export default function useUsers() {
         axios.get('/api/users/' + id)
             .then(response => {
                 user.value = response.data.data;
-            })
+            });
     }
 
     const storeUser = async (user) => {
-        if (isLoading.value) return;
+        if (isLoading.value) {
+            return;
+        }
 
-        isLoading.value = true
-        validationErrors.value = {}
+        isLoading.value = true;
+        validationErrors.value = {};
 
-        let serializedPost = new FormData()
+        let serializedPost = new FormData();
         for (let item in user) {
             if (user.hasOwnProperty(item)) {
-                serializedPost.append(item, user[item])
+                serializedPost.append(item, user[item]);
             }
         }
 
         axios.post('/api/users', serializedPost)
             .then(response => {
-                router.push({name: 'users.index'})
+                router.push({name: 'users.index'});
                 swal({
                     icon: 'success',
-                    title: 'User saved successfully'
-                })
+                    title: t('users.save_successfully')
+                });
             })
             .catch(error => {
                 if (error.response?.data) {
-                    validationErrors.value = error.response.data.errors
+                    validationErrors.value = error.response.data.errors;
                 }
             })
-            .finally(() => isLoading.value = false)
+            .finally(() => isLoading.value = false);
     }
 
     const updateUser = async (user) => {
         if (isLoading.value) return;
 
-        isLoading.value = true
-        validationErrors.value = {}
+        isLoading.value = true;
+        validationErrors.value = {};
 
         axios.put('/api/users/' + user.id, user)
             .then(response => {
-                router.push({name: 'users.index'})
+                router.push({name: 'users.index'});
                 swal({
                     icon: 'success',
-                    title: 'User updated successfully'
+                    title: t('users.update_successfully')
                 })
             })
             .catch(error => {
                 if (error.response?.data) {
-                    validationErrors.value = error.response.data.errors
+                    validationErrors.value = error.response.data.errors;
                 }
             })
-            .finally(() => isLoading.value = false)
+            .finally(() => isLoading.value = false);
     }
 
     const deleteUser = async (id) => {
         swal({
-            title: 'Are you sure?',
-            text: 'You won\'t be able to revert this action!',
+            title: t('global_buttons.delete_confirmation'),
+            text: t('global_buttons.delete_warning'),
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'Yes, delete it!',
+            confirmButtonText: t('users.delete_confirm_ok'),
+            cancelButtonText: t('global_buttons.delete_confirm_cancel'),
             confirmButtonColor: '#ef4444',
             timer: 20000,
             timerProgressBar: true,
@@ -105,21 +110,21 @@ export default function useUsers() {
                 if (result.isConfirmed) {
                     axios.delete('/api/users/' + id)
                         .then(response => {
-                            getUsers()
-                            router.push({name: 'users.index'})
+                            getUsers();
+                            router.push({name: 'users.index'});
                             swal({
                                 icon: 'success',
-                                title: 'User deleted successfully'
-                            })
+                                title: t('users.delete_successfully')
+                            });
                         })
                         .catch(error => {
                             swal({
                                 icon: 'error',
-                                title: 'Something went wrong'
+                                title: t('users.delete_error')
                             })
                         })
                 }
-            })
+            });
     }
 
     return {

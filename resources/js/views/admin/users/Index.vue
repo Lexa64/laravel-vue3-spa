@@ -5,7 +5,7 @@
                 <div class="card-header bg-transparent">
                     <h5 class="float-start">{{ $t('users.users')}}</h5>
                     <router-link v-if="can('user-list')" :to="{ name: 'users.create' }" class="btn btn-primary btn-sm float-end">
-                        {{ $t('users.add_new') }}
+                        {{ $t('global_buttons.add_new') }}
                     </router-link>
                 </div>
                 <div class="card-body shadow-sm">
@@ -113,7 +113,7 @@
                                         </div>
                                     </th>
                                     <th class="px-6 py-3 bg-gray-50 text-left">
-                                        {{ $t('users.actions') }}
+                                        {{ $t('global_buttons.actions') }}
                                     </th>
                                 </tr>
                             </thead>
@@ -134,10 +134,10 @@
                                     <td class="px-6 py-4 text-sm">
                                         <router-link v-if="can('user-edit')"
                                                      :to="{ name: 'users.edit', params: { id: post.id } }"
-                                                     class="badge bg-primary">{{ $t('users.edit') }}
+                                                     class="badge bg-primary">{{ $t('global_buttons.edit') }}
                                         </router-link>
                                         <a href="#" v-if="can('user-delete')" @click.prevent="deleteUser(post.id)"
-                                           class="ms-2 badge bg-danger">{{ $t('users.delete') }}</a>
+                                           class="ms-2 badge bg-danger">{{ $t('global_buttons.delete') }}</a>
                                     </td>
                                 </tr>
                             </tbody>

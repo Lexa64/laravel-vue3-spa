@@ -81,13 +81,23 @@
         "name": "Імя",
         "email": "Email",
         "created_at": "Дата стварэння",
-        "actions": "Дзеянні",
-        "add_new": "Дадаць",
-        "edit": "Змяніць",
-        "delete": "Выдаліць",
 
         "role": "Роля",
         "save": "Захаваць",
-        "password": "Пароль"
+        "password": "Пароль",
+        "delete_confirm_ok": "Так, выдаліць",
+        "delete_successfully": "Карыстальнік паспяхова выдалены!",
+        "delete_error": "Адбылася памылка",
+        "update_successfully": "Карыстальнік паспяхова абноўлены!",
+        "save_successfully": "Карыстальнік паспяхова захаваны!"
+    },
+    "global_buttons": {
+        "delete_confirmation": "Вы ўпэўнены?",
+        "delete_warning": "Вы не зможаце адмяніць гэта дзеянне!",
+        "delete_confirm_cancel": "Адмена",
+        "actions": "Дзеянні",
+        "add_new": "Дадаць",
+        "edit": "Змяніць",
+        "delete": "Выдаліць"
     }
 }
