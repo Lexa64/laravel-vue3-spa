@@ -75,7 +75,6 @@
     "users": {
         "users": "Users",
         "search_global": "Search...",
-        "filter_by_id": "Filter by ID...",
         "filter_by_name": "Filter by name...",
         "id": "ID",
         "name": "Name",
@@ -92,7 +91,6 @@
     },
     "roles": {
         "roles": "Roles",
-        "filter_by_id": "Filter by ID...",
         "filter_by_title": "Filter by title...",
         "id": "ID",
         "name": "Role name",
@@ -103,6 +101,13 @@
         "delete_error": "An error has occurred",
         "available_permissions": "Available permissions",
         "current_permissions": "Current Permissions"
+    },
+    "permissions": {
+        "permissions": "Permissions",
+        "filter_by_type": "Filter by type...",
+        "type": "Type",
+        "id": "ID",
+        "created_at": "Created date"
     },
     "global_buttons": {
         "delete_confirmation": "Are you sure?",
@@ -115,6 +120,7 @@
         "save": "Save"
     },
     "global_filters": {
-        "search_global": "Search..."
+        "search_global": "Search...",
+        "filter_by_id": "Filter by ID..."
     }
 }

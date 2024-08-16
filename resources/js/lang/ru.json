@@ -75,7 +75,6 @@
     "users": {
         "users": "Пользователи",
         "search_global": "Поиск...",
-        "filter_by_id": "Фильтр по ID...",
         "filter_by_name": "Фильтр по имени...",
         "id": "ID",
         "name": "Имя",
@@ -92,7 +91,6 @@
     },
     "roles": {
         "roles": "Роли",
-        "filter_by_id": "Фильтр по ID...",
         "filter_by_title": "Фильтр по названию...",
         "id": "ID",
         "name": "Название роли",
@@ -103,6 +101,13 @@
         "delete_error": "Произошла ошибка",
         "available_permissions": "Доступные разрешения",
         "current_permissions": "Имеющиеся разрешения"
+    },
+    "permissions": {
+        "permissions": "Разрешения",
+        "filter_by_type": "Фильтр по типу...",
+        "type": "Тип",
+        "id": "ID",
+        "created_at": "Дата создания"
     },
     "global_buttons": {
         "delete_confirmation": "Вы уверены?",
@@ -115,6 +120,7 @@
         "save": "Сохранить"
     },
     "global_filters": {
-        "search_global": "Поиск..."
+        "search_global": "Поиск...",
+        "filter_by_id": "Фильтр по ID..."
     }
 }

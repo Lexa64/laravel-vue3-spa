@@ -3,14 +3,14 @@
         <div class="col-md-12">
             <div class="card border-0">
                 <div class="card-header bg-transparent">
-                    <h5 class="float-start">Permissions</h5>
+                    <h5 class="float-start">{{ $t('permissions.permissions') }}</h5>
                     <router-link v-if="can('permission-create')" :to="{ name: 'permissions.create' }" class="btn btn-primary btn-sm float-end">
-                        Create Permission
+                        {{ $t('global_buttons.add_new') }}
                     </router-link>
                 </div>
                 <div class="card-body shadow-sm">
                     <div class="mb-4">
-                        <input v-model="search_global" type="text" placeholder="Search..."
+                        <input v-model="search_global" type="text" :placeholder="$t('global_filters.search_global')"
                                class="form-control w-25">
                     </div>
                     <div class="table-responsive">
@@ -20,76 +20,77 @@
                                 <th class="px-6 py-3 bg-gray-50 text-left">
                                     <input v-model="search_id" type="text"
                                            class="inline-block mt-1 form-control"
-                                           placeholder="Filter by ID">
+                                           :placeholder="$t('global_filters.filter_by_id')">
                                 </th>
                                 <th class="px-6 py-3 bg-gray-50 text-left">
                                     <input v-model="search_title" type="text"
                                            class="inline-block mt-1 form-control"
-                                           placeholder="Filter by Title">
+                                           :placeholder="$t('permissions.filter_by_type')">
                                 </th>
+                                <th class="px-6 py-3 text-start"></th>
                                 <th class="px-6 py-3 text-start"></th>
                                 <th class="px-6 py-3 text-start"></th>
                             </tr>
                             <tr>
-                                <th class="px-6 py-3 text-start">
-                                    <div class="flex flex-row"
-                                         @click="updateOrdering('id')">
+                                <th class="px-6 py-3 text-start" style="cursor: pointer;" @click="updateOrdering('id')">
+                                    <div class="flex flex-row">
                                         <div class="font-medium text-uppercase"
                                              :class="{ 'font-bold text-blue-600': orderColumn === 'id' }">
-                                            ID
+                                            {{ $t('permissions.id') }}
+                                            <i class="bi bi-chevron-expand"></i>
                                         </div>
-                                        <div class="select-none">
-                                <span :class="{
-                                  'text-blue-600': orderDirection === 'asc' && orderColumn === 'id',
-                                  'hidden': orderDirection !== '' && orderDirection !== 'asc' && orderColumn === 'id',
-                                }">&uarr;</span>
+                                        <!--<div class="select-none">
                                             <span :class="{
-                                  'text-blue-600': orderDirection === 'desc' && orderColumn === 'id',
-                                  'hidden': orderDirection !== '' && orderDirection !== 'desc' && orderColumn === 'id',
-                                }">&darr;</span>
-                                        </div>
+                                              'text-blue-600': orderDirection === 'asc' && orderColumn === 'id',
+                                              'hidden': orderDirection !== '' && orderDirection !== 'asc' && orderColumn === 'id',
+                                            }">&uarr;</span>
+                                            <span :class="{
+                                              'text-blue-600': orderDirection === 'desc' && orderColumn === 'id',
+                                              'hidden': orderDirection !== '' && orderDirection !== 'desc' && orderColumn === 'id',
+                                            }">&darr;</span>
+                                        </div>-->
                                     </div>
                                 </th>
-                                <th class="px-6 py-3 text-left">
-                                    <div class="flex flex-row"
-                                         @click="updateOrdering('name')">
-                                        <div class="font-medium text-uppercase"
+                                <th class="px-6 py-3 text-left" style="cursor: pointer;" @click="updateOrdering('name')">
+                                    <div class="flex flex-row">
+                                        <div class="font-medium"
                                              :class="{ 'font-bold text-blue-600': orderColumn === 'name' }">
-                                            Title
+                                            {{ $t('permissions.type') }}
+                                            <i class="bi bi-chevron-expand"></i>
                                         </div>
-                                        <div class="select-none">
-                                <span :class="{
-                                  'text-blue-600': orderDirection === 'asc' && orderColumn === 'name',
-                                  'hidden': orderDirection !== '' && orderDirection !== 'asc' && orderColumn === 'name',
-                                }">&uarr;</span>
+                                        <!--<div class="select-none">
                                             <span :class="{
-                                  'text-blue-600': orderDirection === 'desc' && orderColumn === 'name',
-                                  'hidden': orderDirection !== '' && orderDirection !== 'desc' && orderColumn === 'name',
-                                }">&darr;</span>
-                                        </div>
+                                              'text-blue-600': orderDirection === 'asc' && orderColumn === 'name',
+                                              'hidden': orderDirection !== '' && orderDirection !== 'asc' && orderColumn === 'name',
+                                            }">&uarr;</span>
+                                            <span :class="{
+                                              'text-blue-600': orderDirection === 'desc' && orderColumn === 'name',
+                                              'hidden': orderDirection !== '' && orderDirection !== 'desc' && orderColumn === 'name',
+                                            }">&darr;</span>
+                                        </div>-->
                                     </div>
                                 </th>
-                                <th class="px-6 py-3 bg-gray-50 text-left">
-                                    <div class="flex flex-row items-center justify-between cursor-pointer"
-                                         @click="updateOrdering('created_at')">
+                                <th class="px-6 py-3 text-left" style="cursor: pointer;" @click="updateOrdering('created_at')">
+                                    <div class="flex flex-row items-center justify-between cursor-pointer">
                                         <div class="leading-4 font-medium text-gray-500 uppercase tracking-wider"
                                              :class="{ 'font-bold text-blue-600': orderColumn === 'created_at' }">
-                                            Created at
+                                            {{ $t('permissions.created_at') }}
+                                            <i class="bi bi-chevron-expand"></i>
                                         </div>
-                                        <div class="select-none">
-                                <span :class="{
-                                  'text-blue-600': orderDirection === 'asc' && orderColumn === 'created_at',
-                                  'hidden': orderDirection !== '' && orderDirection !== 'asc' && orderColumn === 'created_at',
-                                }">&uarr;</span>
+                                        <!--<div class="select-none">
                                             <span :class="{
-                                  'text-blue-600': orderDirection === 'desc' && orderColumn === 'created_at',
-                                  'hidden': orderDirection !== '' && orderDirection !== 'desc' && orderColumn === 'created_at',
-                                }">&darr;</span>
-                                        </div>
+                                              'text-blue-600': orderDirection === 'asc' && orderColumn === 'created_at',
+                                              'hidden': orderDirection !== '' && orderDirection !== 'asc' && orderColumn === 'created_at',
+                                            }">&uarr;</span>
+                                            <span :class="{
+                                              'text-blue-600': orderDirection === 'desc' && orderColumn === 'created_at',
+                                              'hidden': orderDirection !== '' && orderDirection !== 'desc' && orderColumn === 'created_at',
+                                            }">&darr;</span>
+                                        </div>-->
                                     </div>
                                 </th>
                                 <th class="px-6 py-3 bg-gray-50 text-left">
-                                    Actions
+                                    {{ $t('global_buttons.actions') }}
                                 </th>
                             </tr>
                             </thead>
@@ -106,10 +107,10 @@
                                 </td>
                                 <td class="px-6 py-4 text-sm">
                                     <router-link v-if="can('permission-edit')"
-                                                 :to="{ name: 'permissions.edit', params: { id: post.id } }" class="badge bg-primary">Edit
+                                                 :to="{ name: 'permissions.edit', params: { id: post.id } }" class="badge bg-primary">{{ $t('global_buttons.edit') }}
                                     </router-link>
                                     <a href="#" v-if="can('permission-delete')" @click.prevent="deletePermission(post.id)"
-                                       class="ms-2 badge bg-danger">Delete</a>
+                                       class="ms-2 badge bg-danger">{{ $t('global_buttons.delete') }}</a>
                                 </td>
                             </tr>
                             </tbody>

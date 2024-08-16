@@ -20,7 +20,7 @@
                                     <th class="px-6 py-3 bg-gray-50 text-left">
                                         <input v-model="search_id" type="text"
                                                class="inline-block mt-1 form-control"
-                                               :placeholder="$t('users.filter_by_id')">
+                                               :placeholder="$t('global_filters.filter_by_id')">
                                     </th>
                                     <th class="px-6 py-3 bg-gray-50 text-left">
                                         <input v-model="search_title" type="text"

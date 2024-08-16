@@ -75,7 +75,6 @@
     "users": {
         "users": "Карыстальнікі",
         "search_global": "Пошук...",
-        "filter_by_id": "Фільтр па ID...",
         "filter_by_name": "Фільтр па імені...",
         "id": "ID",
         "name": "Імя",
@@ -92,7 +91,6 @@
     },
     "roles": {
         "roles": "Ролі",
-        "filter_by_id": "Фільтр па ID...",
         "filter_by_title": "Фільтр па назве...",
         "id": "ID",
         "name": "Назва ролі",
@@ -103,6 +101,13 @@
         "delete_error": "Адбылася памылка",
         "available_permissions": "Даступныя дазволы",
         "current_permissions": "Існуючыя дазволы"
+    },
+    "permissions": {
+        "permissions": "Дазволы",
+        "filter_by_type": "Фільтр па тыпе...",
+        "type": "Тып",
+        "id": "ID",
+        "created_at": "Дата стварэння"
     },
     "global_buttons": {
         "delete_confirmation": "Вы ўпэўнены?",
@@ -115,6 +120,7 @@
         "save": "Захаваць"
     },
     "global_filters": {
-        "search_global": "Пошук..."
+        "search_global": "Пошук...",
+        "filter_by_id": "Фільтр па ID..."
     }
 }

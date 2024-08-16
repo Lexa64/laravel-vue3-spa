@@ -30,7 +30,8 @@ class PermissionController extends Controller
         }
         $permissions = Permission::
         when(request('search_id'), function ($query) {
-            $query->where('id', request('search_id'));
+            //$query->where('id', request('search_id'));
+            $query->where('id',  'like', '%' . request('search_id') . '%');
         })
             ->when(request('search_title'), function ($query) {
                 $query->where('name', 'like', '%' . request('search_title') . '%');
@@ -39,11 +40,10 @@ class PermissionController extends Controller
                 $query->where(function ($q) {
                     $q->where('id', request('search_global'))
                         ->orWhere('name', 'like', '%' . request('search_global') . '%');
-
                 });
             })
             ->orderBy($orderColumn, $orderDirection)
-            ->paginate(50);
+            ->paginate(10);
 
         return PermissionResource::collection($permissions);
     }
