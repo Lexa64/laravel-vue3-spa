@@ -63,7 +63,7 @@
         "email": "Email",
         "profile": "Профиль",
         "update": "Обновить",
-        "in_progress": "В процессе",
+        "in_progress": "В процессе...",
         "updated": "Профиль успешно обновлён",
         "confirm_button": "Ok"
     },

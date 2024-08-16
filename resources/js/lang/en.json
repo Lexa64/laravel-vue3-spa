@@ -63,7 +63,7 @@
         "email": "Email",
         "profile": "Profile",
         "update": "Update",
-        "in_progress": "Processing",
+        "in_progress": "Processing...",
         "updated": "Profile updated successfully",
         "confirm_button": "Ok"
     },

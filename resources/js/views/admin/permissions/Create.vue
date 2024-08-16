@@ -4,10 +4,9 @@
             <div class="card border-0 shadow-sm">
                 <div class="card-body">
                     <form @submit.prevent="submitForm">
-                        <!-- Title -->
                         <div class="mb-3">
                             <label for="post-name" class="form-label">
-                                Title
+                                {{ $t('permissions.type') }}
                             </label>
                             <input v-model="permission.name" id="post-name" type="text" class="form-control">
                             <div class="text-danger mt-1">
@@ -19,12 +18,11 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Buttons -->
                         <div class="mt-4">
                             <button :disabled="isLoading" class="btn btn-primary">
                                 <div v-show="isLoading" class=""></div>
-                                <span v-if="isLoading">Processing...</span>
-                                <span v-else>Save</span>
+                                <span v-if="isLoading">{{ $t('profile.in_progress') }}</span>
+                                <span v-else>{{ $t('global_buttons.save') }}</span>
                             </button>
                         </div>
                     </form>
@@ -33,27 +31,33 @@
         </div>
     </div>
 </template>
-<script setup>
-    import { reactive } from "vue";
-    import usePermissions from "@/composables/permissions";
-    import { useForm, useField, defineRule } from "vee-validate";
-    import { required, min } from "@/validation/rules"
-    defineRule('required', required)
-    defineRule('min', min);
 
-    // Define a validation schema
-    const schema = {
-        name: 'required|min:3'
-    }
-    // Create a form context with the validation schema
-    const { validate, errors } = useForm({ validationSchema: schema });
-    // Define actual fields for validation
-    const { value: name } = useField('name', null, { initialValue: '' });
-    const { storePermission, validationErrors, isLoading } = usePermissions();
-    const permission = reactive({
-        name
-    })
-    function submitForm() {
-        validate().then(form => { if (form.valid) storePermission(permission) })
-    }
+<script setup>
+import {reactive} from "vue";
+import usePermissions from "@/composables/permissions";
+import {useForm, useField, defineRule} from "vee-validate";
+import {required, min} from "@/validation/rules";
+
+defineRule('required', required);
+defineRule('min', min);
+
+const schema = {
+    name: 'required|min:3'
+}
+
+const {validate, errors} = useForm({validationSchema: schema});
+
+const {value: name} = useField('name', null, {initialValue: ''});
+const {storePermission, validationErrors, isLoading} = usePermissions();
+const permission = reactive({
+    name
+});
+
+function submitForm() {
+    validate().then(form => {
+        if (form.valid) {
+            storePermission(permission);
+        }
+    });
+}
 </script>

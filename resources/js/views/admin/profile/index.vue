@@ -32,7 +32,7 @@
                 <div class="mb-3">
                     <button :disabled="isLoading" class="btn btn-primary">
                         <div v-show="isLoading" class=""></div>
-                        <span v-if="isLoading">{{ $t('profile.in_progress') }}...</span>
+                        <span v-if="isLoading">{{ $t('profile.in_progress') }}</span>
                         <span v-else>{{ $t('profile.update') }}</span>
                     </button>
                 </div>
