@@ -31,15 +31,14 @@ class CreateAdminUserSeeder extends Seeder
             'post-create',
             'post-edit',
             'post-delete'
-            ];
+        ];
+
         $role2->syncPermissions($permissions);
         Category::create(['name' => 'VueJs']);
         Category::create(['name' => 'AngularJS']);
 
-        $permissions = Permission::pluck('id','id')->all();
-
+        $permissions = Permission::pluck('id', 'id')->all();
         $role->syncPermissions($permissions);
-
         $user->assignRole([$role->id]);
     }
 }

@@ -80,7 +80,7 @@ export default function useAuth() {
                 // await loginUser()
                 swal({
                     icon: 'success',
-                    title: 'Registration successfully',
+                    title: t('register_page.registration_successfully'),
                     showConfirmButton: false,
                     timer: 1500
                 })

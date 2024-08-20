@@ -56,7 +56,8 @@
         "name": "Имя",
         "register": "Регистрация",
         "complete_register": "Зарегистрироваться",
-        "confirm_password": "Подтвердите пароль"
+        "confirm_password": "Подтвердите пароль",
+        "registration_successfully": "Успешная регистрация!"
     },
     "profile": {
         "name": "Имя",

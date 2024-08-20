@@ -56,7 +56,8 @@
         "name": "Name",
         "register": "Register",
         "complete_register": "Register",
-        "confirm_password": "Confirm Password"
+        "confirm_password": "Confirm Password",
+        "registration_successfully": "Registration successfully!"
     },
     "profile": {
         "name": "Name",
