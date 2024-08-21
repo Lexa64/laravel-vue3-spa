@@ -130,7 +130,7 @@
         "projects": "Projects",
         "list": "List",
         "create": "Create project",
-        "utilities": "Utilities",
+        "utilities": "Utility tariffs",
         "delete_confirm_ok": "Yes, delete",
         "delete_successfully": "The project was successfully deleted!",
         "delete_error": "An error has occurred",

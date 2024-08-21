@@ -130,7 +130,7 @@
         "projects": "Проекты",
         "list": "Список",
         "create": "Создать проект",
-        "utilities": "Коммунальные (тарифы)",
+        "utilities": "Коммунальные тарифы",
         "delete_confirm_ok": "Да, удалить",
         "delete_successfully": "Проект успешно удалён!",
         "delete_error": "Произошла ошибка",
