@@ -35,6 +35,27 @@
                         </li>
                     </ul>
                 </li>
+                <li v-if="can('user-list')" class="nav-item">
+                    <a href="#submenu3" data-bs-toggle="collapse" class="nav-link">
+                        <i class="bi bi-book"></i>
+                        <span class="d-none d-sm-inline ps-2 text-dark">{{ $t('life_cycle.projects')}}</span>
+                        <i class="bi bi-chevron-expand float-end"></i>
+                    </a>
+                    <ul class="collapse nav ms-1" id="submenu3" data-bs-parent="#menu">
+                        <li v-if="can('user-list')" class="nav-link container">
+                            <router-link :to="{ name: 'projects.index' }" class="nav-link px-0" style="margin-left: 15px;">
+                                <i class="bi bi-building-add"></i>
+                                <span class="d-none d-sm-inline ps-2 text-dark">{{ $t('life_cycle.list')}}</span>
+                            </router-link>
+                        </li>
+                        <li v-if="can('user-list')" class="nav-link container rounded-pill">
+                            <router-link :to="{ name: 'projects.index' }" class="nav-link px-0" style="margin-left: 15px;">
+                                <i class="bi bi-card-checklist"></i>
+                                <span class="d-none d-sm-inline ps-2 text-dark">{{ $t('life_cycle.utilities')}}</span>
+                            </router-link>
+                        </li>
+                    </ul>
+                </li>
                 <!--<li v-if="can('post-list')" class="nav-item">
                     <router-link :to="{ name: 'posts.index' }" class="nav-link">
                         <i class="bi bi-emoji-wink"></i>

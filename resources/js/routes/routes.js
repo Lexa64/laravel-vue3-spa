@@ -193,6 +193,25 @@ export default [
                 component: () => import('../views/admin/users/Edit.vue'),
                 meta: {breadCrumb: 'breadcrumb_labels_admin.edit_user'}
             },
+            {
+                name: 'projects.index',
+                path: 'projects',
+                component: () => import('../views/admin/projects/Index.vue'),
+                meta: {breadCrumb: 'breadcrumb_labels_admin.projects'}
+            },
+            {
+                name: 'projects.create',
+                path: 'projects/create',
+                component: () => import('../views/admin/projects/Create.vue'),
+                meta: {breadCrumb: 'breadcrumb_labels_admin.projects'}
+            },
+            {
+                name: 'projects.edit',
+                path: 'projects/:id/edit',
+                component: () => import('../views/admin/projects/Edit.vue'),
+                meta: {breadCrumb: 'breadcrumb_labels_admin.projects'},
+                props: true
+            },
         ]
     },
     {

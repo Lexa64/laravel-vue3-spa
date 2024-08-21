@@ -7,11 +7,11 @@ use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Auth\ForgotPasswordController;
-
 
 Route::post('forget-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('forget.password.post');
 Route::post('reset-password', [ResetPasswordController::class, 'reset'])->name('password.reset');
@@ -21,14 +21,13 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
     Route::apiResource('posts', PostController::class);
     Route::apiResource('categories', CategoryController::class);
     Route::apiResource('roles', RoleController::class);
+    Route::apiResource('permissions', PermissionController::class);
+    Route::apiResource('projects', ProjectController::class);
+
     Route::get('role-list', [RoleController::class, 'getList']);
     Route::get('role-permissions/{id}', [PermissionController::class, 'getRolePermissions']);
-    Route::put('/role-permissions', [PermissionController::class, 'updateRolePermissions']);
-    Route::apiResource('permissions', PermissionController::class);
     Route::get('category-list', [CategoryController::class, 'getList']);
     Route::get('/user', [ProfileController::class, 'user']);
-    Route::put('/user', [ProfileController::class, 'update']);
-
     Route::get('abilities', function(Request $request) {
         return $request->user()->roles()->with('permissions')
             ->get()
@@ -39,6 +38,9 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
             ->values()
             ->toArray();
     });
+
+    Route::put('/role-permissions', [PermissionController::class, 'updateRolePermissions']);
+    Route::put('/user', [ProfileController::class, 'update']);
 });
 
 Route::get('category-list', [CategoryController::class, 'getList']);
