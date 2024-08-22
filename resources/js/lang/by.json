@@ -42,7 +42,8 @@
         "users": "Карыстальнікі",
         "add_user": "Дадаць карыстальніка",
         "edit_user": "Змяніць карыстальніка",
-        "projects": "Праекты"
+        "projects": "Праекты",
+        "tariffs": "Тарыфы аплаты камунальных паслуг"
     },
     "login_page": {
         "login": "Увайсці",
@@ -122,11 +123,14 @@
         "save": "Захаваць",
         "create": "Стварыць"
     },
+    "global_fields": {
+        "id": "ID"
+    },
     "global_filters": {
         "search_global": "Пошук...",
         "filter_by_id": "Фільтр па ID..."
     },
-    "life_cycle": {
+    "projects": {
         "projects": "Праекты",
         "list": "Спіс",
         "create": "Стварыць праект",
@@ -134,7 +138,6 @@
         "delete_confirm_ok": "Так, выдаліць",
         "delete_successfully": "Праект паспяхова выдалены!",
         "delete_error": "Адбылася памылка",
-
         "place": "Населены пункт",
         "number_of_storeys": "Паверхавасць жылога дома",
         "wall_material": "Матэрыял сцен",
@@ -145,5 +148,12 @@
         "square_auxiliary": "Агульны пляц памяшканняў дапаможнага прызначэння, м²",
         "apartment_count": "Коль-ць кватэр, адз.",
         "residents_count": "Коль-ць зарэгістраваных па месцы жыхарства, чал."
+    },
+    "utility_tariffs": {
+        "delete_successfully": "Тарыфы паспяхова выдалены!",
+        "create": "Увесці тарыфы",
+        "year": "Год",
+        "created_at": "Дата ўнясення",
+        "decree_number": "Нумар указа"
     }
 }

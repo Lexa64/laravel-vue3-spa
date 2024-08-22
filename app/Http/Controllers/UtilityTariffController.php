@@ -14,7 +14,7 @@ class UtilityTariffController extends Controller
      */
     public function index()
     {
-        //
+        return UtilityTariffResource::collection(UtilityTariff::all());
     }
 
     /**
@@ -30,7 +30,50 @@ class UtilityTariffController extends Controller
      */
     public function store(StoreUtilityTariffRequest $request)
     {
-        //
+        $utilityTariff = UtilityTariff::create([
+            'ut_1_1_1_economically_justified' => $request->ut_1_1_1_economically_justified,
+            'ut_1_1_2_economically_justified' => $request->ut_1_1_2_economically_justified,
+            'ut_1_2_economically_justified' => $request->ut_1_2_economically_justified,
+            'ut_1_3_economically_justified' => $request->ut_1_3_economically_justified,
+            'ut_2_economically_justified' => $request->ut_2_economically_justified,
+            'ut_3_1_economically_justified' => $request->ut_3_1_economically_justified,
+            'ut_3_2_economically_justified' => $request->ut_3_2_economically_justified,
+            'ut_4_1_economically_justified' => $request->ut_4_1_economically_justified,
+            'ut_4_2_economically_justified' => $request->ut_4_2_economically_justified,
+            'ut_5_economically_justified' => $request->ut_5_economically_justified,
+            'ut_6_1_economically_justified' => $request->ut_6_1_economically_justified,
+            'ut_6_2_economically_justified' => $request->ut_6_2_economically_justified,
+            'ut_6_3_economically_justified' => $request->ut_6_3_economically_justified,
+            'ut_7_1_economically_justified' => $request->ut_7_1_economically_justified,
+            'ut_7_2_economically_justified' => $request->ut_7_2_economically_justified,
+            'ut_8_1_economically_justified' => $request->ut_8_1_economically_justified,
+            'ut_8_2_economically_justified' => $request->ut_8_2_economically_justified,
+            'ut_9_economically_justified' => $request->ut_9_economically_justified,
+            'ut_10_economically_justified' => $request->ut_10_economically_justified,
+            'ut_1_1_1_state_subsidized' => $request->ut_1_1_1_state_subsidized,
+            'ut_1_1_2_state_subsidized' => $request->ut_1_1_2_state_subsidized,
+            'ut_1_2_state_subsidized' => $request->ut_1_2_state_subsidized,
+            'ut_1_3_state_subsidized' => $request->ut_1_3_state_subsidized,
+            'ut_2_state_subsidized' => $request->ut_2_state_subsidized,
+            'ut_3_1_state_subsidized' => $request->ut_3_1_state_subsidized,
+            'ut_3_2_state_subsidized' => $request->ut_3_2_state_subsidized,
+            'ut_4_1_state_subsidized' => $request->ut_4_1_state_subsidized,
+            'ut_4_2_state_subsidized' => $request->ut_4_2_state_subsidized,
+            'ut_5_state_subsidized' => $request->ut_5_state_subsidized,
+            'ut_6_1_state_subsidized' => $request->ut_6_1_state_subsidized,
+            'ut_6_2_state_subsidized' => $request->ut_6_2_state_subsidized,
+            'ut_6_3_state_subsidized' => $request->ut_6_3_state_subsidized,
+            'ut_7_1_state_subsidized' => $request->ut_7_1_state_subsidized,
+            'ut_7_2_state_subsidized' => $request->ut_7_2_state_subsidized,
+            'ut_8_1_state_subsidized' => $request->ut_8_1_state_subsidized,
+            'ut_8_2_state_subsidized' => $request->ut_8_2_state_subsidized,
+            'ut_9_state_subsidized' => $request->ut_9_state_subsidized,
+            'ut_10_state_subsidized' => $request->ut_10_state_subsidized,
+            'year' => $request->year,
+            'decree_number' => $request->decree_number,
+        ]);
+
+        return new UtilityTariffResource($utilityTariff);
     }
 
     /**
@@ -54,7 +97,9 @@ class UtilityTariffController extends Controller
      */
     public function update(UpdateUtilityTariffRequest $request, UtilityTariff $utilityTariff)
     {
-        //
+        $utilityTariff->update($request->validated());
+
+        return new UtilityTariffResource($utilityTariff);
     }
 
     /**
@@ -62,6 +107,8 @@ class UtilityTariffController extends Controller
      */
     public function destroy(UtilityTariff $utilityTariff)
     {
-        //
+        $utilityTariff->delete();
+
+        return response()->noContent();
     }
 }

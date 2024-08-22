@@ -42,7 +42,8 @@
         "users": "Users",
         "add_user": "Add user",
         "edit_user": "Edit user",
-        "projects": "Projects"
+        "projects": "Projects",
+        "tariffs": "Utility tariffs"
     },
     "login_page": {
         "login": "Login",
@@ -122,11 +123,14 @@
         "save": "Save",
         "create": "Create"
     },
+    "global_fields": {
+        "id": "ID"
+    },
     "global_filters": {
         "search_global": "Search...",
         "filter_by_id": "Filter by ID..."
     },
-    "life_cycle": {
+    "projects": {
         "projects": "Projects",
         "list": "List",
         "create": "Create project",
@@ -134,7 +138,6 @@
         "delete_confirm_ok": "Yes, delete",
         "delete_successfully": "The project was successfully deleted!",
         "delete_error": "An error has occurred",
-
         "place": "Locality",
         "number_of_storeys": "Number of floors of a residential building",
         "wall_material": "Wall material",
@@ -145,5 +148,12 @@
         "square_auxiliary": "Total area of ​​auxiliary premises, m²",
         "apartment_count": "Number of apartments, units",
         "residents_count": "Number of registered at place of residence, people."
+    },
+    "utility_tariffs": {
+        "delete_successfully": "Tariffs successfully removed!",
+        "create": "Enter tariffs",
+        "year": "Year",
+        "created_at": "Date of entry",
+        "decree_number": "Decree number"
     }
 }

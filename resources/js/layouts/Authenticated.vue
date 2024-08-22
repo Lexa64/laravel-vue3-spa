@@ -2,12 +2,8 @@
     <AdminNavbar/>
     <div class="d-flex align-items-stretch w-100">
         <AdminSidebar/>
-        <div class="container-fluid">
+        <div class="container-fluid" style="margin-left: 250px;">
             <Breadcrumb class="row justify-content-center mt-4" :crumbs="crumbs" @selected="selected"/>
-            <!-- <h2 class="fw-semibold">
-                {{ crumbs }}
-            </h2> -->
-            <!-- Page Content -->
             <div class="main">
                 <Suspense>
                     <router-view></router-view>

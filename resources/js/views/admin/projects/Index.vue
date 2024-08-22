@@ -2,7 +2,7 @@
     <div class="">
         <div class="">
             <div class="">
-                <router-link :to="{ name: 'projects.create' }" class="btn btn-primary" style="margin-bottom: 10px;">{{ $t('life_cycle.create') }}</router-link>
+                <router-link :to="{ name: 'projects.create' }" class="btn btn-primary" style="margin-bottom: 10px;">{{ $t('projects.create') }}</router-link>
             </div>
         </div>
 
@@ -11,32 +11,32 @@
             <tr>
                 <th class="">
                     <span class="">
-                        {{ $t('life_cycle.place') }}
+                        {{ $t('projects.place') }}
                     </span>
                 </th>
                 <th class="">
                     <span class="">
-                        {{ $t('life_cycle.number_of_storeys') }}
+                        {{ $t('projects.number_of_storeys') }}
                     </span>
                 </th>
                 <th class="">
                     <span class="">
-                        {{ $t('life_cycle.wall_material') }}
+                        {{ $t('projects.wall_material') }}
                     </span>
                 </th>
                 <th class="">
                     <span class="">
-                        {{ $t('life_cycle.series') }}
+                        {{ $t('projects.series') }}
                     </span>
                 </th>
                 <th class="">
                     <span class="">
-                        {{ $t('life_cycle.year_construction') }}
+                        {{ $t('projects.year_construction') }}
                     </span>
                 </th>
                 <th class="">
                     <span class="">
-                        {{ $t('life_cycle.apartment_count') }}
+                        {{ $t('projects.apartment_count') }}
                     </span>
                 </th>
                 <th class="">

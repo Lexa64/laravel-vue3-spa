@@ -3,30 +3,30 @@ import axios from "axios";
 import {useRouter} from 'vue-router';
 import {useI18n} from 'vue-i18n';
 
-export default function useProjects() {
-    const projects = ref([]);
-    const project = ref([]);
+export default function useTariffs() {
+    const tariffs = ref([]);
+    const tariff = ref([]);
     const router = useRouter();
     const errors = ref('');
 
     const swal = inject('$swal');
     const {t} = useI18n();
 
-    const getProjects = async () => {
-        let response = await axios.get('/api/projects');
-        projects.value = response.data.data;
+    const getTariffs = async () => {
+        let response = await axios.get('/api/utility_tariffs');
+        tariffs.value = response.data.data;
     }
 
-    const getProject = async (id) => {
-        let response = await axios.get('/api/projects/' + id);
-        project.value = response.data.data;
+    const getTariff = async (id) => {
+        let response = await axios.get('/api/utility_tariffs/' + id);
+        tariff.value = response.data.data;
     }
 
-    const storeProject = async (data) => {
+    const storeTariff = async (data) => {
         errors.value = '';
         try {
-            await axios.post('/api/projects', data);
-            await router.push({name: 'projects.index'});
+            await axios.post('/api/utility_tariffs', data);
+            await router.push({name: 'tariffs.index'});
         } catch (e) {
             if (e.response.status === 422) {
                 errors.value = e.response.data.errors;
@@ -34,11 +34,12 @@ export default function useProjects() {
         }
     }
 
-    const updateProject = async (id) => {
+    const updateTariff = async (id) => {
         errors.value = '';
         try {
-            await axios.put('/api/projects/' + id, project.value);
-            await router.push({name: 'projects.index'});
+            //console.log(tariff.value)
+            await axios.put('/api/utility_tariffs/' + id, tariff.value);
+            //await router.push({name: 'tariffs.index'});
         } catch (e) {
             if (e.response.status === 422) {
                 errors.value = e.response.data.errors;
@@ -46,7 +47,7 @@ export default function useProjects() {
         }
     }
 
-    const destroyProject = async (id) => {
+    const destroyTariff = async (id) => {
         swal({
             title: t('global_buttons.delete_confirmation'),
             text: t('global_buttons.delete_warning'),
@@ -60,13 +61,13 @@ export default function useProjects() {
             timerProgressBar: true,
         }).then(result => {
             if (result.isConfirmed) {
-                axios.delete('/api/projects/' + id)
+                axios.delete('/api/utility_tariffs/' + id)
                     .then(response => {
-                        getProjects();
-                        router.push({name: 'projects.index'});
+                        getTariffs();
+                        router.push({name: 'tariffs.index'});
                         swal({
                             icon: 'success',
-                            title: t('projects.delete_successfully')
+                            title: t('utility_tariffs.delete_successfully')
                         });
                     })
                     .catch(error => {
@@ -77,18 +78,16 @@ export default function useProjects() {
                     });
             }
         });
-
-        //await axios.delete('/api/projects/' + id);
     }
 
     return {
-        projects,
-        project,
+        tariffs,
+        tariff,
         errors,
-        getProjects,
-        getProject,
-        storeProject,
-        updateProject,
-        destroyProject
+        getTariffs,
+        getTariff,
+        storeTariff,
+        updateTariff,
+        destroyTariff
     }
 }

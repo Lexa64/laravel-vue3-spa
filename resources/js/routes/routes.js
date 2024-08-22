@@ -212,6 +212,25 @@ export default [
                 meta: {breadCrumb: 'breadcrumb_labels_admin.projects'},
                 props: true
             },
+            {
+                name: 'tariffs.index',
+                path: 'utility_tariffs',
+                component: () => import('../views/admin/tariffs/Index.vue'),
+                meta: {breadCrumb: 'breadcrumb_labels_admin.tariffs'}
+            },
+            {
+                name: 'tariffs.create',
+                path: 'utility_tariffs/create',
+                component: () => import('../views/admin/tariffs/Create.vue'),
+                meta: {breadCrumb: 'breadcrumb_labels_admin.tariffs'}
+            },
+            {
+                name: 'tariffs.edit',
+                path: 'utility_tariffs/:id/edit',
+                component: () => import('../views/admin/tariffs/Edit.vue'),
+                meta: {breadCrumb: 'breadcrumb_labels_admin.tariffs'},
+                props: true
+            },
         ]
     },
     {

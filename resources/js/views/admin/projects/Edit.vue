@@ -11,7 +11,7 @@
     <form class="" v-on:submit.prevent="saveProject">
         <div class="container w-25">
             <div>
-                <label for="name" class="">{{ $t('life_cycle.place') }}</label>
+                <label for="name" class="">{{ $t('projects.place') }}</label>
                 <div class="mt-1">
                     <input type="text" name="place" id="place"
                            class="form-control"
@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div>
-                <label for="email" class="">{{ $t('life_cycle.number_of_storeys') }}</label>
+                <label for="email" class="">{{ $t('projects.number_of_storeys') }}</label>
                 <div class="mt-1">
                     <input type="text" name="number_of_storeys" id="number_of_storeys"
                            class="form-control"
@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div>
-                <label for="address" class="">{{ $t('life_cycle.wall_material') }}</label>
+                <label for="address" class="">{{ $t('projects.wall_material') }}</label>
                 <div class="mt-1">
                     <input type="text" name="wall_material" id="wall_material"
                            class="form-control"
@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div>
-                <label for="website" class="">{{ $t('life_cycle.series') }}</label>
+                <label for="website" class="">{{ $t('projects.series') }}</label>
                 <div class="mt-1">
                     <input type="text" name="series" id="series"
                            class="form-control"
@@ -43,7 +43,7 @@
                 </div>
             </div>
             <div>
-                <label for="website" class="">{{ $t('life_cycle.year_construction') }}</label>
+                <label for="website" class="">{{ $t('projects.year_construction') }}</label>
                 <div class="mt-1">
                     <input type="text" name="year_construction" id="year_construction"
                            class="form-control"
@@ -51,7 +51,7 @@
                 </div>
             </div>
             <div>
-                <label for="website" class="">{{ $t('life_cycle.year_renovation') }}</label>
+                <label for="website" class="">{{ $t('projects.year_renovation') }}</label>
                 <div class="mt-1">
                     <input type="text" name="year_renovation" id="year_renovation"
                            class="form-control"
@@ -59,7 +59,7 @@
                 </div>
             </div>
             <div>
-                <label for="website" class="">{{ $t('life_cycle.square_living') }}</label>
+                <label for="website" class="">{{ $t('projects.square_living') }}</label>
                 <div class="mt-1">
                     <input type="text" name="square_living" id="square_living"
                            class="form-control"
@@ -67,7 +67,7 @@
                 </div>
             </div>
             <div>
-                <label for="website" class="">{{ $t('life_cycle.square_auxiliary') }}</label>
+                <label for="website" class="">{{ $t('projects.square_auxiliary') }}</label>
                 <div class="mt-1">
                     <input type="text" name="square_auxiliary" id="square_auxiliary"
                            class="form-control"
@@ -75,7 +75,7 @@
                 </div>
             </div>
             <div>
-                <label for="website" class="">{{ $t('life_cycle.apartment_count') }}</label>
+                <label for="website" class="">{{ $t('projects.apartment_count') }}</label>
                 <div class="mt-1">
                     <input type="text" name="apartment_count" id="apartment_count"
                            class="form-control"
@@ -83,7 +83,7 @@
                 </div>
             </div>
             <div>
-                <label for="website" class="">{{ $t('life_cycle.residents_count') }}</label>
+                <label for="website" class="">{{ $t('projects.residents_count') }}</label>
                 <div class="mt-1">
                     <input type="text" name="residents_count" id="residents_count"
                            class="form-control"
