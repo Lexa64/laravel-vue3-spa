@@ -37,9 +37,8 @@ export default function useTariffs() {
     const updateTariff = async (id) => {
         errors.value = '';
         try {
-            //console.log(tariff.value)
             await axios.put('/api/utility_tariffs/' + id, tariff.value);
-            //await router.push({name: 'tariffs.index'});
+            await router.push({name: 'tariffs.index'});
         } catch (e) {
             if (e.response.status === 422) {
                 errors.value = e.response.data.errors;
