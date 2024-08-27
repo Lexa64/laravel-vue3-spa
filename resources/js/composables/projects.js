@@ -26,7 +26,7 @@ export default function useProjects() {
         errors.value = '';
         try {
             await axios.post('/api/projects', data);
-            await router.push({name: 'projects.index'});
+           // await router.push({name: 'projects.index'});
         } catch (e) {
             if (e.response.status === 422) {
                 errors.value = e.response.data.errors;

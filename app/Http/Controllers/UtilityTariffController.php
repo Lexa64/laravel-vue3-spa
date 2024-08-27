@@ -71,6 +71,7 @@ class UtilityTariffController extends Controller
             'ut_10_state_subsidized' => $request->ut_10_state_subsidized,
             'year' => $request->year,
             'decree_number' => $request->decree_number,
+            'project_id' => 1,
         ]);
 
         return new UtilityTariffResource($utilityTariff);

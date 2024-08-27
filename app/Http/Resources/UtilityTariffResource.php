@@ -56,6 +56,7 @@ class UtilityTariffResource extends JsonResource
             'ut_10_state_subsidized' => $this->ut_10_state_subsidized,
             'year' => $this->year,
             'decree_number' => $this->decree_number,
+            'project' => $this->project,
             'created_at' => $this->created_at,
         ];
     }

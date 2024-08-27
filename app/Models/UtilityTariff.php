@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class UtilityTariff extends Model
 {
@@ -50,5 +51,11 @@ class UtilityTariff extends Model
         'ut_10_state_subsidized',
         'year',
         'decree_number',
+        'project_id'
     ];
+
+    public function project(): BelongsTo
+    {
+        return $this->belongsTo(Project::class);
+    }
 }

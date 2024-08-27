@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('series')->nullable();
             $table->integer('year_construction')->nullable();
             $table->integer('year_renovation')->nullable();
-            $table->double('square_living')->nullable();
-            $table->double('square_auxiliary')->nullable();
+            $table->decimal('square_living', '10','4')->nullable();
+            $table->decimal('square_auxiliary', '10','4')->nullable();
             $table->integer('apartment_count')->nullable();
             $table->integer('residents_count')->nullable();
             $table->unsignedBigInteger('user_id');

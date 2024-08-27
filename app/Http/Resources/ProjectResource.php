@@ -27,6 +27,7 @@ class ProjectResource extends JsonResource
             'apartment_count' => $this->apartment_count,
             'residents_count' => $this->residents_count,
             'user' => $this->user,
+            'tariff' => $this->tariff,
             'created_at' => $this->created_at,
         ];
     }

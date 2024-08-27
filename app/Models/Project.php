@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Project extends Model
 {
@@ -26,5 +27,15 @@ class Project extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function tariff()
+    {
+        return $this->hasOne(UtilityTariff::class);
+    }
+
+    public function utilityCost(): HasOne
+    {
+        return $this->hasOne(UtilityCost::class);
     }
 }
