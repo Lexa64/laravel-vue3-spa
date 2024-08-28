@@ -4,15 +4,14 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\PermissionController;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\ProfileController;
+use App\Http\Controllers\Api\ProjectController;
 use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\UtilityTariffController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
-use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\UtilityTariffController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\Auth\ForgotPasswordController;
 
 Route::post('forget-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('forget.password.post');
 Route::post('reset-password', [ResetPasswordController::class, 'reset'])->name('password.reset');
@@ -43,6 +42,8 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
 
     Route::put('/role-permissions', [PermissionController::class, 'updateRolePermissions']);
     Route::put('/user', [ProfileController::class, 'update']);
+
+    Route::post('/lifecycle/calculate', [ProjectController::class, 'calculateLifecycle']);
 });
 
 Route::get('category-list', [CategoryController::class, 'getList']);
