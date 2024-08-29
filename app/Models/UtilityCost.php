@@ -14,7 +14,7 @@ class UtilityCost extends Model
         'uc_1',
         'uc_1_1',
         'uc_1_2',
-        'uc_1.3',
+        'uc_1_3',
         'uc_2',
         'uc_3',
         'uc_3_1',

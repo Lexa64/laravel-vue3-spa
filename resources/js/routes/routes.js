@@ -231,6 +231,25 @@ export default [
                 meta: {breadCrumb: 'breadcrumb_labels_admin.tariffs'},
                 props: true
             },
+            {
+                name: 'costs.index',
+                path: 'utility_costs',
+                component: () => import('../views/admin/costs/Index.vue'),
+                meta: {breadCrumb: 'breadcrumb_labels_admin.costs'}
+            },
+            {
+                name: 'costs.create',
+                path: 'utility_costs/create',
+                component: () => import('../views/admin/costs/Create.vue'),
+                meta: {breadCrumb: 'breadcrumb_labels_admin.costs'}
+            },
+            {
+                name: 'costs.edit',
+                path: 'utility_costs/:id/edit',
+                component: () => import('../views/admin/costs/Edit.vue'),
+                meta: {breadCrumb: 'breadcrumb_labels_admin.costs'},
+                props: true
+            },
         ]
     },
     {

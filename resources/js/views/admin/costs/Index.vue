@@ -2,7 +2,7 @@
     <div class="">
         <div class="">
             <div class="">
-                <router-link :to="{ name: 'projects.create' }" class="btn btn-primary" style="margin-bottom: 10px;">{{ $t('projects.create') }}</router-link>
+                <router-link :to="{ name: 'costs.create' }" class="btn btn-primary" style="margin-bottom: 10px;">{{ $t('utility_costs.create') }}</router-link>
             </div>
         </div>
 
@@ -16,32 +16,37 @@
                 </th>
                 <th class="">
                     <span class="">
-                        {{ $t('projects.place') }}
+                        {{ $t('utility_costs.electricity') }}
                     </span>
                 </th>
                 <th class="">
                     <span class="">
-                        {{ $t('projects.number_of_storeys') }}
+                        {{ $t('utility_costs.gas') }}
                     </span>
                 </th>
                 <th class="">
                     <span class="">
-                        {{ $t('projects.wall_material') }}
+                        {{ $t('utility_costs.thermal_energy') }}
                     </span>
                 </th>
                 <th class="">
                     <span class="">
-                        {{ $t('projects.series') }}
+                        {{ $t('utility_costs.water') }}
                     </span>
                 </th>
                 <th class="">
                     <span class="">
-                        {{ $t('projects.year_construction') }}
+                        {{ $t('utility_costs.sewerage') }}
                     </span>
                 </th>
                 <th class="">
                     <span class="">
-                        {{ $t('projects.apartment_count') }}
+                        {{ $t('utility_costs.sewerage') }}
+                    </span>
+                </th>
+                <th class="">
+                    <span class="">
+                        {{ $t('utility_costs.municipal_solid_waste') }}
                     </span>
                 </th>
                 <th class="">
@@ -50,34 +55,37 @@
             </thead>
 
             <tbody class="">
-            <template v-for="item in projects" :key="item.id">
+            <template v-for="item in costs" :key="item.id">
                 <tr class="">
                     <td class="">
                         {{ item.id }}
                     </td>
                     <td class="">
-                        {{ item.place }}
+                        {{ item.uc_1 }}
                     </td>
                     <td class="">
-                        {{ item.number_of_storeys }}
+                        {{ item.uc_2 }}
                     </td>
                     <td class="">
-                        {{ item.wall_material }}
+                        {{ item.uc_3 }}
                     </td>
                     <td class="">
-                        {{ item.series }}
+                        {{ item.uc_4 }}
                     </td>
                     <td class="">
-                        {{ item.year_construction }}
+                        {{ item.uc_5 }}
                     </td>
                     <td class="">
-                        {{ item.apartment_count }}
+                        {{ item.uc_6 }}
                     </td>
                     <td class="">
-                        <router-link :to="{ name: 'projects.edit', params: { id: item.id } }" class="btn btn-primary" style="margin-right: 10px;">
+                        {{ item.uc_7 }}
+                    </td>
+                    <td class="">
+                        <router-link :to="{ name: 'costs.edit', params: { id: item.id } }" class="btn btn-primary" style="margin-right: 10px;">
                             {{ $t('global_buttons.edit') }}
                         </router-link>
-                        <button @click="deleteProject(item.id)" class="btn btn-primary">
+                        <button @click="deleteCost(item.id)" class="btn btn-primary">
                             {{ $t('global_buttons.delete') }}
                         </button>
                     </td>
@@ -89,27 +97,23 @@
 </template>
 
 <script>
-import useProjects from "../../../composables/projects";
+import useCosts from "../../../composables/costs";
 import {onMounted} from "vue";
 
 export default {
     setup() {
-        const {projects, getProjects, destroyProject} = useProjects();
+        const {costs, getCosts, destroyCost} = useCosts();
 
-        onMounted(getProjects);
+        onMounted(getCosts);
 
-        const deleteProject = async (id) => {
-            /*if (!window.confirm('Are you sure?')) {
-                return;
-            }*/
-
-            await destroyProject(id);
-            await getProjects();
+        const deleteCost = async (id) => {
+            await destroyCost(id);
+            await getCosts();
         }
 
         return {
-            projects,
-            deleteProject
+            costs,
+            deleteCost
         }
     }
 }

@@ -43,7 +43,8 @@
         "add_user": "Add user",
         "edit_user": "Edit user",
         "projects": "Projects",
-        "tariffs": "Utility tariffs"
+        "tariffs": "Utility tariffs",
+        "costs": "Utility costs"
     },
     "login_page": {
         "login": "Login",
@@ -135,6 +136,7 @@
         "list": "List",
         "create": "Create project",
         "utilities": "Utility tariffs",
+        "utility_costs": "Utility costs",
         "delete_confirm_ok": "Yes, delete",
         "delete_successfully": "The project was successfully deleted!",
         "delete_error": "An error has occurred",
@@ -163,5 +165,24 @@
         "th3": "Unit of measurement",
         "th4": "Economically justified tariff, RUB",
         "th5": "State-subsidized tariff, RUB"
+    },
+    "utility_costs": {
+        "delete_successfully": "Expenses successfully deleted!",
+        "create": "Enter expenses",
+        "created_at": "Date of entry",
+        "project": "Project",
+        "electricity": "Electricity",
+        "gas": "Gas",
+        "thermal_energy": "Thermal energy",
+        "water": "Water",
+        "sewerage": "Sewerage",
+        "maintenance": "Maintenance",
+        "municipal_solid_waste": "Municipal solid waste"
+    },
+    "utility_costs_table": {
+        "th1": "Item No.",
+        "th2": "Name of the indicator",
+        "th3": "Unit of measurement",
+        "th4": "Volume of consumption per year (total)"
     }
 }

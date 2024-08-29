@@ -54,6 +54,12 @@
                                 <span class="d-none d-sm-inline ps-2 text-dark">{{ $t('projects.utilities')}}</span>
                             </router-link>
                         </li>
+                        <li v-if="can('user-list')" class="nav-link container rounded-pill">
+                            <router-link :to="{ name: 'costs.index' }" class="nav-link px-0" style="margin-left: 15px;">
+                                <i class="bi bi-coin"></i>
+                                <span class="d-none d-sm-inline ps-2 text-dark">{{ $t('projects.utility_costs')}}</span>
+                            </router-link>
+                        </li>
                     </ul>
                 </li>
                 <!--<li v-if="can('post-list')" class="nav-item">

@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\ProjectController;
 use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\UtilityCostController;
 use App\Http\Controllers\Api\UtilityTariffController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
@@ -24,6 +25,7 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
     Route::apiResource('permissions', PermissionController::class);
     Route::apiResource('projects', ProjectController::class);
     Route::apiResource('utility_tariffs', UtilityTariffController::class);
+    Route::apiResource('utility_costs', UtilityCostController::class);
 
     Route::get('role-list', [RoleController::class, 'getList']);
     Route::get('role-permissions/{id}', [PermissionController::class, 'getRolePermissions']);
