@@ -99,7 +99,8 @@ class UtilityTariffController extends Controller
      */
     public function update(UpdateUtilityTariffRequest $request, UtilityTariff $utilityTariff)
     {
-        $utilityTariff->update($request->validated());
+        //$utilityTariff->update($request->validated());
+        $utilityTariff->update($request->all());
 
         return new UtilityTariffResource($utilityTariff);
     }

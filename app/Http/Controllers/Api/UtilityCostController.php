@@ -79,7 +79,8 @@ class UtilityCostController extends Controller
      */
     public function update(UpdateUtilityCostRequest $request, UtilityCost $utilityCost)
     {
-        $utilityCost->update($request->validated());
+        //$utilityCost->update($request->validated());
+        $utilityCost->update($request->all());
 
         return new UtilityCostResource($utilityCost);
     }
