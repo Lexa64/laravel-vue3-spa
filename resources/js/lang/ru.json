@@ -154,7 +154,8 @@
         "create": "Ввести тарифы",
         "year": "Год",
         "created_at": "Дата внесения",
-        "decree_number": "Номер указа"
+        "decree_number": "Номер указа",
+        "project": "Проект"
     },
     "utility_tariffs_table": {
         "th1": "№ п/п",

@@ -154,6 +154,14 @@
         "create": "Enter tariffs",
         "year": "Year",
         "created_at": "Date of entry",
-        "decree_number": "Decree number"
+        "decree_number": "Decree number",
+        "project": "Project"
+    },
+    "utility_tariffs_table": {
+        "th1": "Item No.",
+        "th2": "Name of the indicator",
+        "th3": "Unit of measurement",
+        "th4": "Economically justified tariff, RUB",
+        "th5": "State-subsidized tariff, RUB"
     }
 }
