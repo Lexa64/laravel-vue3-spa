@@ -177,7 +177,8 @@
         "water": "Вода",
         "sewerage": "Канализация",
         "maintenance": "Тех. обслуживание",
-        "municipal_solid_waste": "Твёрдые коммунальные отходы"
+        "municipal_solid_waste": "Твёрдые коммунальные отходы",
+        "updated_at": "На дату"
     },
     "utility_costs_table": {
         "th1": "№ п/п",

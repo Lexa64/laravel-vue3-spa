@@ -50,6 +50,11 @@
                     </span>
                 </th>
                 <th class="">
+                    <span class="">
+                        {{ $t('utility_costs.updated_at') }}
+                    </span>
+                </th>
+                <th class="">
                 </th>
             </tr>
             </thead>
@@ -82,6 +87,9 @@
                         {{ item.uc_7 }}
                     </td>
                     <td class="">
+                        {{ moment(item.updated_at).format('YYYY-MM-DD') }}
+                    </td>
+                    <td class="">
                         <router-link :to="{ name: 'costs.edit', params: { id: item.id } }" class="btn btn-primary" style="margin-right: 10px;">
                             {{ $t('global_buttons.edit') }}
                         </router-link>
@@ -99,6 +107,7 @@
 <script>
 import useCosts from "../../../composables/costs";
 import {onMounted} from "vue";
+import moment from 'moment';
 
 export default {
     setup() {
@@ -113,7 +122,8 @@ export default {
 
         return {
             costs,
-            deleteCost
+            deleteCost,
+            moment
         }
     }
 }

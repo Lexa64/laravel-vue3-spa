@@ -177,7 +177,8 @@
         "water": "Water",
         "sewerage": "Sewerage",
         "maintenance": "Maintenance",
-        "municipal_solid_waste": "Municipal solid waste"
+        "municipal_solid_waste": "Municipal solid waste",
+        "updated_at": "On date"
     },
     "utility_costs_table": {
         "th1": "Item No.",

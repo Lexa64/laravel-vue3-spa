@@ -177,7 +177,8 @@
         "water": "Вада",
         "sewerage": "Каналізацыя",
         "maintenance": "Тэх. абслугоўванне",
-        "municipal_solid_waste": "Цвёрдыя камунальныя адходы"
+        "municipal_solid_waste": "Цвёрдыя камунальныя адходы",
+        "updated_at": "На дату"
     },
     "utility_costs_table": {
         "th1": "№ п/п",
