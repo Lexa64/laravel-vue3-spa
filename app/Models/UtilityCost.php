@@ -23,14 +23,6 @@ class UtilityCost extends Model
         'uc_4_1',
         'uc_4_2',
         'uc_5',
-        'uc_6',
-        'uc_6_1',
-        'uc_6_2',
-        'uc_6_3',
-        'uc_7',
-        'uc_8',
-        'uc_9',
-        'uc_10',
         'project_id',
     ];
     public function project(): BelongsTo

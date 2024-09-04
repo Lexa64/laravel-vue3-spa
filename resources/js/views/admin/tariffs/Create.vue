@@ -58,7 +58,9 @@
                     <td class=""></td>
                 </tr>
                 <tr class="">
-                    <td class=""></td>
+                    <td class="">
+                        1.1.1
+                    </td>
                     <td class="">
                         в областях
                     </td>
@@ -85,7 +87,9 @@
                     </td>
                 </tr>
                 <tr class="">
-                    <td class=""></td>
+                    <td class="">
+                        1.1.2
+                    </td>
                     <td class="">
                         в г. Минске
                     </td>
@@ -171,30 +175,99 @@
                 </tr>
                 <tr class="">
                     <td class="">
-                        2
+                        1.4
                     </td>
                     <td class="">
-                        Газ
+                        Электроэнергия, потребляемая на отопление зданий
                     </td>
                     <td class="">
-                        человек
+                        кВт*ч
                     </td>
                     <td class="">
                         <div class="mt-1">
                             <input type="text"
-                                   name="ut_2_economically_justified"
-                                   id="ut_2_economically_justified"
+                                   name="ut_1_4_economically_justified"
+                                   id="ut_1_4_economically_justified"
                                    class="form-control"
-                                   v-model="form.ut_2_economically_justified">
+                                   v-model="form.ut_1_4_economically_justified">
                         </div>
                     </td>
                     <td class="">
                         <div class="mt-1">
                             <input type="text"
-                                   name="ut_2_state_subsidized"
-                                   id="ut_2_state_subsidized"
+                                   name="ut_1_4_state_subsidized"
+                                   id="ut_1_4_state_subsidized"
                                    class="form-control"
-                                   v-model="form.ut_2_state_subsidized">
+                                   v-model="form.ut_1_4_state_subsidized">
+                        </div>
+                    </td>
+                </tr>
+                <tr class="">
+                    <td class="">
+                        2
+                    </td>
+                    <td class="">
+                        Газ
+                    </td>
+                    <td class=""></td>
+                    <td class=""></td>
+                    <td class=""></td>
+                </tr>
+                <tr class="">
+                    <td class="">
+                        2.1
+                    </td>
+                    <td class="">
+                        при наличии индивидуальных отопительных приборов
+                    </td>
+                    <td class="">
+                        м³
+                    </td>
+                    <td class="">
+                        <div class="mt-1">
+                            <input type="text"
+                                   name="ut_2_1_economically_justified"
+                                   id="ut_2_1_economically_justified"
+                                   class="form-control"
+                                   v-model="form.ut_2_1_economically_justified">
+                        </div>
+                    </td>
+                    <td class="">
+                        <div class="mt-1">
+                            <input type="text"
+                                   name="ut_2_1_state_subsidized"
+                                   id="ut_2_1_state_subsidized"
+                                   class="form-control"
+                                   v-model="form.ut_2_1_state_subsidized">
+                        </div>
+                    </td>
+                </tr>
+                <tr class="">
+                    <td class="">
+                        2.2
+                    </td>
+                    <td class="">
+                        при отсутствии индивидуальных отопительных приборов
+                    </td>
+                    <td class="">
+                        м³
+                    </td>
+                    <td class="">
+                        <div class="mt-1">
+                            <input type="text"
+                                   name="ut_2_2_economically_justified"
+                                   id="ut_2_2_economically_justified"
+                                   class="form-control"
+                                   v-model="form.ut_2_2_economically_justified">
+                        </div>
+                    </td>
+                    <td class="">
+                        <div class="mt-1">
+                            <input type="text"
+                                   name="ut_2_2_state_subsidized"
+                                   id="ut_2_2_state_subsidized"
+                                   class="form-control"
+                                   v-model="form.ut_2_2_state_subsidized">
                         </div>
                     </td>
                 </tr>
@@ -208,10 +281,8 @@
                     <td class="">
                         Гкал
                     </td>
-                    <td class="">
-                    </td>
-                    <td class="">
-                    </td>
+                    <td class=""></td>
+                    <td class=""></td>
                 </tr>
                 <tr class="">
                     <td class="">
@@ -281,10 +352,8 @@
                     <td class="">
                         м³
                     </td>
-                    <td class="">
-                    </td>
-                    <td class="">
-                    </td>
+                    <td class=""></td>
+                    <td class=""></td>
                 </tr>
                 <tr class="">
                     <td class="">
@@ -380,12 +449,9 @@
                     <td class="">
                         Техническое обслуживание, в т.ч.
                     </td>
-                    <td class="">
-                    </td>
-                    <td class="">
-                    </td>
-                    <td class="">
-                    </td>
+                    <td class=""></td>
+                    <td class=""></td>
+                    <td class=""></td>
                 </tr>
                 <tr class="">
                     <td class="">
@@ -481,12 +547,9 @@
                     <td class="">
                         Обращение с твердыми коммунальными отходами (из расчета 2,68м3 отходов на 1 человека в год)
                     </td>
-                    <td class="">
-                    </td>
-                    <td class="">
-                    </td>
-                    <td class="">
-                    </td>
+                    <td class=""></td>
+                    <td class=""></td>
+                    <td class=""></td>
                 </tr>
                 <tr class="">
                     <td class="">
@@ -553,12 +616,9 @@
                     <td class="">
                         Санитарное содержание вспомогательных помещений жилого дома
                     </td>
-                    <td class="">
-                    </td>
-                    <td class="">
-                    </td>
-                    <td class="">
-                    </td>
+                    <td class=""></td>
+                    <td class=""></td>
+                    <td class=""></td>
                 </tr>
                 <tr class="">
                     <td class="">
@@ -714,7 +774,9 @@ export default {
             'ut_1_1_2_economically_justified': '',
             'ut_1_2_economically_justified': '',
             'ut_1_3_economically_justified': '',
-            'ut_2_economically_justified' : '',
+            'ut_1_4_economically_justified': '',
+            'ut_2_1_economically_justified' : '',
+            'ut_2_2_economically_justified' : '',
             'ut_3_1_economically_justified': '',
             'ut_3_2_economically_justified': '',
             'ut_4_1_economically_justified': '',
@@ -733,7 +795,9 @@ export default {
             'ut_1_1_2_state_subsidized': '',
             'ut_1_2_state_subsidized': '',
             'ut_1_3_state_subsidized': '',
-            'ut_2_state_subsidized': '',
+            'ut_1_4_state_subsidized': '',
+            'ut_2_1_state_subsidized': '',
+            'ut_2_2_state_subsidized': '',
             'ut_3_1_state_subsidized': '',
             'ut_3_2_state_subsidized': '',
             'ut_4_1_state_subsidized': '',

@@ -27,6 +27,7 @@ class StoreProjectRequest extends FormRequest
             'wall_material' => ['required', 'max:255'],
             'series' => ['required', 'max:255'],
             'year_construction' => ['required', 'integer'],
+            'year_renovation' => ['integer'],
             'square_living' => ['required', 'numeric'],
             'square_auxiliary' => ['required', 'numeric'],
             'apartment_count' => ['required', 'integer'],

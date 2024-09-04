@@ -41,16 +41,6 @@
                 </th>
                 <th class="">
                     <span class="">
-                        {{ $t('utility_costs.sewerage') }}
-                    </span>
-                </th>
-                <th class="">
-                    <span class="">
-                        {{ $t('utility_costs.municipal_solid_waste') }}
-                    </span>
-                </th>
-                <th class="">
-                    <span class="">
                         {{ $t('utility_costs.updated_at') }}
                     </span>
                 </th>
@@ -79,12 +69,6 @@
                     </td>
                     <td class="">
                         {{ item.uc_5 }}
-                    </td>
-                    <td class="">
-                        {{ item.uc_6 }}
-                    </td>
-                    <td class="">
-                        {{ item.uc_7 }}
                     </td>
                     <td class="">
                         {{ moment(item.updated_at).format('YYYY-MM-DD') }}

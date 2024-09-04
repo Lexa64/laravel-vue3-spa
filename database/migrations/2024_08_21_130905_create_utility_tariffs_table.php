@@ -17,7 +17,9 @@ return new class extends Migration
             $table->decimal('ut_1_1_2_economically_justified', '10', '4')->nullable();
             $table->decimal('ut_1_2_economically_justified', '10', '4')->nullable();
             $table->decimal('ut_1_3_economically_justified', '10', '4')->nullable();
-            $table->decimal('ut_2_economically_justified', '10', '4')->nullable();
+            $table->decimal('ut_1_4_economically_justified', '10', '4')->nullable();
+            $table->decimal('ut_2_1_economically_justified', '10', '4')->nullable();
+            $table->decimal('ut_2_2_economically_justified', '10', '4')->nullable();
             $table->decimal('ut_3_1_economically_justified', '10', '4')->nullable();
             $table->decimal('ut_3_2_economically_justified', '10', '4')->nullable();
             $table->decimal('ut_4_1_economically_justified', '10', '4')->nullable();
@@ -36,7 +38,9 @@ return new class extends Migration
             $table->decimal('ut_1_1_2_state_subsidized', '10', '4')->nullable();
             $table->decimal('ut_1_2_state_subsidized', '10', '4')->nullable();
             $table->decimal('ut_1_3_state_subsidized', '10', '4')->nullable();
-            $table->decimal('ut_2_state_subsidized', '10', '4')->nullable();
+            $table->decimal('ut_1_4_state_subsidized', '10', '4')->nullable();
+            $table->decimal('ut_2_1_state_subsidized', '10', '4')->nullable();
+            $table->decimal('ut_2_2_state_subsidized', '10', '4')->nullable();
             $table->decimal('ut_3_1_state_subsidized', '10', '4')->nullable();
             $table->decimal('ut_3_2_state_subsidized', '10', '4')->nullable();
             $table->decimal('ut_4_1_state_subsidized', '10', '4')->nullable();
