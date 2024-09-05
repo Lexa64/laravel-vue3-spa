@@ -44,6 +44,8 @@ class UtilityCostController extends Controller
             'uc_4_1' => $request->uc_4_1,
             'uc_4_2' => $request->uc_4_2,
             'uc_5' => $request->uc_5,
+            'uc_7_1' => $request->uc_7_1,
+            'uc_7_2' => $request->uc_7_2,
             'project_id' => 1,
         ]);
 

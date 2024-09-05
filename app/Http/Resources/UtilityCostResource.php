@@ -28,6 +28,8 @@ class UtilityCostResource extends JsonResource
             'uc_4_1' => $this->uc_4_1,
             'uc_4_2' => $this->uc_4_2,
             'uc_5' => $this->uc_5,
+            'uc_7_1' => $this->uc_7_1,
+            'uc_7_2' => $this->uc_7_2,
             'project_id' => $this->project_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

@@ -254,19 +254,19 @@
                     <td class="">
                         <div class="mt-1">
                             <input type="text"
-                                   name="ut_2_1_economically_justified"
-                                   id="ut_2_1_economically_justified"
+                                   name="ut_2_2_economically_justified"
+                                   id="ut_2_2_economically_justified"
                                    class="form-control"
-                                   v-model="tariff.ut_2_1_economically_justified">
+                                   v-model="tariff.ut_2_2_economically_justified">
                         </div>
                     </td>
                     <td class="">
                         <div class="mt-1">
                             <input type="text"
-                                   name="ut_2_1_state_subsidized"
-                                   id="ut_2_1_state_subsidized"
+                                   name="ut_2_2_state_subsidized"
+                                   id="ut_2_2_state_subsidized"
                                    class="form-control"
-                                   v-model="tariff.ut_2_1_state_subsidized">
+                                   v-model="tariff.ut_2_2_state_subsidized">
                         </div>
                     </td>
                 </tr>
