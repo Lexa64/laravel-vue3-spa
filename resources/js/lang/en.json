@@ -44,7 +44,7 @@
         "edit_user": "Edit user",
         "projects": "Projects",
         "tariffs": "Utility tariffs",
-        "costs": "Utility costs"
+        "costs": "Operating costs"
     },
     "login_page": {
         "login": "Login",
@@ -136,7 +136,7 @@
         "list": "List",
         "create": "Create project",
         "utilities": "Utility tariffs",
-        "utility_costs": "Utility costs",
+        "utility_costs": "Operating costs",
         "delete_confirm_ok": "Yes, delete",
         "delete_successfully": "The project was successfully deleted!",
         "delete_error": "An error has occurred",

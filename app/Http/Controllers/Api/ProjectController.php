@@ -151,6 +151,17 @@ class ProjectController extends Controller
         $data['economically_justified']['9'] = round($project->square_living * $project->tariff->ut_9_economically_justified * 12, 2);
         $data['state_subsidized']['9'] = round($project->square_living * $project->tariff->ut_9_state_subsidized * 12, 2);
 
+        $this->calculateOneMeter($project->utilityCost->toArray(), $project->square_living);
+
         return $data;
+    }
+
+    public function calculateOneMeter($utilityCost, $square_living)
+    {
+        foreach ($utilityCost as $key => $value) {
+            if (str_starts_with($key, 'uc_')) {
+                $oneMeterData[$key] = round($value / $square_living, 2);
+            }
+        }
     }
 }
