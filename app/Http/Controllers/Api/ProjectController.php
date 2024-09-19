@@ -183,7 +183,7 @@ class ProjectController extends Controller
         $data['economically_justified']['3_2'] = round($project->utilityCost->uc_3_2 * $project->tariff->ut_3_2_economically_justified, 2);
         $data['state_subsidized']['3_2'] = round($project->utilityCost->uc_3_2 * $project->tariff->ut_3_2_state_subsidized, 2);
 
-        /*$data['resource_consumption']['4_1'] = $project->utilityCost->uc_4_1;
+        $data['resource_consumption']['4_1'] = $project->utilityCost->uc_4_1;
         $data['economically_justified']['4_1'] = round($project->utilityCost->uc_4_1 * $project->tariff->ut_4_1_economically_justified, 2);
         $data['state_subsidized']['4_1'] = round($project->utilityCost->uc_4_1 * $project->tariff->ut_4_1_state_subsidized, 2);
 
@@ -196,16 +196,20 @@ class ProjectController extends Controller
         $data['state_subsidized']['5'] = round($project->utilityCost->uc_5 * $project->tariff->ut_5_state_subsidized, 2);
 
         $data['resource_consumption']['6_1'] = $project->square_living;
-        $data['economically_justified']['6_1'] = round($project->square_living * $project->tariff->ut_6_1_economically_justified * 12, 2);
-        $data['state_subsidized']['6_1'] = round($project->square_living * $project->tariff->ut_6_1_state_subsidized * 12, 2);
+        $data['economically_justified']['6_1'] = round($project->square_living * $project->tariff->ut_6_1_economically_justified, 2);
+        $data['state_subsidized']['6_1'] = round($project->square_living * $project->tariff->ut_6_1_state_subsidized, 2);
+
+        $data['resource_consumption']['6_2'] = $project->utilityCost->uc_6_2;
+        $data['economically_justified']['6_2'] = round($project->apartment_count * $project->tariff->ut_6_2_economically_justified * 12, 2);
+        $data['state_subsidized']['6_2'] = round($project->apartment_count * $project->tariff->ut_6_2_state_subsidized * 12, 2);
 
         $data['resource_consumption']['6_3'] = $project->square_living;
         $data['economically_justified']['6_3'] = round($project->square_living * $project->tariff->ut_6_3_economically_justified * 12, 2);
         $data['state_subsidized']['6_3'] = round($data['economically_justified']['6_3'] * $project->tariff->ut_6_3_state_subsidized * 12, 2);
 
-        $data['resource_consumption']['7_2'] = 2.68 * $project->residents_count;
-        $data['economically_justified']['7_2'] = round(2.68 * $project->residents_count * $project->tariff->ut_7_2_economically_justified, 2);
-        $data['state_subsidized']['7_2'] = round(2.68 * $project->residents_count * $project->tariff->ut_7_2_state_subsidized, 2);
+        $data['resource_consumption']['7_2'] = 2.68 * $project->utilityCost->uc_7_2;
+        $data['economically_justified']['7_2'] = round(2.68 * $project->utilityCost->uc_7_2 * $project->tariff->ut_7_2_economically_justified, 2);
+        $data['state_subsidized']['7_2'] = round(2.68 * $project->utilityCost->uc_7_2 * $project->tariff->ut_7_2_state_subsidized, 2);
 
         $data['resource_consumption']['8_2'] = $project->square_living;
         $data['economically_justified']['8_2'] = round($project->square_living * $project->tariff->ut_8_2_economically_justified * 12, 2);
@@ -213,7 +217,7 @@ class ProjectController extends Controller
 
         $data['resource_consumption']['9'] = $project->square_living;
         $data['economically_justified']['9'] = round($project->square_living * $project->tariff->ut_9_economically_justified * 12, 2);
-        $data['state_subsidized']['9'] = round($project->square_living * $project->tariff->ut_9_state_subsidized * 12, 2);*/
+        $data['state_subsidized']['9'] = round($project->square_living * $project->tariff->ut_9_state_subsidized * 12, 2);
 
         $temp = 0;
 
