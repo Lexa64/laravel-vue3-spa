@@ -111,6 +111,26 @@
                 </tr>
                 <tr class="">
                     <td class="">
+                        1.4
+                    </td>
+                    <td class="">
+                        Электроэнергия, потребляемая на отопление
+                    </td>
+                    <td class="">
+                        кВт*ч
+                    </td>
+                    <td class="">
+                        <div class="mt-1">
+                            <input type="text"
+                                   name="uc_1_4"
+                                   id="uc_1_4"
+                                   class="form-control"
+                                   v-model="cost.uc_1_4">
+                        </div>
+                    </td>
+                </tr>
+                <tr class="">
+                    <td class="">
                         2
                     </td>
                     <td class="">

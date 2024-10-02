@@ -232,7 +232,7 @@ class ProjectController extends Controller
 
         foreach ($utilityCost as $key => $value) {
             if (str_starts_with($key, 'uc_')) {
-                $oneMeterData[$key] = round($value / $square_living, 2);
+                $oneMeterData[$key] = round($value / $square_living, 6);
             }
         }
 
