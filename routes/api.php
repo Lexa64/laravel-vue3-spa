@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\CostEstimateController;
 use App\Http\Controllers\Api\PermissionController;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\ProfileController;
@@ -26,6 +27,7 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
     Route::apiResource('projects', ProjectController::class);
     Route::apiResource('utility_tariffs', UtilityTariffController::class);
     Route::apiResource('utility_costs', UtilityCostController::class);
+    Route::apiResource('cost_estimates', CostEstimateController::class);
 
     Route::get('role-list', [RoleController::class, 'getList']);
     Route::get('role-permissions/{id}', [PermissionController::class, 'getRolePermissions']);

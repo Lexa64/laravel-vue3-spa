@@ -27,7 +27,7 @@ return new class extends Migration
             $table->decimal('uc_5', 16, 6)->nullable();
             $table->decimal('uc_7_1', 16, 6)->nullable();
             $table->decimal('uc_7_2', 16, 6)->nullable();
-                        $table->unsignedBigInteger('project_id');
+            $table->unsignedBigInteger('project_id');
             $table->foreign('project_id')
                 ->references('id')->on('projects');
             $table->timestamps();
