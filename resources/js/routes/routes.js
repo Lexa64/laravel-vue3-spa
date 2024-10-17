@@ -250,6 +250,25 @@ export default [
                 meta: {breadCrumb: 'breadcrumb_labels_admin.costs'},
                 props: true
             },
+            {
+                name: 'estimates.index',
+                path: 'cost_estimates',
+                component: () => import('../views/admin/estimates/Index.vue'),
+                meta: {breadCrumb: 'breadcrumb_labels_admin.estimates'}
+            },
+            {
+                name: 'estimates.create',
+                path: 'cost_estimates/create',
+                component: () => import('../views/admin/estimates/Create.vue'),
+                meta: {breadCrumb: 'breadcrumb_labels_admin.estimates'}
+            },
+            {
+                name: 'estimates.edit',
+                path: 'cost_estimates/:id/edit',
+                component: () => import('../views/admin/estimates/Edit.vue'),
+                meta: {breadCrumb: 'breadcrumb_labels_admin.estimates'},
+                props: true
+            },
         ]
     },
     {
