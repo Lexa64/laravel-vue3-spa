@@ -192,7 +192,8 @@
         "create": "Ввести оценку",
         "ce_1_indicator": "Показатель",
         "ce_1_total_costs": "Итого затрат ЖЦ, тыс. руб",
-        "updated_at": "На дату",
+        "ce_3_indicator": "Дата расчёта",
+        "updated_at": "Дата изменения",
         "delete_successfully": "Удалено успешно"
     },
     "cost_estimate_table": {

@@ -26,6 +26,11 @@
                 </th>
                 <th class="">
                     <span class="">
+                        {{ $t('cost_estimates.ce_3_indicator') }}
+                    </span>
+                </th>
+                <th class="">
+                    <span class="">
                         {{ $t('cost_estimates.updated_at') }}
                     </span>
                 </th>
@@ -45,6 +50,9 @@
                     </td>
                     <td class="">
                         {{ item.ce_1_total_costs }}
+                    </td>
+                    <td class="">
+                        {{ item.ce_3_indicator }}
                     </td>
                     <td class="">
                         {{ moment(item.updated_at).format('YYYY-MM-DD') }}
