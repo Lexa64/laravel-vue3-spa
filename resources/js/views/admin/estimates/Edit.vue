@@ -9,21 +9,24 @@
     </div>
 
     <form class="" v-on:submit.prevent="saveCost">
-        <div class="container w-50">
+        <div class="container w-75">
             <table class="table table-striped" style="">
                 <thead>
                 <tr>
                     <th class="">
-                        {{ $t('utility_costs_table.th1') }}
+                        {{ $t('cost_estimate_table.th1') }}
                     </th>
                     <th class="">
-                        {{ $t('utility_costs_table.th2') }}
+                        {{ $t('cost_estimate_table.th2') }}
                     </th>
                     <th class="">
-                        {{ $t('utility_costs_table.th3') }}
+                        {{ $t('cost_estimate_table.th3') }}
                     </th>
                     <th class="">
-                        {{ $t('utility_costs_table.th4') }}
+                        {{ $t('cost_estimate_table.th4') }}
+                    </th>
+                    <th class="">
+                        {{ $t('cost_estimate_table.th5') }}
                     </th>
                 </tr>
                 </thead>
@@ -34,309 +37,418 @@
                         1
                     </td>
                     <td class="">
-                        Электроэнергия всего, в т.ч.
-                    </td>
-                    <td class="">
-                        кВт*ч
+                        Срок жизненного цикла здания, лет
                     </td>
                     <td class="">
                         <div class="mt-1">
                             <input type="text"
-                                   name="uc_1"
-                                   id="uc_1"
+                                   name="ce_1_indicator"
+                                   id="ce_1_indicator"
                                    class="form-control"
-                                   v-model="cost.uc_1">
+                                   v-model="estimate.ce_1_indicator">
                         </div>
-                    </td>
-                </tr>
-                <tr class="">
-                    <td class="">
-                        1.1
-                    </td>
-                    <td class="">
-                        Электроэнергия, потребляемая на освещение вспомогательных помещений, на работу оборудования, за исключением лифтов
-                    </td>
-                    <td class="">
-                        кВт*ч
                     </td>
                     <td class="">
                         <div class="mt-1">
                             <input type="text"
-                                   name="uc_1_1"
-                                   id="uc_1_1"
+                                   name="ce_1_total_costs"
+                                   id="ce_1_total_costs"
                                    class="form-control"
-                                   v-model="cost.uc_1_1">
+                                   v-model="estimate.ce_1_total_costs">
                         </div>
                     </td>
-                </tr>
-                <tr class="">
                     <td class="">
-                        1.2
-                    </td>
-                    <td class="">
-                        Электроэнергия, потребляемая на работу лифта
-                    </td>
-                    <td class="">
-                        кВт*ч
-                    </td>
-                    <td class="">
-                        <div class="mt-1">
-                            <input type="text"
-                                   name="uc_1_2"
-                                   id="uc_1_2"
-                                   class="form-control"
-                                   v-model="cost.uc_1_2">
-                        </div>
+                        лет эксплуатации
                     </td>
                 </tr>
-                <tr class="">
-                    <td class="">
-                        1.3
-                    </td>
-                    <td class="">
-                        Электроэнергия, потребляемая домохозяйствами
-                    </td>
-                    <td class="">
-                        кВт*ч
-                    </td>
-                    <td class="">
-                        <div class="mt-1">
-                            <input type="text"
-                                   name="uc_1_3"
-                                   id="uc_1_3"
-                                   class="form-control"
-                                   v-model="cost.uc_1_3">
-                        </div>
-                    </td>
-                </tr>
-                <tr class="">
-                    <td class="">
-                        1.4
-                    </td>
-                    <td class="">
-                        Электроэнергия, потребляемая на отопление
-                    </td>
-                    <td class="">
-                        кВт*ч
-                    </td>
-                    <td class="">
-                        <div class="mt-1">
-                            <input type="text"
-                                   name="uc_1_4"
-                                   id="uc_1_4"
-                                   class="form-control"
-                                   v-model="cost.uc_1_4">
-                        </div>
-                    </td>
-                </tr>
+
                 <tr class="">
                     <td class="">
                         2
                     </td>
                     <td class="">
-                        Газ
-                    </td>
-                    <td class="">
-                        м³
+                        Общая площадь жилых помещений здания, м²
                     </td>
                     <td class="">
                         <div class="mt-1">
                             <input type="text"
-                                   name="uc_2"
-                                   id="uc_2"
+                                   name="ce_2_indicator"
+                                   id="ce_2_indicator"
                                    class="form-control"
-                                   v-model="cost.uc_2">
+                                   v-model="estimate.ce_2_indicator">
                         </div>
                     </td>
+                    <td class="">
+                        <div class="mt-1">
+                            <input type="text"
+                                   name="ce_2_total_costs"
+                                   id="ce_2_total_costs"
+                                   class="form-control"
+                                   v-model="estimate.ce_2_total_costs">
+                        </div>
+                    </td>
+                    <td class="">
+                        исходные данные
+                    </td>
                 </tr>
+
                 <tr class="">
                     <td class="">
                         3
                     </td>
                     <td class="">
-                        Тепловая энергия (всего), в т.ч.
-                    </td>
-                    <td class="">
-                        Гкал
+                        Дата, на которую производятся расчёты
                     </td>
                     <td class="">
                         <div class="mt-1">
                             <input type="text"
-                                   name="uc_3"
-                                   id="uc_3"
+                                   name="ce_3_indicator"
+                                   id="ce_3_indicator"
                                    class="form-control"
-                                   v-model="cost.uc_3">
+                                   v-model="estimate.ce_3_indicator">
                         </div>
-                    </td>
-                </tr>
-                <tr class="">
-                    <td class="">
-                        3.1
-                    </td>
-                    <td class="">
-                        Теплоснабжение (отопление)
-                    </td>
-                    <td class="">
-                        Гкал
                     </td>
                     <td class="">
                         <div class="mt-1">
                             <input type="text"
-                                   name="uc_3_1"
-                                   id="uc_3_1"
+                                   name="ce_3_total_costs"
+                                   id="ce_3_total_costs"
                                    class="form-control"
-                                   v-model="cost.uc_3_1">
+                                   v-model="estimate.ce_3_total_costs">
                         </div>
                     </td>
-                </tr>
-                <tr class="">
                     <td class="">
-                        3.2
-                    </td>
-                    <td class="">
-                        Горячее водоснабжение
-                    </td>
-                    <td class="">
-                        Гкал
-                    </td>
-                    <td class="">
-                        <div class="mt-1">
-                            <input type="text"
-                                   name="uc_3_2"
-                                   id="uc_3_2"
-                                   class="form-control"
-                                   v-model="cost.uc_3_2">
-                        </div>
+
                     </td>
                 </tr>
+
                 <tr class="">
                     <td class="">
                         4
                     </td>
                     <td class="">
-                        Вода (всего), в т.ч.
-                    </td>
-                    <td class="">
-                        м³
+                        Первоначальная стоимостьвозведения жилого дома
                     </td>
                     <td class="">
                         <div class="mt-1">
                             <input type="text"
-                                   name="uc_4"
-                                   id="uc_4"
+                                   name="ce_4_indicator"
+                                   id="ce_4_indicator"
                                    class="form-control"
-                                   v-model="cost.uc_4">
+                                   v-model="estimate.ce_4_indicator">
                         </div>
-                    </td>
-                </tr>
-                <tr class="">
-                    <td class="">
-                        4.1
-                    </td>
-                    <td class="">
-                        Холодная вода
-                    </td>
-                    <td class="">
-                        м³
                     </td>
                     <td class="">
                         <div class="mt-1">
                             <input type="text"
-                                   name="uc_4_1"
-                                   id="uc_4_1"
+                                   name="ce_4_total_costs"
+                                   id="ce_4_total_costs"
                                    class="form-control"
-                                   v-model="cost.uc_4_1">
+                                   v-model="estimate.ce_4_total_costs">
                         </div>
                     </td>
-                </tr>
-                <tr class="">
                     <td class="">
-                        4.2
-                    </td>
-                    <td class="">
-                        Горячая вода
-                    </td>
-                    <td class="">
-                        м³
-                    </td>
-                    <td class="">
-                        <div class="mt-1">
-                            <input type="text"
-                                   name="uc_4_2"
-                                   id="uc_4_2"
-                                   class="form-control"
-                                   v-model="cost.uc_4_2">
-                        </div>
+                        по данным сводного сметного расчёта стоимости строительства
                     </td>
                 </tr>
+
                 <tr class="">
                     <td class="">
                         5
                     </td>
                     <td class="">
-                        Водоотведение (канализация)
-                    </td>
-                    <td class="">
-                        м³
+                        Расходы на оплату коммунальных платежей в год
                     </td>
                     <td class="">
                         <div class="mt-1">
                             <input type="text"
-                                   name="uc_5"
-                                   id="uc_5"
+                                   name="ce_5_indicator"
+                                   id="ce_5_indicator"
                                    class="form-control"
-                                   v-model="cost.uc_5">
+                                   v-model="estimate.ce_5_indicator">
                         </div>
                     </td>
+                    <td class="">
+                        <div class="mt-1">
+                            <input type="text"
+                                   name="ce_5_total_costs"
+                                   id="ce_5_total_costs"
+                                   class="form-control"
+                                   v-model="estimate.ce_5_total_costs">
+                        </div>
+                    </td>
+                    <td class="">
+
+                    </td>
                 </tr>
+
+                <tr class="">
+                    <td class="">
+                        6
+                    </td>
+                    <td class="">
+                        Сумма коммунальных платежей в течение всего жизненного цикла
+                    </td>
+                    <td class="">
+                        <div class="mt-1">
+                            <input type="text"
+                                   name="ce_6_indicator"
+                                   id="ce_6_indicator"
+                                   class="form-control"
+                                   v-model="estimate.ce_6_indicator">
+                        </div>
+                    </td>
+                    <td class="">
+                        <div class="mt-1">
+                            <input type="text"
+                                   name="ce_6_total_costs"
+                                   id="ce_6_total_costs"
+                                   class="form-control"
+                                   v-model="estimate.ce_6_total_costs">
+                        </div>
+                    </td>
+                    <td class="">
+                        на 50 лет в текущих ценах
+                    </td>
+                </tr>
+
                 <tr class="">
                     <td class="">
                         7
                     </td>
                     <td class="">
-                        Обращение с твердыми коммунальными отходами (из расчета 2,68м3 отходов на 1 человека в год)
-                    </td>
-                    <td class=""></td>
-                    <td class=""></td>
-                </tr>
-                <tr class="">
-                    <td class="">
-                        7.1
-                    </td>
-                    <td class="">
-                        в жилых домах, оборудованных функционирующим мусоропроводом
-                    </td>
-                    <td class="">
-                        м³ отходов
+                        Расходы на текущий ремонт
                     </td>
                     <td class="">
                         <div class="mt-1">
                             <input type="text"
-                                   name="uc_7_1"
-                                   id="uc_7_1"
+                                   name="ce_7_indicator"
+                                   id="ce_7_indicator"
                                    class="form-control"
-                                   v-model="cost.uc_7_1">
+                                   v-model="estimate.ce_7_indicator">
                         </div>
-                    </td>
-                </tr>
-                <tr class="">
-                    <td class="">
-                        7.2
-                    </td>
-                    <td class="">
-                        в жилых домах, не оборудованных мусоропроводом, или оборудованных нефункционирующим мусоропроводом
-                    </td>
-                    <td class="">
-                        м³ отходов
                     </td>
                     <td class="">
                         <div class="mt-1">
                             <input type="text"
-                                   name="uc_7_2"
-                                   id="uc_7_2"
+                                   name="ce_7_total_costs"
+                                   id="ce_7_total_costs"
                                    class="form-control"
-                                   v-model="cost.uc_7_2">
+                                   v-model="estimate.ce_7_total_costs">
                         </div>
+                    </td>
+                    <td class="">
+                        из расчёта стоимости ремонта на 1 м² один раз в 7-8 лет
+                    </td>
+                </tr>
+
+                <tr class="">
+                    <td class="">
+                        8
+                    </td>
+                    <td class="">
+                        Расходы на текущий ремонт в течение всего жизненного цикла
+                    </td>
+                    <td class="">
+                        <div class="mt-1">
+                            <input type="text"
+                                   name="ce_8_indicator"
+                                   id="ce_8_indicator"
+                                   class="form-control"
+                                   v-model="estimate.ce_8_indicator">
+                        </div>
+                    </td>
+                    <td class="">
+                        <div class="mt-1">
+                            <input type="text"
+                                   name="ce_8_total_costs"
+                                   id="ce_8_total_costs"
+                                   class="form-control"
+                                   v-model="estimate.ce_8_total_costs">
+                        </div>
+                    </td>
+                    <td class="">
+
+                    </td>
+                </tr>
+
+                <tr class="">
+                    <td class="">
+                        9
+                    </td>
+                    <td class="">
+                        Расходы на капитальный ремонт и модернизацию
+                    </td>
+                    <td class="">
+                        <div class="mt-1">
+                            <input type="text"
+                                   name="ce_9_indicator"
+                                   id="ce_9_indicator"
+                                   class="form-control"
+                                   v-model="estimate.ce_9_indicator">
+                        </div>
+                    </td>
+                    <td class="">
+                        <div class="mt-1">
+                            <input type="text"
+                                   name="ce_9_total_costs"
+                                   id="ce_9_total_costs"
+                                   class="form-control"
+                                   v-model="estimate.ce_9_total_costs">
+                        </div>
+                    </td>
+                    <td class="">
+                        расчёт на 1 м² один раз в 30 лет
+                    </td>
+                </tr>
+
+                <tr class="">
+                    <td class="">
+                        10
+                    </td>
+                    <td class="">
+                        Расходы на капитальный ремонт и модернизацию в течение всего жизненного цикла
+                    </td>
+                    <td class="">
+                        <div class="mt-1">
+                            <input type="text"
+                                   name="ce_10_indicator"
+                                   id="ce_10_indicator"
+                                   class="form-control"
+                                   v-model="estimate.ce_10_indicator">
+                        </div>
+                    </td>
+                    <td class="">
+                        <div class="mt-1">
+                            <input type="text"
+                                   name="ce_10_total_costs"
+                                   id="ce_10_total_costs"
+                                   class="form-control"
+                                   v-model="estimate.ce_10_total_costs">
+                        </div>
+                    </td>
+                    <td class="">
+
+                    </td>
+                </tr>
+
+                <tr class="">
+                    <td class="">
+                        11
+                    </td>
+                    <td class="">
+                        Расходы на снос здания
+                    </td>
+                    <td class="">
+                        <div class="mt-1">
+                            <input type="text"
+                                   name="ce_11_indicator"
+                                   id="ce_11_indicator"
+                                   class="form-control"
+                                   v-model="estimate.ce_11_indicator">
+                        </div>
+                    </td>
+                    <td class="">
+                        <div class="mt-1">
+                            <input type="text"
+                                   name="ce_11_total_costs"
+                                   id="ce_11_total_costs"
+                                   class="form-control"
+                                   v-model="estimate.ce_11_total_costs">
+                        </div>
+                    </td>
+                    <td class="">
+                        30% от стоимости строительства без учета стоимости материалов, изделий, конструкций и оборудования с учетом транспортных расходов на их доставку
+                    </td>
+                </tr>
+
+                <tr class="">
+                    <td class="">
+                        12
+                    </td>
+                    <td class="">
+                        Расходы на снос здания
+                    </td>
+                    <td class="">
+                        <div class="mt-1">
+                            <input type="text"
+                                   name="ce_12_indicator"
+                                   id="ce_12_indicator"
+                                   class="form-control"
+                                   v-model="estimate.ce_12_indicator">
+                        </div>
+                    </td>
+                    <td class="">
+                        <div class="mt-1">
+                            <input type="text"
+                                   name="ce_12_total_costs"
+                                   id="ce_12_total_costs"
+                                   class="form-control"
+                                   v-model="estimate.ce_12_total_costs">
+                        </div>
+                    </td>
+                    <td class="">
+
+                    </td>
+                </tr>
+
+                <tr class="">
+                    <td class="">
+                        13
+                    </td>
+                    <td class="">
+                        Итого стоимость жизненного цикла жилого дома
+                    </td>
+                    <td class="">
+                        <div class="mt-1">
+                            <input type="text"
+                                   name="ce_13_indicator"
+                                   id="ce_13_indicator"
+                                   class="form-control"
+                                   v-model="estimate.ce_13_indicator">
+                        </div>
+                    </td>
+                    <td class="">
+                        <div class="mt-1">
+                            <input type="text"
+                                   name="ce_13_total_costs"
+                                   id="ce_13_total_costs"
+                                   class="form-control"
+                                   v-model="estimate.ce_13_total_costs">
+                        </div>
+                    </td>
+                    <td class="">
+                        на общую площадь жилых помещений здания
+                    </td>
+                </tr>
+
+                <tr class="">
+                    <td class="">
+                        14
+                    </td>
+                    <td class="">
+                        Приведённая стоимость жизненного цикла здания
+                    </td>
+                    <td class="">
+                        <div class="mt-1">
+                            <input type="text"
+                                   name="ce_14_indicator"
+                                   id="ce_14_indicator"
+                                   class="form-control"
+                                   v-model="estimate.ce_14_indicator">
+                        </div>
+                    </td>
+                    <td class="">
+                        <div class="mt-1">
+                            <input type="text"
+                                   name="ce_14_total_costs"
+                                   id="ce_14_total_costs"
+                                   class="form-control"
+                                   v-model="estimate.ce_14_total_costs">
+                        </div>
+                    </td>
+                    <td class="">
+                        на 1 м² общей площади жилых помещений здания в год
                     </td>
                 </tr>
 
@@ -349,7 +461,7 @@
 </template>
 
 <script>
-import useCosts from "../../../composables/costs";
+import useEstimates from "../../../composables/estimates";
 import {onMounted} from "vue";
 
 export default {
@@ -362,20 +474,20 @@ export default {
     },
 
     setup(props) {
-        const {errors, cost, getCost, updateCost} = useCosts();
+        const {errors, estimate, getEstimate, updateEstimate} = useEstimates();
 
         onMounted(() => {
-            getCost(props.id);
+            getEstimate(props.id);
         });
 
-        const saveCost = async () => {
-            await updateCost(props.id);
+        const saveEstimate = async () => {
+            await updateEstimate(props.id);
         }
 
         return {
             errors,
-            cost,
-            saveCost
+            estimate,
+            saveEstimate
         }
     }
 }
