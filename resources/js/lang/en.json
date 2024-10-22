@@ -44,7 +44,8 @@
         "edit_user": "Edit user",
         "projects": "Projects",
         "tariffs": "Utility tariffs",
-        "costs": "Operating costs"
+        "costs": "Operating costs",
+        "estimates": "Life Cycle Costing"
     },
     "login_page": {
         "login": "Login",
@@ -137,6 +138,7 @@
         "create": "Create project",
         "utilities": "Utility tariffs",
         "utility_costs": "Operating costs",
+        "cost_estimates": "Life Cycle Costing",
         "delete_confirm_ok": "Yes, delete",
         "delete_successfully": "The project was successfully deleted!",
         "delete_error": "An error has occurred",
@@ -185,5 +187,18 @@
         "th2": "Name of the indicator",
         "th3": "Unit of measurement",
         "th4": "Volume of consumption per year (total)"
+    },
+    "cost_estimates": {
+        "create": "Enter rating",
+        "ce_1_indicator": "Indicator",
+        "ce_1_total_costs": "Total life cycle costs, thousand rubles",
+        "updated_at": "On date"
+    },
+    "cost_estimate_table": {
+        "th1": "Item No.",
+        "th2": "Name of the indicator",
+        "th3": "Indicator",
+        "th4": "Total life cycle costs, thousand rubles",
+        "th5": "Note"
     }
 }
