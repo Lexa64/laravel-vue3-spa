@@ -101,7 +101,7 @@
                     </td>
                     <td class="">
                         <div class="mt-1">
-                            <input type="text"
+                            <input type="date"
                                    name="ce_3_indicator"
                                    id="ce_3_indicator"
                                    class="form-control"
@@ -127,7 +127,7 @@
                         4
                     </td>
                     <td class="">
-                        Первоначальная стоимостьвозведения жилого дома
+                        Первоначальная стоимость возведения жилого дома
                     </td>
                     <td class="">
                         <div class="mt-1">
