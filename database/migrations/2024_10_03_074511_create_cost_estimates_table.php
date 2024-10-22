@@ -17,7 +17,7 @@ return new class extends Migration
             $table->decimal('ce_1_total_costs', 16, 6)->nullable();
             $table->decimal('ce_2_indicator', 16, 6)->nullable();
             $table->decimal('ce_2_total_costs', 16, 6)->nullable();
-            $table->timestamp('ce_3_indicator')->nullable();
+            $table->date('ce_3_indicator')->nullable();
             $table->decimal('ce_3_total_costs', 16, 6)->nullable();
             $table->decimal('ce_4_indicator', 16, 6)->nullable();
             $table->decimal('ce_4_total_costs', 16, 6)->nullable();
