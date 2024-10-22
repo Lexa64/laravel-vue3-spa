@@ -192,7 +192,8 @@
         "create": "Enter rating",
         "ce_1_indicator": "Indicator",
         "ce_1_total_costs": "Total life cycle costs, thousand rubles",
-        "updated_at": "On date"
+        "updated_at": "On date",
+        "delete_successfully": "Removed successfully"
     },
     "cost_estimate_table": {
         "th1": "Item No.",
