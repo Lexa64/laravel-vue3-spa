@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CostEstimateController;
+use App\Http\Controllers\Api\ForecastIndexController;
 use App\Http\Controllers\Api\PermissionController;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\ProfileController;
@@ -28,6 +29,8 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
     Route::apiResource('utility_tariffs', UtilityTariffController::class);
     Route::apiResource('utility_costs', UtilityCostController::class);
     Route::apiResource('cost_estimates', CostEstimateController::class);
+    Route::put('/forecast-indices/bulk-update', [ForecastIndexController::class, 'bulkUpdate']);
+    Route::apiResource('forecast-indices', ForecastIndexController::class);
 
     Route::get('role-list', [RoleController::class, 'getList']);
     Route::get('role-permissions/{id}', [PermissionController::class, 'getRolePermissions']);
@@ -46,6 +49,7 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
 
     Route::put('/role-permissions', [PermissionController::class, 'updateRolePermissions']);
     Route::put('/user', [ProfileController::class, 'update']);
+
 
     Route::post('/lifecycle/calculate', [ProjectController::class, 'calculateLifecycle']);
 });

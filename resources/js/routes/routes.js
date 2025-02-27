@@ -269,6 +269,12 @@ export default [
                 meta: {breadCrumb: 'breadcrumb_labels_admin.estimates'},
                 props: true
             },
+            {
+                name: 'forecast_indices.index',
+                path: 'forecast_indices',
+                component: () => import('../views/admin/forecast_indices/Index.vue'),
+                meta: {breadCrumb: 'breadcrumb_labels_admin.estimates'}
+            },
         ]
     },
     {
