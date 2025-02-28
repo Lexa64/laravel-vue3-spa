@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\BuildingCostController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CostEstimateController;
 use App\Http\Controllers\Api\ForecastIndexController;
@@ -31,6 +32,7 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
     Route::apiResource('cost_estimates', CostEstimateController::class);
     Route::put('/forecast-indices/bulk-update', [ForecastIndexController::class, 'bulkUpdate']);
     Route::apiResource('forecast-indices', ForecastIndexController::class);
+    Route::apiResource('building-costs', BuildingCostController::class);
 
     Route::get('role-list', [RoleController::class, 'getList']);
     Route::get('role-permissions/{id}', [PermissionController::class, 'getRolePermissions']);

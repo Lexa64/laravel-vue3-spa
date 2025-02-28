@@ -275,6 +275,12 @@ export default [
                 component: () => import('../views/admin/forecast_indices/Index.vue'),
                 meta: {breadCrumb: 'breadcrumb_labels_admin.estimates'}
             },
+            {
+                name: 'building_costs.index',
+                path: 'building_costs',
+                component: () => import('../views/admin/building_costs/Index.vue'),
+                meta: {breadCrumb: 'breadcrumb_labels_admin.estimates'}
+            },
         ]
     },
     {

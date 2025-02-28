@@ -31,6 +31,40 @@
             <button @click="addYear" class="btn btn-primary">Добавить год</button>
             <button @click="updateItems" class="btn btn-success ml-2">Сохранить</button>
         </div>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+<!--                <thead>
+                <tr>
+                    <th>Материал стен и этажность жилых домов</th>
+                    <th>Капитальный ремонт (до 30 лет)</th>
+                </tr>
+                </thead>-->
+                <tbody>
+                    <tr>
+                        <td rowspan="4"><input type="number" class="form-control" /></td>
+                        <td colspan="5"><input type="number"  class="form-control" /></td>
+                    </tr>
+                    <tr>
+                        <td><input type="number" class="form-control" /></td>
+                        <td colspan="2"><input type="number" class="form-control" /></td>
+                        <td colspan="2"><input type="number" class="form-control" /></td>
+                    </tr>
+                    <tr>
+                        <td><input type="number" class="form-control" /></td>
+                        <td colspan="2"><input type="number" class="form-control" /></td>
+                        <td><input type="number" class="form-control" /></td>
+                        <td><input type="number" class="form-control" /></td>
+                    </tr>
+                    <tr>
+                        <td><input type="number" class="form-control" /></td>
+                        <td><input type="number" class="form-control" /></td>
+                        <td><input type="number" class="form-control" /></td>
+                        <td><input type="number" class="form-control" /></td>
+                        <td><input type="number" class="form-control" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </template>
 
