@@ -1,12 +1,12 @@
 <template>
     <div>
         <h1>Прогнозные индексы</h1>
-        <table class="table table-bordered">
-            <thead>
+        <table class="table table-hover table-bordered">
+            <thead class="table-light">
             <tr>
                 <th>Период</th>
                 <th v-for="year in years" :key="year">{{ year }}</th>
-<!--                <th>Действия</th>-->
+                <!--<th>Действия</th>-->
             </tr>
             </thead>
             <tbody>
@@ -19,7 +19,7 @@
                         type="text"
                     />
                 </td>
-<!--                <td>
+                <!--<td>
                     <button @click="deleteItem(item.id)" class="btn btn-danger">
                         Удалить
                     </button>
@@ -40,16 +40,14 @@ import axios from "axios";
 export default {
     data() {
         return {
-            forecastIndices: [], // Данные с бэкенда
-            years: [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], // Года
+            forecastIndices: [],
+            years: [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026],
         };
     },
     async created() {
-        // Загружаем данные с бэкенда
         await this.loadData();
     },
     methods: {
-        // Загрузка данных с бэкенда
         async loadData() {
             try {
                 const response = await axios.get("/api/forecast-indices");
@@ -65,16 +63,13 @@ export default {
                 console.error("Ошибка при загрузке данных:", error);
             }
         },
-        // Сохранение всех записей
         async updateItems() {
             try {
-                // Преобразуем values в JSON-строку для каждой записи
                 const dataToSend = this.forecastIndices.map((item) => ({
                     ...item,
                     values: JSON.stringify(item.values), // Преобразуем объект в строку
                 }));
 
-                // Отправляем все записи на сервер
                 await axios.put("/api/forecast-indices/bulk-update", {data: dataToSend});
                 alert("Данные успешно сохранены!");
             } catch (error) {
@@ -82,7 +77,6 @@ export default {
                 alert("Произошла ошибка при сохранении данных.");
             }
         },
-        // Удаление данных
         async deleteItem(id) {
             try {
                 await axios.delete(`/api/forecast-indices/${id}`);
@@ -91,7 +85,6 @@ export default {
                 console.error("Ошибка при удалении данных:", error);
             }
         },
-        // Добавление нового года
         addYear() {
             const newYear = parseInt(this.years[this.years.length - 1]) + 1;
             this.years.push(newYear);
@@ -101,13 +94,22 @@ export default {
 </script>
 
 <style scoped>
-table {
-    width: 100%;
+.table {
+    border-radius: 0.5rem;
+    overflow: hidden;
 }
 
-th,
-td {
-    text-align: center;
+.table th {
+    background-color: #0d6efd;
+    color: white;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f8f9fa;
 }
 
 .ml-2 {

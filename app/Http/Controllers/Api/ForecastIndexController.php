@@ -16,7 +16,7 @@ class ForecastIndexController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'project_id' => 'nullable|exists:projects,id', // project_id может быть NULL
+            'project_id' => 'nullable|exists:projects,id',
             'period' => 'required|string',
             'values' => 'required|json',
         ]);
@@ -32,7 +32,7 @@ class ForecastIndexController extends Controller
     public function update(Request $request, ForecastIndex $forecastIndex)
     {
         $data = $request->validate([
-            'project_id' => 'nullable|exists:projects,id', // project_id может быть NULL
+            'project_id' => 'nullable|exists:projects,id',
             'period' => 'string',
             'values' => 'json',
         ]);

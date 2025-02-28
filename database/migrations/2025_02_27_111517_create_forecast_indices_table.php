@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('forecast_indices', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('project_id')->nullable(); // project_id может быть NULL
-            $table->string('period'); // Период (например, "Январь")
-            $table->json('values');   // Значения за каждый год в формате JSON
+            $table->unsignedBigInteger('project_id')->nullable();
+            $table->string('period');
+            $table->json('values');
             $table->timestamps();
 
             // Внешний ключ для связи с Project (если project_id не NULL)
