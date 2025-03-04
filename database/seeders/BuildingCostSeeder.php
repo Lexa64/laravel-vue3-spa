@@ -16,7 +16,7 @@ class BuildingCostSeeder extends Seeder
         $data = [
             [
                 'wall_material' => 'Кирпичные и каменные',
-                'floors' => '2 - 3-этажные',
+                'floors' => '2-3-этажные',
                 'repair_cost_under_30' => 1427,
                 'repair_cost_over_30' => 2573,
                 'modernization_total' => 3313,
@@ -24,7 +24,7 @@ class BuildingCostSeeder extends Seeder
             ],
             [
                 'wall_material' => 'Кирпичные и каменные',
-                'floors' => '4 - 5-этажные',
+                'floors' => '4-5-этажные',
                 'repair_cost_under_30' => 904,
                 'repair_cost_over_30' => 1545,
                 'modernization_total' => 2168,
@@ -32,7 +32,7 @@ class BuildingCostSeeder extends Seeder
             ],
             [
                 'wall_material' => 'Кирпичные и каменные',
-                'floors' => '6 - 10-этажные',
+                'floors' => '6-10-этажные',
                 'repair_cost_under_30' => 921,
                 'repair_cost_over_30' => 1550,
                 'modernization_total' => 1792,
@@ -48,7 +48,7 @@ class BuildingCostSeeder extends Seeder
             ],
             [
                 'wall_material' => 'Крупнопанельные и объемно-блочные',
-                'floors' => '2 - 3-этажные',
+                'floors' => '2-3-этажные',
                 'repair_cost_under_30' => 1529,
                 'repair_cost_over_30' => 2672,
                 'modernization_total' => 3216,
@@ -56,7 +56,7 @@ class BuildingCostSeeder extends Seeder
             ],
             [
                 'wall_material' => 'Крупнопанельные и объемно-блочные',
-                'floors' => '4 - 5-этажные',
+                'floors' => '4-5-этажные',
                 'repair_cost_under_30' => 904,
                 'repair_cost_over_30' => 1507,
                 'modernization_total' => 1709,
@@ -64,7 +64,7 @@ class BuildingCostSeeder extends Seeder
             ],
             [
                 'wall_material' => 'Крупнопанельные и объемно-блочные',
-                'floors' => '6 - 10-этажные',
+                'floors' => '6-10-этажные',
                 'repair_cost_under_30' => 921,
                 'repair_cost_over_30' => 1565,
                 'modernization_total' => 1488,

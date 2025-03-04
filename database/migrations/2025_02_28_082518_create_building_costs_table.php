@@ -23,13 +23,6 @@ return new class extends Migration
                 modernization_total -> Стоимость модернизации (всего, тыс. рублей)
                 modernization_thermal -> Стоимость тепловой модернизации (тыс. рублей)
              */
-
-            /*$table->string('wall_material')->comment('Материал стен (например, "Кирпичные и каменные")');
-            $table->string('floors')->comment('Этажность (например, "2 - 3-этажные")');
-            $table->integer('repair_cost_under_30')->comment('Стоимость капитального ремонта для домов до 30 лет (тыс. рублей)');
-            $table->integer('repair_cost_over_30')->comment('Стоимость капитального ремонта для домов более 30 лет (тыс. рублей)');
-            $table->integer('modernization_total')->comment('Стоимость модернизации (всего, тыс. рублей)');
-            $table->integer('modernization_thermal')->comment('Стоимость тепловой модернизации (тыс. рублей)');*/
             $table->timestamps();
         });
     }
