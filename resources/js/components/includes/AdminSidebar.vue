@@ -48,32 +48,38 @@
                                 <span class="d-none d-sm-inline ps-2 text-dark">{{ $t('projects.list')}}</span>
                             </router-link>
                         </li>
-                        <li v-if="can('user-list')" class="nav-link container rounded-pill">
+<!--                        <li v-if="can('user-list')" class="nav-link container rounded-pill">
                             <router-link :to="{ name: 'tariffs.index' }" class="nav-link px-0" style="margin-left: 15px;">
                                 <i class="bi bi-card-checklist"></i>
                                 <span class="d-none d-sm-inline ps-2 text-dark">{{ $t('projects.utilities')}}</span>
                             </router-link>
-                        </li>
-                        <li v-if="can('user-list')" class="nav-link container rounded-pill">
+                        </li>-->
+<!--                        <li v-if="can('user-list')" class="nav-link container rounded-pill">
                             <router-link :to="{ name: 'costs.index' }" class="nav-link px-0" style="margin-left: 15px;">
                                 <i class="bi bi-coin"></i>
                                 <span class="d-none d-sm-inline ps-2 text-dark">{{ $t('projects.utility_costs')}}</span>
                             </router-link>
-                        </li>
-                        <li v-if="can('user-list')" class="nav-link container rounded-pill">
+                        </li>-->
+<!--                        <li v-if="can('user-list')" class="nav-link container rounded-pill">
                             <router-link :to="{ name: 'estimates.index' }" class="nav-link px-0" style="margin-left: 15px;">
                                 <i class="bi bi-coin"></i>
                                 <span class="d-none d-sm-inline ps-2 text-dark">{{ $t('projects.cost_estimates')}}</span>
                             </router-link>
-                        </li>
-                        <li v-if="can('user-list')" class="nav-link container rounded-pill">
+                        </li>-->
+<!--                       <li v-if="can('user-list')" class="nav-link container rounded-pill">
                             <router-link :to="{ name: 'forecast_indices.index' }" class="nav-link px-0" style="margin-left: 15px;">
                                 <i class="bi bi-coin"></i>
-                                <span class="d-none d-sm-inline ps-2 text-dark">{{ $t('projects.cost_estimates')}}</span>
+                                <span class="d-none d-sm-inline ps-2 text-dark">Прогнозные индексы</span>
                             </router-link>
-                        </li>
-                        <li v-if="can('user-list')" class="nav-link container rounded-pill">
+                        </li>-->
+<!--                        <li v-if="can('user-list')" class="nav-link container rounded-pill">
                             <router-link :to="{ name: 'building_costs.index' }" class="nav-link px-0" style="margin-left: 15px;">
+                                <i class="bi bi-coin"></i>
+                                <span class="d-none d-sm-inline ps-2 text-dark">Стоимость ремонта и модернизации</span>
+                            </router-link>
+                        </li>-->
+                        <li v-if="can('user-list')" class="nav-link container rounded-pill">
+                            <router-link :to="{ name: 'lifecycles.index' }" class="nav-link px-0" style="margin-left: 15px;">
                                 <i class="bi bi-coin"></i>
                                 <span class="d-none d-sm-inline ps-2 text-dark">{{ $t('projects.cost_estimates')}}</span>
                             </router-link>

@@ -54,6 +54,7 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
 
 
     Route::post('/lifecycle/calculate', [ProjectController::class, 'calculateLifecycle']);
+    Route::get('/lifecycle/get-data', [ProjectController::class, 'getData']);
 });
 
 Route::get('category-list', [CategoryController::class, 'getList']);

@@ -281,6 +281,12 @@ export default [
                 component: () => import('../views/admin/building_costs/Index.vue'),
                 meta: {breadCrumb: 'breadcrumb_labels_admin.estimates'}
             },
+            {
+                name: 'lifecycles.index',
+                path: 'lifecycles',
+                component: () => import('../views/admin/lifecycles/Index.vue'),
+                meta: {breadCrumb: 'breadcrumb_labels_admin.estimates'}
+            },
         ]
     },
     {

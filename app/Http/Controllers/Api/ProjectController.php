@@ -6,8 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Resources\ProjectResource;
+use App\Models\BuildingCost;
+use App\Models\ForecastIndex;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use function MongoDB\BSON\toJSON;
 
 //use Illuminate\Support\Facades\Auth;
 
@@ -90,10 +93,10 @@ class ProjectController extends Controller
 
     public function calculateLifecycle(Request $request)
     {
-        $params = json_decode($request->getContent());
+       /* $params = json_decode($request->getContent());
         $project = Project::with('tariff', 'utilityCost')->find($params->project_id);
 
-        $data = [];
+        $data = [];*/
 
         /*$data['resource_consumption']['1_1_2'] = round($project->square_living, 2);
         $data['economically_justified']['1_1_2'] = round($project->square_living * $project->tariff->ut_1_1_2_economically_justified * 12, 2);
@@ -151,7 +154,7 @@ class ProjectController extends Controller
         $data['economically_justified']['9'] = round($project->square_living * $project->tariff->ut_9_economically_justified * 12, 2);
         $data['state_subsidized']['9'] = round($project->square_living * $project->tariff->ut_9_state_subsidized * 12, 2);*/
 
-        $data['resource_consumption']['1_1'] = round($project->utilityCost->uc_1_1, 2);
+        /*$data['resource_consumption']['1_1'] = round($project->utilityCost->uc_1_1, 2);
         $data['economically_justified']['1_1'] = round($project->utilityCost->uc_1_1 * $project->tariff->ut_1_1_economically_justified, 2);
         $data['state_subsidized']['1_1'] = round($project->utilityCost->uc_1_1 * $project->tariff->ut_1_1_state_subsidized, 2);
 
@@ -219,11 +222,14 @@ class ProjectController extends Controller
         $data['economically_justified']['9'] = round($project->square_living * $project->tariff->ut_9_economically_justified * 12, 2);
         $data['state_subsidized']['9'] = round($project->square_living * $project->tariff->ut_9_state_subsidized * 12, 2);
 
-        $temp = 0;
+        $temp = 0;*/
 
         //$this->calculateOneMeter($project->utilityCost->toArray(), $project->square_living);
-
-        return $data;
+        $array = [];
+        $array['one'] = ForecastIndex::all()->toJson();
+        $array['two'] = BuildingCost::all()->toJson();
+        //$array['three'] = ForecastIndex::all()->toJson();
+        return $array;
     }
 
     public function calculateOneMeter($utilityCost, $square_living): array
@@ -237,5 +243,12 @@ class ProjectController extends Controller
         }
 
         return $oneMeterData;
+    }
+
+    public function getData()
+    {
+
+        return 'TEST';
+        //return ForecastIndex::all();
     }
 }

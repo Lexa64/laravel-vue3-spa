@@ -3,25 +3,79 @@
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th>Материал стен и этажность жилых домов</th>
-                <th>Капитальный ремонт (до 30 лет)</th>
-                <th>Капитальный ремонт (более 30 лет)</th>
-                <th>Модернизация (всего)</th>
-                <th>Тепловая модернизация</th>
-                <th>Действия</th>
+                <th rowspan="2">Материал стен и этажность жилых домов</th>
+                <th colspan="2">Капитальный ремонт</th>
+                <th colspan="2">Модернизация</th>
+            </tr>
+            <tr>
+                <th>до 30 лет</th>
+                <th>более 30 лет</th>
+                <th>всего</th>
+                <th>в том числе тепловая модернизация</th>
             </tr>
             </thead>
             <tbody>
-            <tr v-for="item in buildingCosts" :key="item.id">
-                <td>{{ item.wall_material }} - {{ item.floors }}</td>
-                <td><input v-model="item.repair_cost_under_30" type="number" class="form-control" /></td>
-                <td><input v-model="item.repair_cost_over_30" type="number" class="form-control" /></td>
-                <td><input v-model="item.modernization_total" type="number" class="form-control" /></td>
-                <td><input v-model="item.modernization_thermal" type="number" class="form-control" /></td>
-                <td>
-                    <button @click="updateItem(item)" class="btn btn-primary">Сохранить</button>
-                    <button @click="deleteItem(item.id)" class="btn btn-danger">Удалить</button>
-                </td>
+            <tr>
+                <td colspan="5"><strong>Кирпичные и каменные:</strong></td>
+            </tr>
+            <tr>
+                <td>2-3-этажные</td>
+                <td>1427</td>
+                <td>2573</td>
+                <td>3313</td>
+                <td>891</td>
+            </tr>
+            <tr>
+                <td>4-5-этажные</td>
+                <td>904</td>
+                <td>1545</td>
+                <td>2168</td>
+                <td>604</td>
+            </tr>
+            <tr>
+                <td>6-10-этажные</td>
+                <td>921</td>
+                <td>1550</td>
+                <td>1792</td>
+                <td>648</td>
+            </tr>
+            <tr>
+                <td>12-этажные</td>
+                <td>752</td>
+                <td>1326</td>
+                <td>1810</td>
+                <td>685</td>
+            </tr>
+            <tr>
+                <td colspan="5"><strong>Крупнопанельные и объемно-блочные:</strong></td>
+            </tr>
+            <tr>
+                <td>2-3-этажные</td>
+                <td>1529</td>
+                <td>2672</td>
+                <td>3216</td>
+                <td>732</td>
+            </tr>
+            <tr>
+                <td>4-5-этажные</td>
+                <td>904</td>
+                <td>1507</td>
+                <td>1709</td>
+                <td>802</td>
+            </tr>
+            <tr>
+                <td>6-10-этажные</td>
+                <td>921</td>
+                <td>1565</td>
+                <td>1488</td>
+                <td>697</td>
+            </tr>
+            <tr>
+                <td>12-этажные</td>
+                <td>776</td>
+                <td>1391</td>
+                <td>1531</td>
+                <td>744</td>
             </tr>
             </tbody>
         </table>
