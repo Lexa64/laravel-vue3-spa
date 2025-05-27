@@ -42,12 +42,12 @@
                         <i class="bi bi-chevron-expand float-end"></i>
                     </a>
                     <ul class="collapse nav ms-1" id="submenu3" data-bs-parent="#menu">
-                        <li v-if="can('user-list')" class="nav-link container">
+<!--                        <li v-if="can('user-list')" class="nav-link container">
                             <router-link :to="{ name: 'projects.index' }" class="nav-link px-0" style="margin-left: 15px;">
                                 <i class="bi bi-building-add"></i>
                                 <span class="d-none d-sm-inline ps-2 text-dark">{{ $t('projects.list')}}</span>
                             </router-link>
-                        </li>
+                        </li>-->
 <!--                        <li v-if="can('user-list')" class="nav-link container rounded-pill">
                             <router-link :to="{ name: 'tariffs.index' }" class="nav-link px-0" style="margin-left: 15px;">
                                 <i class="bi bi-card-checklist"></i>
@@ -81,7 +81,7 @@
                         <li v-if="can('user-list')" class="nav-link container rounded-pill">
                             <router-link :to="{ name: 'lifecycles.index' }" class="nav-link px-0" style="margin-left: 15px;">
                                 <i class="bi bi-coin"></i>
-                                <span class="d-none d-sm-inline ps-2 text-dark">{{ $t('projects.cost_estimates')}}</span>
+                                <span class="d-none d-sm-inline ps-2 text-dark">Тестирование расчётов</span>
                             </router-link>
                         </li>
                     </ul>

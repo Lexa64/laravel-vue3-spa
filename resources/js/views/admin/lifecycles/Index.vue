@@ -11,11 +11,23 @@
                         <input type="text" class="form-control" v-model="lifecycle.name">
                     </div>
                     <div class="col-12">
-                        <label class="form-label">1.2 Населенный пункт</label>
+                        <label class="form-label">1.2 Область</label>
+                        <select class="form-select" v-model="lifecycle.region">
+                            <option value="брестская">Брестская</option>
+                            <option value="витебская">Витебская</option>
+                            <option value="гомельская">Гомельская</option>
+                            <option value="гродненская">Гродненская</option>
+                            <option value="минская">Минская</option>
+                            <option value="могилёвская">Могилёвская</option>
+                            <option value="минск">г. Минск</option>
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">1.3 Населенный пункт</label>
                         <input type="text" class="form-control" v-model="lifecycle.city">
                     </div>
                     <div class="col-12">
-                        <label class="form-label">1.3 Материал стен</label>
+                        <label class="form-label">1.4 Материал стен</label>
                         <select class="form-select" v-model="lifecycle.wall_material">
                             <option value="крупнопанельные">Крупнопанельные</option>
                             <option value="мелкоштучные элементы">Мелкоштучные элементы (кирпич, блоки)</option>
@@ -24,31 +36,31 @@
                         </select>
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">1.4 Этажность</label>
+                        <label class="form-label">1.5 Этажность</label>
                         <input type="number" class="form-control" v-model="lifecycle.floors">
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">1.5 Общая площадь жилых помещений (м²)</label>
+                        <label class="form-label">1.6 Общая площадь жилых помещений (м²)</label>
                         <input type="number" step="0.01" class="form-control" v-model="lifecycle.living_area" @input="handleInput">
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">1.6 Общая площадь вспомогательных помещений (м²)</label>
+                        <label class="form-label">1.7 Общая площадь вспомогательных помещений (м²)</label>
                         <input type="number" step="0.01" class="form-control" v-model="lifecycle.auxiliary_area">
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">1.7 Общая площадь жилого дома (м²)</label>
+                        <label class="form-label">1.8 Общая площадь жилого дома (м²)</label>
                         <input type="number" step="0.01" class="form-control" v-model="lifecycle.total_area">
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">1.8 Количество квартир</label>
+                        <label class="form-label">1.9 Количество квартир</label>
                         <input type="number" class="form-control" v-model="lifecycle.apartments_count">
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">1.9 Количество проживающих</label>
+                        <label class="form-label">1.10 Количество проживающих</label>
                         <input type="number" class="form-control" v-model="lifecycle.residents_count">
                     </div>
                     <div class="col-12">
-                        <label class="form-label">1.10 Система отопления здания</label>
+                        <label class="form-label">1.11 Система отопления здания</label>
                         <select class="form-select" v-model="lifecycle.heating_system">
                             <option value="централизованный источник">От централизованного источника</option>
                             <option value="децентрализованная газовая">Децентрализованная газовая</option>
@@ -264,6 +276,7 @@
 
 <script>
 import axios from "axios";
+import moment from 'moment';
 
 export default {
     name: 'LifecycleForm',
@@ -274,11 +287,12 @@ export default {
             lifecycle: {
                 // 1. Общая информация
                 name: 'Возведение многоквартирного 9-этажного жилого дома в г. Гродно',
+                region: 'гродненская',
                 city: 'г. Гродно',
                 wall_material: 'крупнопанельные',
                 floors: 9,
-                living_area: 6418.9,
-                auxiliary_area: 1431,
+                living_area: 6418.90,
+                auxiliary_area: 1431.00,
                 total_area: 7849.90,
                 apartments_count: 108,
                 residents_count: 237,
@@ -320,14 +334,14 @@ export default {
                 household_electricity: 259200,
                 heating_electricity: 0,
                 natural_gas: 2592,
-                total_thermal_energy: 2592,
+                total_thermal_energy: 1181.87,
                 heating_thermal_energy: 825.8,
                 hot_water_thermal_energy: 356.07,
                 total_water: 9453.01,
                 cold_water: 5470.54,
                 hot_water: 3982.47,
                 sewage: 9453.01,
-                solid_waste: 63.16
+                solid_waste: 635.16
             },
             isLoading: false,
             error: null,
@@ -336,11 +350,12 @@ export default {
         };
     },
     async created() {
+        this.lifecycle.lifecycle_end_date = this.lifecycle.commissioning_date
         await this.loadData();
     },
     methods: {
         handleInput(event) {
-            let temp = this.data[0].find(item => item.year === 2022)
+            /*let temp = this.data[0].find(item => item.year === 2022)
 
             this.lifecycle.construction_cost = (this.lifecycle.living_area * temp.months['Ноябрь'] / 1000).toFixed(2);
             this.lifecycle.maintenance_cost_1 = (JSON.parse(this.data[2][12].values)[2015] * JSON.parse(this.data[2][12].values)[2016] *
@@ -352,7 +367,7 @@ export default {
             this.lifecycle.overhaul_cost_1 = (JSON.parse(this.data[2][12].values)[2015] * JSON.parse(this.data[2][12].values)[2016] *
                 JSON.parse(this.data[2][12].values)[2017] * JSON.parse(this.data[2][12].values)[2018] * JSON.parse(this.data[2][12].values)[2019] *
                 JSON.parse(this.data[2][12].values)[2020] * JSON.parse(this.data[2][12].values)[2021] * this.data[1][8]['data'] / 10000 * 7849.9).toFixed(2)
-            this.lifecycle.demolition_cost = this.lifecycle.construction_cost.toFixed(2)
+            this.lifecycle.demolition_cost = this.lifecycle.construction_cost.toFixed(2)*/
 
         },
         async saveLifecycle() {
@@ -411,13 +426,13 @@ export default {
 
                 this.data = []
 
-                let test = JSON.parse(response1.data.two)
-                this.data[0] = JSON.parse(test[0].values) // Предельная стоимость
-                this.data[1] = JSON.parse(test[1].values) // Ремонт и модернизация
-                this.data[2] = JSON.parse(response1.data.one) // Прогнозные индексы
+                let test = JSON.parse(response1.data.two);
+                this.data[0] = JSON.parse(test[0].values); // Предельная стоимость
+                this.data[1] = JSON.parse(test[1].values); // Ремонт и модернизация
+                this.data[2] = JSON.parse(response1.data.one); // Прогнозные индексы
+                this.data[3] = JSON.parse(test[2].values); // Указы
 
-                //console.log(this.data[0])
-                let temp = this.data[0].find(item => item.year === 2022)
+                let temp = this.data[0].find(item => item.year === 2022);
                 console.log(this.data[1][8]['data'])
 
                 /*if (this.forecastIndices.length > 0) {
@@ -425,25 +440,52 @@ export default {
                 }*/
 
                 let result = [];
-                result['i37'] = this.lifecycle.living_area * temp.months['Ноябрь'] / 1000;
-                result['i38'] = JSON.parse(this.data[2][12].values)[2015] * JSON.parse(this.data[2][12].values)[2016] *
-                    JSON.parse(this.data[2][12].values)[2017] * JSON.parse(this.data[2][12].values)[2018] * JSON.parse(this.data[2][12].values)[2019] *
-                    JSON.parse(this.data[2][12].values)[2020] * JSON.parse(this.data[2][12].values)[2021] * this.data[1][8]['data'] * 0.1375 / 10000 * 7849.9;
-                result['i44'] = JSON.parse(this.data[2][12].values)[2015] * JSON.parse(this.data[2][12].values)[2016] *
-                    JSON.parse(this.data[2][12].values)[2017] * JSON.parse(this.data[2][12].values)[2018] * JSON.parse(this.data[2][12].values)[2019] *
-                    JSON.parse(this.data[2][12].values)[2020] * JSON.parse(this.data[2][12].values)[2021] * this.data[1][8]['data'] / 10000 * 7849.9;
-                result['i46'] = result['i37'] / 2 * 0.3;
-                console.log(result['i37']);
+                result['j37'] = (this.lifecycle.living_area * temp.months['Ноябрь'] / 1000).toFixed(3);
 
-                this.lifecycle.construction_cost = result['i37'].toFixed(2)
-                this.lifecycle.maintenance_cost_1 = result['i38'].toFixed(2)
-                this.lifecycle.maintenance_cost_2 = result['i38'].toFixed(2)
-                this.lifecycle.maintenance_cost_3 = result['i38'].toFixed(2)
-                this.lifecycle.maintenance_cost_4 = result['i38'].toFixed(2)
-                this.lifecycle.overhaul_cost_1 = result['i44'].toFixed(2)
-                this.lifecycle.demolition_cost = result['i46'].toFixed(2)
+                console.log(JSON.parse(this.data[2][0].values)[2022]);
 
-                this.final = result['i37'];
+                result['j38'] = (result['j37'] / JSON.parse(this.data[2][10].values)[2022] / JSON.parse(this.data[2][10].values)[2022] /
+                    JSON.parse(this.data[2][10].values)[2022] / JSON.parse(this.data[2][10].values)[2022] / JSON.parse(this.data[2][10].values)[2022] /
+                    JSON.parse(this.data[2][10].values)[2022] / JSON.parse(this.data[2][10].values)[2022] / JSON.parse(this.data[2][10].values)[2022] /
+                    JSON.parse(this.data[2][10].values)[2022] / JSON.parse(this.data[2][10].values)[2022] / JSON.parse(this.data[2][10].values)[2022]).toFixed(3);
+
+                console.log(this.data[3]);
+
+                result['j39'] = (this.data[1][8]['data'] * JSON.parse(this.data[2][12].values)[2015] * JSON.parse(this.data[2][12].values)[2016] * JSON.parse(this.data[2][12].values)[2017] *
+                    JSON.parse(this.data[2][12].values)[2018] * JSON.parse(this.data[2][12].values)[2019] * JSON.parse(this.data[2][12].values)[2020] *
+                    JSON.parse(this.data[2][12].values)[2021] * JSON.parse(this.data[2][12].values)[2022] * 0.1375 * this.lifecycle.total_area / 10000).toFixed(3);
+
+                let coefficient = (this.data[1][1]['data'] / this.data[1][0]['data'] + this.data[1][5]['data'] / this.data[1][4]['data'] +
+                    this.data[1][9]['data'] / this.data[1][8]['data'] + this.data[1][13]['data'] / this.data[1][12]['data'] +
+                    this.data[1][17]['data'] / this.data[1][16]['data'] + this.data[1][21]['data'] / this.data[1][20]['data'] +
+                    this.data[1][25]['data'] / this.data[1][24]['data'] + this.data[1][29]['data'] / this.data[1][28]['data']) / 8;
+
+                result['j40'] = (result['j39'] * coefficient).toFixed(3);
+                result['j41'] = result['j39'];
+                result['j42'] = result['j40'];
+
+                result['j46'] = (this.data[1][8]['data'] * JSON.parse(this.data[2][12].values)[2015] * JSON.parse(this.data[2][12].values)[2016] * JSON.parse(this.data[2][12].values)[2017] *
+                    JSON.parse(this.data[2][12].values)[2018] * JSON.parse(this.data[2][12].values)[2019] * JSON.parse(this.data[2][12].values)[2020] *
+                    JSON.parse(this.data[2][12].values)[2021] * JSON.parse(this.data[2][12].values)[2022] * this.lifecycle.total_area / 10000).toFixed(3);
+
+                result['j48'] = (result['j37'] / 2 * 0.3).toFixed(3);
+
+                result['decree_1'] = (this.data[3][0]['val2'] * this.lifecycle.total_water / 1000).toFixed(2);
+                result['decree_2'] = (this.data[3][0]['val4'] * this.lifecycle.sewage / 1000).toFixed(2);
+                result['decree_3'] = (this.data[3][0]['val6'] * this.lifecycle.living_area / 1000 * 12).toFixed(2);
+                result['decree_4'] = (this.data[3][0]['val8'] * this.lifecycle.total_thermal_energy / 1000).toFixed(2);
+                result['decree_5'] = (this.data[3][0]['val11'] * this.lifecycle.solid_waste / 1000).toFixed(2);
+                result['decree_6'] = (this.data[3][0]['val14'] * this.lifecycle.total_area * 12 / 1000).toFixed(2);
+                result['decree_7'] = (this.data[3][0]['val15'] * this.lifecycle.living_area / 1000 * 12).toFixed(2);
+                result['decree_8'] = (this.data[3][0]['val18'] * this.lifecycle.natural_gas / 1000).toFixed(2);
+                result['decree_9'] = (this.data[3][0]['val26'] * (this.lifecycle.auxiliary_electricity + this.lifecycle.elevator_electricity +
+                    this.lifecycle.household_electricity + this.lifecycle.heating_electricity) / 1000).toFixed(2);
+                result['decree_10'] = (this.data[3][0]['val27'] * this.lifecycle.living_area * 12 / 1000).toFixed(2);
+                result['decree_11'] = (this.data[3][0]['val29'] * this.lifecycle.apartments_count * 12 / 1000).toFixed(2);
+
+                this.lifecycle.construction_cost = result['j37'];
+
+                this.final = result['j37'];
 
             } catch (error) {
                 console.error("Ошибка при загрузке данных:", error);
