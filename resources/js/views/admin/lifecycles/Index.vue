@@ -6,6 +6,7 @@
                 <!-- 1. Общая информация -->
                 <h3>1. Общая информация</h3>
                 <div class="row g-3">
+                <div class="main-form">
                     <div class="col-12">
                         <label class="form-label">1.1 Наименование объекта</label>
                         <input type="text" class="form-control" v-model="lifecycle.name">
@@ -268,6 +269,7 @@
 <!--                        <button @click="calculate" class="btn btn-primary" style="margin-left: 20px;">Рассчитать</button>-->
                     </div>
                 </div>
+            </form>
             </form>
             <h2 v-if="lifecycle.construction_cost!==null">Расчётная стоимость: {{ (lifecycle.construction_cost * 108).toFixed(2) }}</h2>
         </div>
