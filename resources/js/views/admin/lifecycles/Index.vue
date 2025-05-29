@@ -452,7 +452,6 @@ export default {
             }
         },*/
         async loadData() {
-            //console.log(moment('2022-11', 'YYYY-MM').month())
             try {
                 const response = await axios.get("/api/forecast-indices");
 
@@ -477,17 +476,32 @@ export default {
                     this.years = Object.keys(this.forecastIndices[0].values);
                 }*/
 
-                console.log(moment(this.lifecycle.construction_start_date, 'YYYY-MM').locale('ru').format('MMMM'));
+                let month = moment(this.lifecycle.construction_start_date, 'YYYY-MM').locale('ru').format('MMMM');
 
                 let result = [];
-                result['j37'] = (this.lifecycle.living_area * temp.months['Ноябрь'] / 1000).toFixed(3);
+                result['j37'] = (this.lifecycle.living_area * temp.months[month[0].toUpperCase() + month.slice(1)] / 1000).toFixed(3);
 
-                //console.log(JSON.parse(this.data[2][0].values)[2022]);
+                result['j38'] = result['j37'];
 
-                result['j38'] = (result['j37'] / JSON.parse(this.data[2][0].values)[2022] / JSON.parse(this.data[2][1].values)[2022] /
-                    JSON.parse(this.data[2][2].values)[2022] / JSON.parse(this.data[2][3].values)[2022] / JSON.parse(this.data[2][4].values)[2022] /
-                    JSON.parse(this.data[2][5].values)[2022] / JSON.parse(this.data[2][6].values)[2022] / JSON.parse(this.data[2][7].values)[2022] /
-                    JSON.parse(this.data[2][8].values)[2022] / JSON.parse(this.data[2][9].values)[2022] / JSON.parse(this.data[2][10].values)[2022]).toFixed(3);
+                for (let i = 0; i < moment(this.lifecycle.construction_start_date, 'YYYY-MM').month() + 1; i++) {
+                    result['j38'] = result['j38'] / JSON.parse(this.data[2][i].values)[this.lifecycle.price_year];
+                }
+
+                result['j38'] = result['j38'].toFixed(3);
+
+                /*result['j38'] = (result['j37'] / JSON.parse(this.data[2][0].values)[this.lifecycle.price_year] /
+                    JSON.parse(this.data[2][1].values)[this.lifecycle.price_year] /
+                    JSON.parse(this.data[2][2].values)[this.lifecycle.price_year] /
+                    JSON.parse(this.data[2][3].values)[this.lifecycle.price_year] /
+                    JSON.parse(this.data[2][4].values)[this.lifecycle.price_year] /
+                    JSON.parse(this.data[2][5].values)[this.lifecycle.price_year] /
+                    JSON.parse(this.data[2][6].values)[this.lifecycle.price_year] /
+                    JSON.parse(this.data[2][7].values)[this.lifecycle.price_year] /
+                    JSON.parse(this.data[2][8].values)[this.lifecycle.price_year] /
+                    JSON.parse(this.data[2][9].values)[this.lifecycle.price_year] /
+                    JSON.parse(this.data[2][10].values)[this.lifecycle.price_year]).toFixed(3);*/
+
+                //console.log(this.data[1]);
 
                 // TODO: разобраться с этажностью и материалами стен (какие как соотносить с таблицей)
                 // TODO: Гродно почему из ячейки C15, а не C21?
@@ -496,13 +510,16 @@ export default {
                     case 'крупнопанельные':
                         switch (true) {
                             case this.lifecycle.floors >= 2 && this.lifecycle.floors <= 3:
+                                repair = this.data[1][0]['data'];
                                 break;
                             case this.lifecycle.floors >= 4 && this.lifecycle.floors <= 5:
+                                repair = this.data[1][4]['data'];
                                 break;
                             case this.lifecycle.floors >= 6 && this.lifecycle.floors <= 10:
                                 repair = this.data[1][8]['data'];
                                 break;
                             case this.lifecycle.floors === 12:
+                                repair = this.data[1][12]['data'];
                                 break;
                             default:
                                 break;
@@ -511,12 +528,16 @@ export default {
                     case 'мелкоштучные элементы':
                         switch (true) {
                             case this.lifecycle.floors >= 2 && this.lifecycle.floors <= 3:
+                                repair = this.data[1][0]['data'];
                                 break;
                             case this.lifecycle.floors >= 4 && this.lifecycle.floors <= 5:
+                                repair = this.data[1][4]['data'];
                                 break;
                             case this.lifecycle.floors >= 6 && this.lifecycle.floors <= 10:
+                                repair = this.data[1][8]['data'];
                                 break;
                             case this.lifecycle.floors === 12:
+                                repair = this.data[1][12]['data'];
                                 break;
                             default:
                                 break;
@@ -525,26 +546,35 @@ export default {
                     case 'каркасные системы':
                         switch (true) {
                             case this.lifecycle.floors >= 2 && this.lifecycle.floors <= 3:
+                                repair = this.data[1][16]['data'];
                                 break;
                             case this.lifecycle.floors >= 4 && this.lifecycle.floors <= 5:
+                                repair = this.data[1][20]['data'];
                                 break;
                             case this.lifecycle.floors >= 6 && this.lifecycle.floors <= 10:
+                                repair = this.data[1][24]['data'];
                                 break;
                             case this.lifecycle.floors === 12:
+                                repair = this.data[1][28]['data'];
                                 break;
                             default:
                                 break;
                         }
                         break;
                     case 'деревянные':
+                        // TODO: что делать с деревянными?
                         switch (true) {
                             case this.lifecycle.floors >= 2 && this.lifecycle.floors <= 3:
+                                //repair = this.data[1][0]['data'];
                                 break;
                             case this.lifecycle.floors >= 4 && this.lifecycle.floors <= 5:
+                                //repair = this.data[1][0]['data'];
                                 break;
                             case this.lifecycle.floors >= 6 && this.lifecycle.floors <= 10:
+                                //repair = this.data[1][0]['data'];
                                 break;
                             case this.lifecycle.floors === 12:
+                                //repair = this.data[1][0]['data'];
                                 break;
                             default:
                                 break;
@@ -552,13 +582,30 @@ export default {
                         break;
                 }
 
-                result['j39'] = (repair * JSON.parse(this.data[2][12].values)[2015] * JSON.parse(this.data[2][12].values)[2016] * JSON.parse(this.data[2][12].values)[2017] *
-                    JSON.parse(this.data[2][12].values)[2018] * JSON.parse(this.data[2][12].values)[2019] * JSON.parse(this.data[2][12].values)[2020] *
-                    JSON.parse(this.data[2][12].values)[2021] * JSON.parse(this.data[2][12].values)[2022] * 0.1375 * this.lifecycle.total_area / 10000).toFixed(3);
+                result['j39'] = repair;
+                //console.log(JSON.parse(this.data[2][12].values))
 
-                /*console.log('Test: ' + repair + ' ' + JSON.parse(this.data[2][12].values)[2015] + ' ' + JSON.parse(this.data[2][12].values)[2016] + ' ' + JSON.parse(this.data[2][12].values)[2017] + ' ' +
-                    JSON.parse(this.data[2][12].values)[2018] + ' ' + JSON.parse(this.data[2][12].values)[2019] + ' ' + JSON.parse(this.data[2][12].values)[2020] + ' ' +
-                    JSON.parse(this.data[2][12].values)[2021] + ' ' + JSON.parse(this.data[2][12].values)[2022] + ' ' + 0.1375 + ' ' + this.lifecycle.total_area + ' ' + 10000);*/
+                // TODO: это всегда минус 7 лет, или от балды?
+                for (let i = this.lifecycle.price_year - 7; i < this.lifecycle.price_year + 1; i++) {
+                    // TODO: а что делать, если в базе нет?
+                    if (JSON.parse(this.data[2][12].values)[i] !== undefined) {
+                        result['j39'] = result['j39'] * JSON.parse(this.data[2][12].values)[i];
+                    }
+                }
+
+                // TODO: 0.1375: меняется ли когда-нибудь, или постоянное число будет?
+                result['j39'] = (result['j39'] * 0.1375 * this.lifecycle.total_area / 10000).toFixed(3);
+
+                /*result['j39'] = (repair * JSON.parse(this.data[2][12].values)[2015] *
+                    JSON.parse(this.data[2][12].values)[2016] *
+                    JSON.parse(this.data[2][12].values)[2017] *
+                    JSON.parse(this.data[2][12].values)[2018] *
+                    JSON.parse(this.data[2][12].values)[2019] *
+                    JSON.parse(this.data[2][12].values)[2020] *
+                    JSON.parse(this.data[2][12].values)[2021] *
+                    JSON.parse(this.data[2][12].values)[2022] *
+                    0.1375 * this.lifecycle.total_area / 10000
+                ).toFixed(3);*/
 
                 let coefficient = (this.data[1][1]['data'] / this.data[1][0]['data'] + this.data[1][5]['data'] / this.data[1][4]['data'] +
                     this.data[1][9]['data'] / this.data[1][8]['data'] + this.data[1][13]['data'] / this.data[1][12]['data'] +
@@ -570,9 +617,28 @@ export default {
                 result['j41'] = result['j39'];
                 result['j42'] = result['j40'];
 
-                result['j46'] = (this.data[1][8]['data'] * JSON.parse(this.data[2][12].values)[2015] * JSON.parse(this.data[2][12].values)[2016] * JSON.parse(this.data[2][12].values)[2017] *
-                    JSON.parse(this.data[2][12].values)[2018] * JSON.parse(this.data[2][12].values)[2019] * JSON.parse(this.data[2][12].values)[2020] *
-                    JSON.parse(this.data[2][12].values)[2021] * JSON.parse(this.data[2][12].values)[2022] * this.lifecycle.total_area / 10000).toFixed(3);
+                result['j46'] = repair;
+
+                // TODO: это всегда минус 7 лет, или от балды?
+                for (let i = this.lifecycle.price_year - 7; i < this.lifecycle.price_year + 1; i++) {
+                    // TODO: а что делать, если в базе нет?
+                    if (JSON.parse(this.data[2][12].values)[i] !== undefined) {
+                        result['j46'] = result['j46'] * JSON.parse(this.data[2][12].values)[i];
+                    }
+                }
+
+                result['j46'] = (result['j46'] * this.lifecycle.total_area / 10000).toFixed(3);
+
+                /*result['j46'] = (repair * JSON.parse(this.data[2][12].values)[2015] *
+                    JSON.parse(this.data[2][12].values)[2016] *
+                    JSON.parse(this.data[2][12].values)[2017] *
+                    JSON.parse(this.data[2][12].values)[2018] *
+                    JSON.parse(this.data[2][12].values)[2019] *
+                    JSON.parse(this.data[2][12].values)[2020] *
+                    JSON.parse(this.data[2][12].values)[2021] *
+                    JSON.parse(this.data[2][12].values)[2022] *
+                    this.lifecycle.total_area / 10000
+                ).toFixed(3);*/
 
                 result['j48'] = (result['j37'] / 2 * 0.3).toFixed(3);
 
@@ -592,7 +658,7 @@ export default {
                 this.lifecycle.construction_cost = result['j37'];
                 this.lifecycle.lifecycle_end_date = this.lifecycle.commissioning_date + this.lifecycle.lifecycle_duration;
 
-                //console.log(this.lifecycle.construction_start_date);
+                console.log(result);
 
 
             } catch (error) {
