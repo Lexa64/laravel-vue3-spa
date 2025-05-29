@@ -6,7 +6,6 @@
                 <!-- 1. Общая информация -->
                 <h3>1. Общая информация</h3>
                 <div class="row g-3">
-                <div class="main-form">
                     <div class="col-12">
                         <label class="form-label">1.1 Наименование объекта</label>
                         <input type="text" class="form-control" v-model="lifecycle.name">
@@ -106,20 +105,36 @@
                         <input type="number" class="form-control" v-model="lifecycle.lifecycle_duration">
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">2.2 Стоимостные показатели в ценах на год</label>
-                        <input type="number" class="form-control" v-model="lifecycle.price_year">
+                        <label class="form-label">2.2 Стоимостные показатели в ценах на (год)</label>
+                        <input type="number" min="1991" max="2100" step="1" class="form-control" v-model="lifecycle.price_year">
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">2.3 Дата выдачи задания на проектирование</label>
                         <input type="date" class="form-control" v-model="lifecycle.design_task_date">
                     </div>
-                    <div class="col-md-6">
+<!--                    <div class="col-md-6">
+                        <VueFlatpickr
+                            v-model="lifecycle.design_task_date"
+                            :config="flatpickrOptions"
+                            placeholder="Выберите дату"
+                        />
+                    </div>-->
+<!--                    <div class="col-md-6">
                         <label class="form-label">2.4 Дата начала строительства</label>
                         <input type="date" class="form-control" v-model="lifecycle.construction_start_date">
+                    </div>-->
+                    <div class="col-md-6">
+                        <label class="form-label">2.4 Дата начала строительства</label>
+                        <VueFlatpickr
+                            v-model="lifecycle.construction_start_date"
+                            :config="flatpickrOptions"
+                            placeholder="Выберите дату"
+                            class="form-control"
+                        />
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">2.5 Дата приемки объекта в эксплуатацию</label>
-                        <input type="date" class="form-control" v-model="lifecycle.commissioning_date">
+                        <input type="number" min="1991" max="2100" step="1" class="form-control" v-model="lifecycle.commissioning_date">
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">2.6 Дата планируемого проведения текущего ремонта 1</label>
@@ -155,13 +170,17 @@
                     </div>-->
                     <div class="col-md-6">
                         <label class="form-label">2.14 Дата окончания жизненного цикла</label>
-                        <input type="date" class="form-control" v-model="lifecycle.lifecycle_end_date">
+                        <input type="number" min="1991" max="2100" step="1" class="form-control" v-model="lifecycle.lifecycle_end_date">
                     </div>
                 </div>
                 <hr class="my-4 border-4 border-dark">
                 <!-- 3. Стоимостные показатели -->
                 <h3 class="mt-4">3. Стоимостные показатели</h3>
                 <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Дата начала строительства</label>
+                        <input type="date" class="form-control" v-model="lifecycle.cost_indicators_date">
+                    </div>
                     <div class="col-md-6">
                         <label class="form-label">3.1 Стоимость строительства (тыс. руб.)</label>
                         <input type="number" step="0.01" class="form-control" v-model="lifecycle.construction_cost">
@@ -270,7 +289,6 @@
                     </div>
                 </div>
             </form>
-            </form>
             <h2 v-if="lifecycle.construction_cost!==null">Расчётная стоимость: {{ (lifecycle.construction_cost * 108).toFixed(2) }}</h2>
         </div>
     </div>
@@ -279,11 +297,28 @@
 <script>
 import axios from "axios";
 import moment from 'moment';
+import 'moment/dist/locale/ru';
+import VueFlatpickr from 'vue-flatpickr-component';
+import 'flatpickr/dist/flatpickr.min.css';
+import 'flatpickr/dist/plugins/monthSelect/style.css';
+import monthSelectPlugin from 'flatpickr/dist/plugins/monthSelect';
+import { Russian } from 'flatpickr/dist/l10n/ru';
 
 export default {
+    components: { VueFlatpickr, monthSelectPlugin },
     name: 'LifecycleForm',
     data() {
         return {
+            flatpickrOptions: {
+                dateFormat: 'd.m.Y',
+                plugins: [
+                    new monthSelectPlugin({
+                        shorthand: true,
+                        dateFormat: 'Y-m',
+                    }),
+                ],
+                locale: Russian,
+            },
             forecastIndices: [],
             years: [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026],
             lifecycle: {
@@ -307,8 +342,8 @@ export default {
                 lifecycle_duration: 50,
                 price_year: 2022,
                 design_task_date: '2022-10-01',
-                construction_start_date: '2022-11-01',
-                commissioning_date: '2023-01-01',
+                construction_start_date: '2022-11',
+                commissioning_date: 2023,
                 maintenance_date_1: '2031-01-01',
                 maintenance_date_2: '2039-01-01',
                 maintenance_date_3: '2056-01-01',
@@ -317,8 +352,9 @@ export default {
                 maintenance_date_6: '',*/
                 overhaul_date_1: '2048-01-01',
                 /*overhaul_date_2: '',*/
-                lifecycle_end_date: '2073-01-01',
+                lifecycle_end_date: 2073,
                 // 3. Стоимостные показатели
+                cost_indicators_date: '2022-11-01',
                 construction_cost: 0,
                 maintenance_cost_1: 0,
                 maintenance_cost_2: 0,
@@ -416,6 +452,7 @@ export default {
             }
         },*/
         async loadData() {
+            //console.log(moment('2022-11', 'YYYY-MM').month())
             try {
                 const response = await axios.get("/api/forecast-indices");
 
@@ -434,28 +471,94 @@ export default {
                 this.data[2] = JSON.parse(response1.data.one); // Прогнозные индексы
                 this.data[3] = JSON.parse(test[2].values); // Указы
 
-                let temp = this.data[0].find(item => item.year === 2022);
-                console.log(this.data[1][8]['data'])
+                let temp = this.data[0].find(item => item.year === this.lifecycle.price_year);
 
                 /*if (this.forecastIndices.length > 0) {
                     this.years = Object.keys(this.forecastIndices[0].values);
                 }*/
 
+                console.log(moment(this.lifecycle.construction_start_date, 'YYYY-MM').locale('ru').format('MMMM'));
+
                 let result = [];
                 result['j37'] = (this.lifecycle.living_area * temp.months['Ноябрь'] / 1000).toFixed(3);
 
-                console.log(JSON.parse(this.data[2][0].values)[2022]);
+                //console.log(JSON.parse(this.data[2][0].values)[2022]);
 
-                result['j38'] = (result['j37'] / JSON.parse(this.data[2][10].values)[2022] / JSON.parse(this.data[2][10].values)[2022] /
-                    JSON.parse(this.data[2][10].values)[2022] / JSON.parse(this.data[2][10].values)[2022] / JSON.parse(this.data[2][10].values)[2022] /
-                    JSON.parse(this.data[2][10].values)[2022] / JSON.parse(this.data[2][10].values)[2022] / JSON.parse(this.data[2][10].values)[2022] /
-                    JSON.parse(this.data[2][10].values)[2022] / JSON.parse(this.data[2][10].values)[2022] / JSON.parse(this.data[2][10].values)[2022]).toFixed(3);
+                result['j38'] = (result['j37'] / JSON.parse(this.data[2][0].values)[2022] / JSON.parse(this.data[2][1].values)[2022] /
+                    JSON.parse(this.data[2][2].values)[2022] / JSON.parse(this.data[2][3].values)[2022] / JSON.parse(this.data[2][4].values)[2022] /
+                    JSON.parse(this.data[2][5].values)[2022] / JSON.parse(this.data[2][6].values)[2022] / JSON.parse(this.data[2][7].values)[2022] /
+                    JSON.parse(this.data[2][8].values)[2022] / JSON.parse(this.data[2][9].values)[2022] / JSON.parse(this.data[2][10].values)[2022]).toFixed(3);
 
-                console.log(this.data[3]);
+                // TODO: разобраться с этажностью и материалами стен (какие как соотносить с таблицей)
+                // TODO: Гродно почему из ячейки C15, а не C21?
+                let repair = 0;
+                switch (this.lifecycle.wall_material) {
+                    case 'крупнопанельные':
+                        switch (true) {
+                            case this.lifecycle.floors >= 2 && this.lifecycle.floors <= 3:
+                                break;
+                            case this.lifecycle.floors >= 4 && this.lifecycle.floors <= 5:
+                                break;
+                            case this.lifecycle.floors >= 6 && this.lifecycle.floors <= 10:
+                                repair = this.data[1][8]['data'];
+                                break;
+                            case this.lifecycle.floors === 12:
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case 'мелкоштучные элементы':
+                        switch (true) {
+                            case this.lifecycle.floors >= 2 && this.lifecycle.floors <= 3:
+                                break;
+                            case this.lifecycle.floors >= 4 && this.lifecycle.floors <= 5:
+                                break;
+                            case this.lifecycle.floors >= 6 && this.lifecycle.floors <= 10:
+                                break;
+                            case this.lifecycle.floors === 12:
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case 'каркасные системы':
+                        switch (true) {
+                            case this.lifecycle.floors >= 2 && this.lifecycle.floors <= 3:
+                                break;
+                            case this.lifecycle.floors >= 4 && this.lifecycle.floors <= 5:
+                                break;
+                            case this.lifecycle.floors >= 6 && this.lifecycle.floors <= 10:
+                                break;
+                            case this.lifecycle.floors === 12:
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case 'деревянные':
+                        switch (true) {
+                            case this.lifecycle.floors >= 2 && this.lifecycle.floors <= 3:
+                                break;
+                            case this.lifecycle.floors >= 4 && this.lifecycle.floors <= 5:
+                                break;
+                            case this.lifecycle.floors >= 6 && this.lifecycle.floors <= 10:
+                                break;
+                            case this.lifecycle.floors === 12:
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                }
 
-                result['j39'] = (this.data[1][8]['data'] * JSON.parse(this.data[2][12].values)[2015] * JSON.parse(this.data[2][12].values)[2016] * JSON.parse(this.data[2][12].values)[2017] *
+                result['j39'] = (repair * JSON.parse(this.data[2][12].values)[2015] * JSON.parse(this.data[2][12].values)[2016] * JSON.parse(this.data[2][12].values)[2017] *
                     JSON.parse(this.data[2][12].values)[2018] * JSON.parse(this.data[2][12].values)[2019] * JSON.parse(this.data[2][12].values)[2020] *
                     JSON.parse(this.data[2][12].values)[2021] * JSON.parse(this.data[2][12].values)[2022] * 0.1375 * this.lifecycle.total_area / 10000).toFixed(3);
+
+                /*console.log('Test: ' + repair + ' ' + JSON.parse(this.data[2][12].values)[2015] + ' ' + JSON.parse(this.data[2][12].values)[2016] + ' ' + JSON.parse(this.data[2][12].values)[2017] + ' ' +
+                    JSON.parse(this.data[2][12].values)[2018] + ' ' + JSON.parse(this.data[2][12].values)[2019] + ' ' + JSON.parse(this.data[2][12].values)[2020] + ' ' +
+                    JSON.parse(this.data[2][12].values)[2021] + ' ' + JSON.parse(this.data[2][12].values)[2022] + ' ' + 0.1375 + ' ' + this.lifecycle.total_area + ' ' + 10000);*/
 
                 let coefficient = (this.data[1][1]['data'] / this.data[1][0]['data'] + this.data[1][5]['data'] / this.data[1][4]['data'] +
                     this.data[1][9]['data'] / this.data[1][8]['data'] + this.data[1][13]['data'] / this.data[1][12]['data'] +
@@ -463,6 +566,7 @@ export default {
                     this.data[1][25]['data'] / this.data[1][24]['data'] + this.data[1][29]['data'] / this.data[1][28]['data']) / 8;
 
                 result['j40'] = (result['j39'] * coefficient).toFixed(3);
+
                 result['j41'] = result['j39'];
                 result['j42'] = result['j40'];
 
@@ -486,8 +590,10 @@ export default {
                 result['decree_11'] = (this.data[3][0]['val29'] * this.lifecycle.apartments_count * 12 / 1000).toFixed(2);
 
                 this.lifecycle.construction_cost = result['j37'];
+                this.lifecycle.lifecycle_end_date = this.lifecycle.commissioning_date + this.lifecycle.lifecycle_duration;
 
-                this.final = result['j37'];
+                //console.log(this.lifecycle.construction_start_date);
+
 
             } catch (error) {
                 console.error("Ошибка при загрузке данных:", error);

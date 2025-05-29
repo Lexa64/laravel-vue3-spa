@@ -27,10 +27,12 @@ export default defineConfig({
             '@': path.resolve(__dirname, './resources/js'),
         },
     },
+    // TODO: Разобраться с overlay (flatpickr)
     server: {
         host: true,
         hmr: {
-            host: 'localhost'
+            host: 'localhost',
+            overlay: false
         }
     },
 });
