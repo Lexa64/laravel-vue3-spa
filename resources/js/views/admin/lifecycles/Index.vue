@@ -343,22 +343,100 @@
                 </div>
             </div>
             <div class="container mt-4">
-                <h3 class="mb-3">Результат:</h3>
+                <h3 class="mb-3">Результаты (на основе тарифов):</h3>
                 <table class="table table-bordered">
                     <thead class="table-light">
                     <tr>
-                        <th>Заголовок 1</th>
-                        <th>Заголовок 2</th>
+                        <th>Показатель</th>
+                        <th>Значение</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                        <td>Данные 1.1</td>
-                        <td>Данные 1.2</td>
+                        <td>Вода</td>
+                        <td>{{ final['decree_1'] }}</td>
                     </tr>
                     <tr>
-                        <td>Данные 2.1</td>
-                        <td>Данные 2.2</td>
+                        <td>Канализация</td>
+                        <td>{{ final['decree_2'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Тех. обслуживание</td>
+                        <td>{{ final['decree_3'] }}2</td>
+                    </tr>
+                    <tr>
+                        <td>Тепло</td>
+                        <td>{{ final['decree_4'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>ТКО</td>
+                        <td>{{ final['decree_5'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Лифт</td>
+                        <td>{{ final['decree_6'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Имущество совместного домовладения</td>
+                        <td>{{ final['decree_7'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Газ</td>
+                        <td>{{ final['decree_8'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Электричество (полный тариф)</td>
+                        <td>{{ final['decree_14'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Сан. содержание вспом. помещений</td>
+                        <td>{{ final['decree_15'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Запорно-переговорные устр-ва</td>
+                        <td>{{ final['decree_16'] }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- TODO: почему в таблицах пишется 02 значение, когда с данными что-то не так? -->
+            <div class="container mt-4">
+                <h3 class="mb-3">Результаты (итог):</h3>
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                    <tr>
+                        <th>Показатель</th>
+                        <th>Значение</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Эксплуатация и тех. обслуживание на всём ЖЦ</td>
+                        <td>{{ finalTableData['j109'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Затраты ЖЦ на 50 лет</td>
+                        <td>{{ finalTableData['j111'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Возведение</td>
+                        <td>{{ finalTableData['j113'] }}2</td>
+                    </tr>
+                    <tr>
+                        <td>Текущий ремонт</td>
+                        <td>{{ finalTableData['j114'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Капитальный ремонт</td>
+                        <td>{{ finalTableData['j115'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Эксплуатация</td>
+                        <td>{{ finalTableData['j116'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Снос</td>
+                        <td>{{ finalTableData['j117'] }}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -463,7 +541,7 @@ export default {
                 // Расчет годовых эксплуатационных затрат
                 full_tariffs: true,
             },
-            finalTableData: {
+            final: {
                 decree_1: 0,
                 decree_2: 0,
                 decree_3: 0,
@@ -484,7 +562,15 @@ export default {
             isLoading: false,
             error: null,
             data: null,
-            final: null
+            finalTableData: {
+                j109: 0,
+                j111: 0,
+                j113: 0,
+                j114: 0,
+                j115: 0,
+                j116: 0,
+                j117: 0,
+            }
         };
     },
     async created() {
@@ -814,6 +900,7 @@ export default {
                 console.log(check); // 265.68
                 console.log(this.lifecycle.lifecycle_duration);
                 let operating_costs_throughout_lifecycle = (check * this.lifecycle.lifecycle_duration).toFixed(2);
+                this.finalTableData['j109'] = operating_costs_throughout_lifecycle;
 
 /*              console.log(result['decree_1'] + ' ' +  result['decree_2'] + ' ' +  result['decree_3'] + ' ' +  result['decree_4'] + ' ' +  result['decree_5'] + ' ' +
                     result['decree_6'] + ' ' +  result['decree_7'] + ' ' +  result['decree_8'] + ' ' +  result['decree_9'] + ' ' +  result['decree_10'] + ' ' +  result['decree_11'] + ' ' +
@@ -828,6 +915,7 @@ export default {
 
                 let costs_throughout_lifecycle = (Number(operating_costs_throughout_lifecycle) + Number(result['j37']) + Number(result['j39']) +
                     Number(result['j40']) + Number(result['j41']) + Number(result['j42']) + Number(result['j46']) + Number(result['j48'])).toFixed(2);
+                this.finalTableData['j111'] = costs_throughout_lifecycle;
 
                 console.log(costs_throughout_lifecycle);
 
@@ -841,6 +929,14 @@ export default {
                 this.lifecycle.demolition_cost = result['j48'];
 
                 this.lifecycle.lifecycle_end_date = this.lifecycle.commissioning_date + this.lifecycle.lifecycle_duration;
+                this.final = result;
+
+                this.finalTableData['j113'] = Number(this.final['j37']).toFixed(2);
+                this.finalTableData['j114'] = (Number(this.final['j39']) + Number(this.final['j40']) + Number(this.final['j41']) +
+                    Number(this.final['j42'])).toFixed(2);
+                this.finalTableData['j115'] = this.final['j46'];
+                this.finalTableData['j116'] = this.finalTableData['j109'];
+                this.finalTableData['j117'] = this.final['j48'];
 
                 console.log(result);
             } catch (error) {
@@ -1123,6 +1219,7 @@ export default {
             console.log(check); // 265.68
             console.log(this.lifecycle.lifecycle_duration);
             let operating_costs_throughout_lifecycle = (check * this.lifecycle.lifecycle_duration).toFixed(2);
+            this.finalTableData['j109'] = operating_costs_throughout_lifecycle;
 
             /*console.log(this.final['decree_1'] + ' ' +  this.final['decree_2'] + ' ' +  this.final['decree_3'] + ' ' +  this.final['decree_4'] + ' ' +  this.final['decree_5'] + ' ' +
                 this.final['decree_6'] + ' ' +  this.final['decree_7'] + ' ' +  this.final['decree_8'] + ' ' +  this.final['decree_9'] + ' ' +  this.final['decree_10'] + ' ' +  this.final['decree_11'] + ' ' +
@@ -1137,6 +1234,7 @@ export default {
 
             let costs_throughout_lifecycle = (Number(operating_costs_throughout_lifecycle) + Number(this.final['j37']) + Number(this.final['j39']) +
                 Number(this.final['j40']) + Number(this.final['j41']) + Number(this.final['j42']) + Number(this.final['j46']) + Number(this.final['j48'])).toFixed(2);
+            this.finalTableData['j111'] = costs_throughout_lifecycle;
 
             console.log(costs_throughout_lifecycle);
 
@@ -1146,10 +1244,14 @@ export default {
             this.lifecycle.construction_cost = this.final['j37'];
             this.lifecycle.construction_cost = this.final['j37'];
 
-
-
-
             this.lifecycle.lifecycle_end_date = this.lifecycle.commissioning_date + this.lifecycle.lifecycle_duration;
+
+            this.finalTableData['j113'] = Number(this.final['j37']).toFixed(2);
+            this.finalTableData['j114'] = (Number(this.final['j39']) + Number(this.final['j40']) + Number(this.final['j41']) +
+                Number(this.final['j42'])).toFixed(2);
+            this.finalTableData['j115'] = this.final['j46'];
+            this.finalTableData['j116'] = this.finalTableData['j109'];
+            this.finalTableData['j117'] = this.final['j48'];
 
             console.log(this.final);
         },
