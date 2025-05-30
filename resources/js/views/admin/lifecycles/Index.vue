@@ -96,6 +96,36 @@
                             <label class="form-check-label">Есть</label>
                         </div>
                     </div>
+
+                    <!-- TODO: эти приборы нужно указывать? Иначе расчёты по указам хз как делать -->
+                    <div class="col-md-4">
+                        <label class="form-label">1.15 Приборы учёта расхода газа</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" v-model="lifecycle.has_gas_flow_meters">
+                            <label class="form-check-label">Есть</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">1.16 Индивидуальные газовые отопительные приборы</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" v-model="lifecycle.has_gas_heating_appliances">
+                            <label class="form-check-label">Есть</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">1.17 Эл. энергия используется для нужд отопления, отопления и гор. водоснабжения</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" v-model="lifecycle.electricity_is_used_for_heating">
+                            <label class="form-check-label">Да</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">1.18 Прибор для учёта расхода эл. энергии на отопление, отопление и гор. водоснабжение</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" v-model="lifecycle.has_electricity_consumption_meter">
+                            <label class="form-check-label">Есть</label>
+                        </div>
+                    </div>
                 </div>
                 <!-- 2. Контрольные события -->
                 <h3 class="mt-4">2. Контрольные события</h3>
@@ -182,44 +212,48 @@
                         <input type="date" class="form-control" v-model="lifecycle.cost_indicators_date">
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">3.1 Стоимость строительства (тыс. руб.)</label>
-                        <input type="number" step="0.01" class="form-control" v-model="lifecycle.construction_cost">
+                        <label class="form-label">3.1 Стоимость строительства с учётом продолжительности строительства (тыс. руб.)</label>
+                        <input type="number" step="0.001" class="form-control" v-model="lifecycle.construction_cost">
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">3.2 Стоимость текущего ремонта 1 (тыс. руб.)</label>
-                        <input type="number" step="0.01" class="form-control" v-model="lifecycle.maintenance_cost_1">
+                        <label class="form-label">3.2 Стоимость строительства на дату расчётов (тыс. руб.)</label>
+                        <input type="number" step="0.001" class="form-control" v-model="lifecycle.construction_cost_date">
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">3.3 Стоимость текущего ремонта 2 (тыс. руб.)</label>
-                        <input type="number" step="0.01" class="form-control" v-model="lifecycle.maintenance_cost_2">
+                        <label class="form-label">3.3 Стоимость текущего ремонта 1 (тыс. руб.)</label>
+                        <input type="number" step="0.001" class="form-control" v-model="lifecycle.maintenance_cost_1">
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">3.4 Стоимость текущего ремонта 3 (тыс. руб.)</label>
-                        <input type="number" step="0.01" class="form-control" v-model="lifecycle.maintenance_cost_3">
+                        <label class="form-label">3.4 Стоимость текущего ремонта 2 (тыс. руб.)</label>
+                        <input type="number" step="0.001" class="form-control" v-model="lifecycle.maintenance_cost_2">
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">3.5 Стоимость текущего ремонта 4 (тыс. руб.)</label>
-                        <input type="number" step="0.01" class="form-control" v-model="lifecycle.maintenance_cost_4">
+                        <label class="form-label">3.5 Стоимость текущего ремонта 3 (тыс. руб.)</label>
+                        <input type="number" step="0.001" class="form-control" v-model="lifecycle.maintenance_cost_3">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">3.6 Стоимость текущего ремонта 4 (тыс. руб.)</label>
+                        <input type="number" step="0.001" class="form-control" v-model="lifecycle.maintenance_cost_4">
                     </div>
 <!--                    <div class="col-md-6">
-                        <label class="form-label">3.6 Стоимость текущего ремонта 5 (тыс. руб.)</label>
+                        <label class="form-label">3.7 Стоимость текущего ремонта 5 (тыс. руб.)</label>
                         <input type="number" step="0.01" class="form-control" v-model="lifecycle.maintenance_cost_5">
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">3.7 Стоимость текущего ремонта 6 (тыс. руб.)</label>
+                        <label class="form-label">3.8 Стоимость текущего ремонта 6 (тыс. руб.)</label>
                         <input type="number" step="0.01" class="form-control" v-model="lifecycle.maintenance_cost_6">
                     </div>-->
                     <div class="col-md-6">
-                        <label class="form-label">3.8 Стоимость капитального ремонта 1 (тыс. руб.)</label>
-                        <input type="number" step="0.01" class="form-control" v-model="lifecycle.overhaul_cost_1">
+                        <label class="form-label">3.9 Стоимость капитального ремонта 1 (тыс. руб.)</label>
+                        <input type="number" step="0.001" class="form-control" v-model="lifecycle.overhaul_cost_1">
                     </div>
 <!--                    <div class="col-md-6">
-                        <label class="form-label">3.9 Стоимость капитального ремонта 2 (тыс. руб.)</label>
+                        <label class="form-label">3.10 Стоимость капитального ремонта 2 (тыс. руб.)</label>
                         <input type="number" step="0.01" class="form-control" v-model="lifecycle.overhaul_cost_2">
                     </div>-->
                     <div class="col-md-6">
-                        <label class="form-label">3.10 Стоимость сноса (тыс. руб.)</label>
-                        <input type="number" step="0.01" class="form-control" v-model="lifecycle.demolition_cost">
+                        <label class="form-label">3.11 Стоимость сноса (тыс. руб.)</label>
+                        <input type="number" step="0.001" class="form-control" v-model="lifecycle.demolition_cost">
                     </div>
                 </div>
                 <!-- 4. Эксплуатационные ресурсы -->
@@ -231,65 +265,105 @@
                     </div>-->
                     <div class="col-md-6">
                         <label class="form-label">4.1.1 Электроэнергия на освещение вспомогательных помещений (кВт*ч)</label>
-                        <input type="number" step="0.01" class="form-control" v-model="lifecycle.auxiliary_electricity">
+                        <input type="number" min="0" step="0.01" class="form-control" v-model="lifecycle.auxiliary_electricity">
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">4.1.2 Электроэнергия на работу лифта (кВт*ч)</label>
-                        <input type="number" step="0.01" class="form-control" v-model="lifecycle.elevator_electricity">
+                        <input type="number" min="0" step="0.01" class="form-control" v-model="lifecycle.elevator_electricity">
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">4.1.3 Электроэнергия, потребляемая домохозяйствами (кВт*ч)</label>
-                        <input type="number" step="0.01" class="form-control" v-model="lifecycle.household_electricity">
+                        <input type="number" min="0" step="0.01" class="form-control" v-model="lifecycle.household_electricity">
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">4.1.4 Электроэнергия на отопление (кВт*ч)</label>
-                        <input type="number" step="0.01" class="form-control" v-model="lifecycle.heating_electricity">
+                        <input type="number" min="0" step="0.01" class="form-control" v-model="lifecycle.heating_electricity">
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">4.2 Потребление природного газа (куб. метр)</label>
-                        <input type="number" step="0.01" class="form-control" v-model="lifecycle.natural_gas">
+                        <input type="number" min="0" step="0.01" class="form-control" v-model="lifecycle.natural_gas">
                     </div>
                     <div class="col-12">
                         <label class="form-label">4.3 Тепловая энергия, всего (Гкал)</label>
-                        <input type="number" step="0.01" class="form-control" v-model="lifecycle.total_thermal_energy">
+                        <input type="number" min="0" step="0.01" class="form-control" v-model="lifecycle.total_thermal_energy">
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">4.3.1 Теплоснабжение (отопление) (Гкал)</label>
-                        <input type="number" step="0.01" class="form-control" v-model="lifecycle.heating_thermal_energy">
+                        <input type="number" min="0" step="0.01" class="form-control" v-model="lifecycle.heating_thermal_energy">
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">4.3.2 Горячее водоснабжение (Гкал)</label>
-                        <input type="number" step="0.01" class="form-control" v-model="lifecycle.hot_water_thermal_energy">
+                        <input type="number" min="0" step="0.01" class="form-control" v-model="lifecycle.hot_water_thermal_energy">
                     </div>
                     <div class="col-12">
                         <label class="form-label">4.4 Вода, всего (куб. метр)</label>
-                        <input type="number" step="0.01" class="form-control" v-model="lifecycle.total_water">
+                        <input type="number" min="0" step="0.01" class="form-control" v-model="lifecycle.total_water">
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">4.4.1 Холодная вода (куб. метр)</label>
-                        <input type="number" step="0.01" class="form-control" v-model="lifecycle.cold_water">
+                        <input type="number" min="0" step="0.01" class="form-control" v-model="lifecycle.cold_water">
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">4.4.2 Горячая вода (куб. метр)</label>
-                        <input type="number" step="0.01" class="form-control" v-model="lifecycle.hot_water">
+                        <input type="number" min="0" step="0.01" class="form-control" v-model="lifecycle.hot_water">
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">4.5 Водоотведение (канализация) (куб. метр)</label>
                         <input type="number" step="0.01" class="form-control" v-model="lifecycle.sewage">
                     </div>
+                    <!-- TODO: перепроверить ввод (например, можно ввести минус в конце и получить по итогу 0) -->
                     <div class="col-md-6">
                         <label class="form-label">4.6 Обращение с твердыми коммунальными отходами (куб. метр)</label>
-                        <input type="number" step="0.01" class="form-control" v-model="lifecycle.solid_waste">
+                        <input
+                            type="number"
+                            min="0"
+                            step="0.01"
+                            class="form-control"
+                            v-model="lifecycle.solid_waste"
+                            oninput="this.value = Math.abs(this.value)"
+                        >
                     </div>
                 </div>
                 <div class="row mt-4">
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary">Сохранить</button>
-<!--                        <button @click="calculate" class="btn btn-primary" style="margin-left: 20px;">Рассчитать</button>-->
+<!--                        <button type="submit" class="btn btn-primary">Сохранить</button>-->
                     </div>
                 </div>
+                <div class="col-12">
+                    <label class="form-label">Расчет годовых эксплуатационных затрат, тыс. руб. (полное возмещение затрат)</label>
+                    <select class="form-select" v-model="lifecycle.full_tariffs">
+                        <option value=true>Да</option>
+                        <option value=false>Нет</option>
+                    </select>
+                </div>
             </form>
-            <h2 v-if="lifecycle.construction_cost!==null">Расчётная стоимость: {{ (lifecycle.construction_cost * 108).toFixed(2) }}</h2>
+            <div class="row mt-4">
+                <div class="col-12">
+                    <button @click="calculate" class="btn btn-primary" style="margin-left: 20px;">Рассчитать</button>
+                </div>
+            </div>
+            <div class="container mt-4">
+                <h3 class="mb-3">Результат:</h3>
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                    <tr>
+                        <th>Заголовок 1</th>
+                        <th>Заголовок 2</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Данные 1.1</td>
+                        <td>Данные 1.2</td>
+                    </tr>
+                    <tr>
+                        <td>Данные 2.1</td>
+                        <td>Данные 2.2</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+<!--            <h2 v-if="lifecycle.construction_cost!==null">Расчётная стоимость: {{ (lifecycle.construction_cost * 108).toFixed(2) }}</h2>-->
         </div>
     </div>
 </template>
@@ -301,6 +375,7 @@ import 'moment/dist/locale/ru';
 import VueFlatpickr from 'vue-flatpickr-component';
 import 'flatpickr/dist/flatpickr.min.css';
 import 'flatpickr/dist/plugins/monthSelect/style.css';
+// TODO: может быть нужно установить monthSelect через npm?
 import monthSelectPlugin from 'flatpickr/dist/plugins/monthSelect';
 import { Russian } from 'flatpickr/dist/l10n/ru';
 
@@ -338,6 +413,10 @@ export default {
                 has_garbage_chute: true,
                 has_elevator: true,
                 has_intercom: true,
+                has_gas_flow_meters: true,
+                has_gas_heating_appliances: true,
+                electricity_is_used_for_heating: true,
+                has_electricity_consumption_meter: true,
                 // 2. Контрольные события
                 lifecycle_duration: 50,
                 price_year: 2022,
@@ -356,6 +435,7 @@ export default {
                 // 3. Стоимостные показатели
                 cost_indicators_date: '2022-11-01',
                 construction_cost: 0,
+                construction_cost_date: 0,
                 maintenance_cost_1: 0,
                 maintenance_cost_2: 0,
                 maintenance_cost_3: 0,
@@ -379,7 +459,27 @@ export default {
                 cold_water: 5470.54,
                 hot_water: 3982.47,
                 sewage: 9453.01,
-                solid_waste: 635.16
+                solid_waste: 635.16,
+                // Расчет годовых эксплуатационных затрат
+                full_tariffs: true,
+            },
+            finalTableData: {
+                decree_1: 0,
+                decree_2: 0,
+                decree_3: 0,
+                decree_4: 0,
+                decree_5: 0,
+                decree_6: 0,
+                decree_7: 0,
+                decree_8: 0,
+                decree_9: 0,
+                decree_10: 0,
+                decree_11: 0,
+                decree_12: 0,
+                decree_13: 0,
+                decree_14: 0,
+                decree_15: 0,
+                decree_16: 0,
             },
             isLoading: false,
             error: null,
@@ -642,25 +742,107 @@ export default {
 
                 result['j48'] = (result['j37'] / 2 * 0.3).toFixed(3);
 
-                result['decree_1'] = (this.data[3][0]['val2'] * this.lifecycle.total_water / 1000).toFixed(2);
-                result['decree_2'] = (this.data[3][0]['val4'] * this.lifecycle.sewage / 1000).toFixed(2);
-                result['decree_3'] = (this.data[3][0]['val6'] * this.lifecycle.living_area / 1000 * 12).toFixed(2);
-                result['decree_4'] = (this.data[3][0]['val8'] * this.lifecycle.total_thermal_energy / 1000).toFixed(2);
-                result['decree_5'] = (this.data[3][0]['val11'] * this.lifecycle.solid_waste / 1000).toFixed(2);
-                result['decree_6'] = (this.data[3][0]['val14'] * this.lifecycle.total_area * 12 / 1000).toFixed(2);
-                result['decree_7'] = (this.data[3][0]['val15'] * this.lifecycle.living_area / 1000 * 12).toFixed(2);
-                result['decree_8'] = (this.data[3][0]['val18'] * this.lifecycle.natural_gas / 1000).toFixed(2);
-                result['decree_9'] = (this.data[3][0]['val26'] * (this.lifecycle.auxiliary_electricity + this.lifecycle.elevator_electricity +
-                    this.lifecycle.household_electricity + this.lifecycle.heating_electricity) / 1000).toFixed(2);
-                result['decree_10'] = (this.data[3][0]['val27'] * this.lifecycle.living_area * 12 / 1000).toFixed(2);
-                result['decree_11'] = (this.data[3][0]['val29'] * this.lifecycle.apartments_count * 12 / 1000).toFixed(2);
+                let decree = this.data[3].find(item => item.year === this.lifecycle.price_year);
+                //this.lifecycle.full_tariffs = false;
+
+                result['decree_1'] = (decree[this.lifecycle.full_tariffs ? 'val2' : 'val1'] * this.lifecycle.total_water / 1000).toFixed(2);
+                result['decree_2'] = (decree[this.lifecycle.full_tariffs ? 'val4' : 'val3'] * this.lifecycle.sewage / 1000).toFixed(2);
+                result['decree_3'] = (decree[this.lifecycle.full_tariffs ? 'val6' : 'val5'] * this.lifecycle.living_area / 1000 * 12).toFixed(2);
+                result['decree_4'] = (decree[this.lifecycle.full_tariffs ? 'val8' : 'val7'] * this.lifecycle.total_thermal_energy / 1000).toFixed(2);
+
+                result['decree_5'] = this.lifecycle.has_garbage_chute ?
+                    decree[this.lifecycle.full_tariffs ? 'val11' : 'val9'] :
+                    decree[this.lifecycle.full_tariffs ? 'val12' : 'val10'];
+                result['decree_5'] = (result['decree_5'] * this.lifecycle.solid_waste / 1000).toFixed(2);
+
+                // TODO: а что делать, если лифта нет?
+                if (this.lifecycle.has_elevator) {
+                    result['decree_6'] = (decree[this.lifecycle.full_tariffs ? 'val14' : 'val15'] * this.lifecycle.total_area * 12 / 1000).toFixed(2);
+                } else {
+                    result['decree_6'] = 0;
+                }
+
+                result['decree_7'] = (decree['val15'] * this.lifecycle.living_area / 1000 * 12).toFixed(2);
+
+                // TODO: Странно, что при полном тарифе не важно, установлены ли отопительные приборы
+                if (this.lifecycle.has_gas_flow_meters) {
+                    if (this.lifecycle.full_tariffs) {
+                        result['decree_8'] = decree['val18'];
+                    } else {
+                        this.lifecycle.has_gas_heating_appliances ? result['decree_8'] = decree['val16'] : result['decree_8'] = decree['val17'];
+                    }
+
+                    result['decree_8'] = (result['decree_8'] * this.lifecycle.natural_gas / 1000).toFixed(2);
+                } else {
+                    result['decree_8'] = 1;
+                }
+
+                // TODO: это если используются полные тарифы. а если нет?
+                if (this.lifecycle.full_tariffs) {
+                    result['decree_14'] = (decree['val26'] * (this.lifecycle.auxiliary_electricity + this.lifecycle.elevator_electricity +
+                        this.lifecycle.household_electricity) / 1000).toFixed(2);
+
+                    // TODO: это временная шняга
+                    result['decree_9'] = 0;
+                    result['decree_10'] = 0;
+                    result['decree_11'] = 0;
+                    result['decree_12'] = 0;
+                    result['decree_13'] = 0;
+                } else {
+                    if (this.lifecycle.cooking_plates === 'электрические') {
+                        result['decree_9'] = 0; // Это электруха для эл. плит: val19
+
+                        // this.lifecycle.has_electricity_consumption_meter
+                        result['decree_10'] = 0; // Это электруха для эл. плит, если нет приборов учёта: val20, если есть приборы учёта: val21
+                    }
+
+                    result['decree_11'] = 0; // Освещение помещений и оборудования, за исключением лифта: области - val22, Минск - val23
+
+                    result['decree_12'] = 0; // Лифт: val24
+                    result['decree_13'] = 0; // Все остальные случаи: val25
+                }
+
+                result['decree_15'] = (decree[this.lifecycle.region !== 'минск' ? 'val27' : 'val28'] * this.lifecycle.living_area * 12 / 1000).toFixed(2);
+                result['decree_16'] = this.lifecycle.has_intercom ? (decree['val29'] * this.lifecycle.apartments_count * 12 / 1000).toFixed(2) : '';
+
+                let check = 0;
+                for (let i = 1; i <= 16; i++) {
+                    const key = `decree_${i}`; // Формируем ключ: decree_1, decree_2, ..., decree_16
+                    check += Number(result[key]) || 0; // Прибавляем значение (если не число → 0)
+                }
+
+                console.log(check); // 265.68
+                console.log(this.lifecycle.lifecycle_duration);
+                let operating_costs_throughout_lifecycle = (check * this.lifecycle.lifecycle_duration).toFixed(2);
+
+/*              console.log(result['decree_1'] + ' ' +  result['decree_2'] + ' ' +  result['decree_3'] + ' ' +  result['decree_4'] + ' ' +  result['decree_5'] + ' ' +
+                    result['decree_6'] + ' ' +  result['decree_7'] + ' ' +  result['decree_8'] + ' ' +  result['decree_9'] + ' ' +  result['decree_10'] + ' ' +  result['decree_11'] + ' ' +
+                    result['decree_12'] + ' ' +  result['decree_13'] + ' ' +  result['decree_14'] + ' ' +  result['decree_15'] + ' ' +  result['decree_16']);*/
+
+
+                /*let check = result['decree_1'] + result['decree_2'] + result['decree_3'] + result['decree_4'] + result['decree_5'] +
+                    result['decree_6'] + result['decree_7'] + result['decree_8'] + result['decree_9'] + result['decree_10'] + result['decree_11'] +
+                    result['decree_12'] + result['decree_13'] + result['decree_14'] + result['decree_15'] + result['decree_16'];*/
+
+                console.log(operating_costs_throughout_lifecycle);
+
+                let costs_throughout_lifecycle = (Number(operating_costs_throughout_lifecycle) + Number(result['j37']) + Number(result['j39']) +
+                    Number(result['j40']) + Number(result['j41']) + Number(result['j42']) + Number(result['j46']) + Number(result['j48'])).toFixed(2);
+
+                console.log(costs_throughout_lifecycle);
 
                 this.lifecycle.construction_cost = result['j37'];
+                this.lifecycle.construction_cost_date  = result['j38'];
+                this.lifecycle.maintenance_cost_1  = result['j39'];
+                this.lifecycle.maintenance_cost_2  = result['j40'];
+                this.lifecycle.maintenance_cost_3  = result['j41'];
+                this.lifecycle.maintenance_cost_4  = result['j42'];
+                this.lifecycle.overhaul_cost_1 = result['j46'];
+                this.lifecycle.demolition_cost = result['j48'];
+
                 this.lifecycle.lifecycle_end_date = this.lifecycle.commissioning_date + this.lifecycle.lifecycle_duration;
 
                 console.log(result);
-
-
             } catch (error) {
                 console.error("Ошибка при загрузке данных:", error);
             }
@@ -687,8 +869,289 @@ export default {
                 console.error("Ошибка при удалении данных:", error);
             }
         },
-        calculate() {
-            console.log(this.lifecycle.living_area)
+        async calculate() {
+            const response1 = await axios.post("/api/lifecycle/calculate");
+
+            this.data = []
+
+            let test = JSON.parse(response1.data.two);
+            this.data[0] = JSON.parse(test[0].values); // Предельная стоимость
+            this.data[1] = JSON.parse(test[1].values); // Ремонт и модернизация
+            this.data[2] = JSON.parse(response1.data.one); // Прогнозные индексы
+            this.data[3] = JSON.parse(test[2].values); // Указы
+
+            let temp = this.data[0].find(item => item.year === this.lifecycle.price_year);
+
+            /*if (this.forecastIndices.length > 0) {
+                this.years = Object.keys(this.forecastIndices[0].values);
+            }*/
+
+            let month = moment(this.lifecycle.construction_start_date, 'YYYY-MM').locale('ru').format('MMMM');
+
+            this.final['j37'] = (this.lifecycle.living_area * temp.months[month[0].toUpperCase() + month.slice(1)] / 1000).toFixed(3);
+
+            this.final['j38'] = this.final['j37'];
+
+            for (let i = 0; i < moment(this.lifecycle.construction_start_date, 'YYYY-MM').month() + 1; i++) {
+                this.final['j38'] = this.final['j38'] / JSON.parse(this.data[2][i].values)[this.lifecycle.price_year];
+            }
+
+            this.final['j38'] = this.final['j38'].toFixed(3);
+
+            /*this.final['j38'] = (this.final['j37'] / JSON.parse(this.data[2][0].values)[this.lifecycle.price_year] /
+                JSON.parse(this.data[2][1].values)[this.lifecycle.price_year] /
+                JSON.parse(this.data[2][2].values)[this.lifecycle.price_year] /
+                JSON.parse(this.data[2][3].values)[this.lifecycle.price_year] /
+                JSON.parse(this.data[2][4].values)[this.lifecycle.price_year] /
+                JSON.parse(this.data[2][5].values)[this.lifecycle.price_year] /
+                JSON.parse(this.data[2][6].values)[this.lifecycle.price_year] /
+                JSON.parse(this.data[2][7].values)[this.lifecycle.price_year] /
+                JSON.parse(this.data[2][8].values)[this.lifecycle.price_year] /
+                JSON.parse(this.data[2][9].values)[this.lifecycle.price_year] /
+                JSON.parse(this.data[2][10].values)[this.lifecycle.price_year]).toFixed(3);*/
+
+            //console.log(this.data[1]);
+
+            // TODO: разобраться с этажностью и материалами стен (какие как соотносить с таблицей)
+            // TODO: Гродно почему из ячейки C15, а не C21?
+            let repair = 0;
+            switch (this.lifecycle.wall_material) {
+                case 'крупнопанельные':
+                    switch (true) {
+                        case this.lifecycle.floors >= 2 && this.lifecycle.floors <= 3:
+                            repair = this.data[1][0]['data'];
+                            break;
+                        case this.lifecycle.floors >= 4 && this.lifecycle.floors <= 5:
+                            repair = this.data[1][4]['data'];
+                            break;
+                        case this.lifecycle.floors >= 6 && this.lifecycle.floors <= 10:
+                            repair = this.data[1][8]['data'];
+                            break;
+                        case this.lifecycle.floors === 12:
+                            repair = this.data[1][12]['data'];
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case 'мелкоштучные элементы':
+                    switch (true) {
+                        case this.lifecycle.floors >= 2 && this.lifecycle.floors <= 3:
+                            repair = this.data[1][0]['data'];
+                            break;
+                        case this.lifecycle.floors >= 4 && this.lifecycle.floors <= 5:
+                            repair = this.data[1][4]['data'];
+                            break;
+                        case this.lifecycle.floors >= 6 && this.lifecycle.floors <= 10:
+                            repair = this.data[1][8]['data'];
+                            break;
+                        case this.lifecycle.floors === 12:
+                            repair = this.data[1][12]['data'];
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case 'каркасные системы':
+                    switch (true) {
+                        case this.lifecycle.floors >= 2 && this.lifecycle.floors <= 3:
+                            repair = this.data[1][16]['data'];
+                            break;
+                        case this.lifecycle.floors >= 4 && this.lifecycle.floors <= 5:
+                            repair = this.data[1][20]['data'];
+                            break;
+                        case this.lifecycle.floors >= 6 && this.lifecycle.floors <= 10:
+                            repair = this.data[1][24]['data'];
+                            break;
+                        case this.lifecycle.floors === 12:
+                            repair = this.data[1][28]['data'];
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case 'деревянные':
+                    // TODO: что делать с деревянными?
+                    switch (true) {
+                        case this.lifecycle.floors >= 2 && this.lifecycle.floors <= 3:
+                            //repair = this.data[1][0]['data'];
+                            break;
+                        case this.lifecycle.floors >= 4 && this.lifecycle.floors <= 5:
+                            //repair = this.data[1][0]['data'];
+                            break;
+                        case this.lifecycle.floors >= 6 && this.lifecycle.floors <= 10:
+                            //repair = this.data[1][0]['data'];
+                            break;
+                        case this.lifecycle.floors === 12:
+                            //repair = this.data[1][0]['data'];
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+            }
+
+            this.final['j39'] = repair;
+            //console.log(JSON.parse(this.data[2][12].values))
+
+            // TODO: это всегда минус 7 лет, или от балды?
+            for (let i = this.lifecycle.price_year - 7; i < this.lifecycle.price_year + 1; i++) {
+                // TODO: а что делать, если в базе нет?
+                if (JSON.parse(this.data[2][12].values)[i] !== undefined) {
+                    this.final['j39'] = this.final['j39'] * JSON.parse(this.data[2][12].values)[i];
+                }
+            }
+
+            // TODO: 0.1375: меняется ли когда-нибудь, или постоянное число будет?
+            this.final['j39'] = (this.final['j39'] * 0.1375 * this.lifecycle.total_area / 10000).toFixed(3);
+
+            /*this.final['j39'] = (repair * JSON.parse(this.data[2][12].values)[2015] *
+                JSON.parse(this.data[2][12].values)[2016] *
+                JSON.parse(this.data[2][12].values)[2017] *
+                JSON.parse(this.data[2][12].values)[2018] *
+                JSON.parse(this.data[2][12].values)[2019] *
+                JSON.parse(this.data[2][12].values)[2020] *
+                JSON.parse(this.data[2][12].values)[2021] *
+                JSON.parse(this.data[2][12].values)[2022] *
+                0.1375 * this.lifecycle.total_area / 10000
+            ).toFixed(3);*/
+
+            let coefficient = (this.data[1][1]['data'] / this.data[1][0]['data'] + this.data[1][5]['data'] / this.data[1][4]['data'] +
+                this.data[1][9]['data'] / this.data[1][8]['data'] + this.data[1][13]['data'] / this.data[1][12]['data'] +
+                this.data[1][17]['data'] / this.data[1][16]['data'] + this.data[1][21]['data'] / this.data[1][20]['data'] +
+                this.data[1][25]['data'] / this.data[1][24]['data'] + this.data[1][29]['data'] / this.data[1][28]['data']) / 8;
+
+            this.final['j40'] = (this.final['j39'] * coefficient).toFixed(3);
+
+            this.final['j41'] = this.final['j39'];
+            this.final['j42'] = this.final['j40'];
+
+            this.final['j46'] = repair;
+
+            // TODO: это всегда минус 7 лет, или от балды?
+            for (let i = this.lifecycle.price_year - 7; i < this.lifecycle.price_year + 1; i++) {
+                // TODO: а что делать, если в базе нет?
+                if (JSON.parse(this.data[2][12].values)[i] !== undefined) {
+                    this.final['j46'] = this.final['j46'] * JSON.parse(this.data[2][12].values)[i];
+                }
+            }
+
+            this.final['j46'] = (this.final['j46'] * this.lifecycle.total_area / 10000).toFixed(3);
+
+            /*this.final['j46'] = (repair * JSON.parse(this.data[2][12].values)[2015] *
+                JSON.parse(this.data[2][12].values)[2016] *
+                JSON.parse(this.data[2][12].values)[2017] *
+                JSON.parse(this.data[2][12].values)[2018] *
+                JSON.parse(this.data[2][12].values)[2019] *
+                JSON.parse(this.data[2][12].values)[2020] *
+                JSON.parse(this.data[2][12].values)[2021] *
+                JSON.parse(this.data[2][12].values)[2022] *
+                this.lifecycle.total_area / 10000
+            ).toFixed(3);*/
+
+            this.final['j48'] = (this.final['j37'] / 2 * 0.3).toFixed(3);
+
+            let decree = this.data[3].find(item => item.year === this.lifecycle.price_year);
+            //this.lifecycle.full_tariffs = false;
+
+            this.final['decree_1'] = (decree[this.lifecycle.full_tariffs ? 'val2' : 'val1'] * this.lifecycle.total_water / 1000).toFixed(2);
+            this.final['decree_2'] = (decree[this.lifecycle.full_tariffs ? 'val4' : 'val3'] * this.lifecycle.sewage / 1000).toFixed(2);
+            this.final['decree_3'] = (decree[this.lifecycle.full_tariffs ? 'val6' : 'val5'] * this.lifecycle.living_area / 1000 * 12).toFixed(2);
+            this.final['decree_4'] = (decree[this.lifecycle.full_tariffs ? 'val8' : 'val7'] * this.lifecycle.total_thermal_energy / 1000).toFixed(2);
+
+            this.final['decree_5'] = this.lifecycle.has_garbage_chute ?
+                decree[this.lifecycle.full_tariffs ? 'val11' : 'val9'] :
+                decree[this.lifecycle.full_tariffs ? 'val12' : 'val10'];
+            this.final['decree_5'] = (this.final['decree_5'] * this.lifecycle.solid_waste / 1000).toFixed(2);
+
+            // TODO: а что делать, если лифта нет?
+            if (this.lifecycle.has_elevator) {
+                this.final['decree_6'] = (decree[this.lifecycle.full_tariffs ? 'val14' : 'val15'] * this.lifecycle.total_area * 12 / 1000).toFixed(2);
+            } else {
+                this.final['decree_6'] = 0;
+            }
+
+            this.final['decree_7'] = (decree['val15'] * this.lifecycle.living_area / 1000 * 12).toFixed(2);
+
+            // TODO: Странно, что при полном тарифе не важно, установлены ли отопительные приборы
+            if (this.lifecycle.has_gas_flow_meters) {
+                if (this.lifecycle.full_tariffs) {
+                    this.final['decree_8'] = decree['val18'];
+                } else {
+                    this.lifecycle.has_gas_heating_appliances ? this.final['decree_8'] = decree['val16'] : this.final['decree_8'] = decree['val17'];
+                }
+
+                this.final['decree_8'] = (this.final['decree_8'] * this.lifecycle.natural_gas / 1000).toFixed(2);
+            } else {
+                this.final['decree_8'] = 1;
+            }
+
+            // TODO: это если используются полные тарифы. а если нет?
+            if (this.lifecycle.full_tariffs) {
+                this.final['decree_14'] = (decree['val26'] * (this.lifecycle.auxiliary_electricity + this.lifecycle.elevator_electricity +
+                    this.lifecycle.household_electricity) / 1000).toFixed(2);
+
+                // TODO: это временная шняга
+                this.final['decree_9'] = 0;
+                this.final['decree_10'] = 0;
+                this.final['decree_11'] = 0;
+                this.final['decree_12'] = 0;
+                this.final['decree_13'] = 0;
+            } else {
+                if (this.lifecycle.cooking_plates === 'электрические') {
+                    this.final['decree_9'] = 0; // Это электруха для эл. плит: val19
+
+                    // this.lifecycle.has_electricity_consumption_meter
+                    this.final['decree_10'] = 0; // Это электруха для эл. плит, если нет приборов учёта: val20, если есть приборы учёта: val21
+                }
+
+                this.final['decree_11'] = 0; // Освещение помещений и оборудования, за исключением лифта: области - val22, Минск - val23
+
+                this.final['decree_12'] = 0; // Лифт: val24
+                this.final['decree_13'] = 0; // Все остальные случаи: val25
+            }
+
+            this.final['decree_15'] = (decree[this.lifecycle.region !== 'минск' ? 'val27' : 'val28'] * this.lifecycle.living_area * 12 / 1000).toFixed(2);
+            this.final['decree_16'] = this.lifecycle.has_intercom ? (decree['val29'] * this.lifecycle.apartments_count * 12 / 1000).toFixed(2) : '';
+
+            let check = 0;
+            for (let i = 1; i <= 16; i++) {
+                const key = `decree_${i}`; // Формируем ключ: decree_1, decree_2, ..., decree_16
+                check += Number(this.final[key]) || 0; // Прибавляем значение (если не число → 0)
+            }
+
+            console.log(check); // 265.68
+            console.log(this.lifecycle.lifecycle_duration);
+            let operating_costs_throughout_lifecycle = (check * this.lifecycle.lifecycle_duration).toFixed(2);
+
+            /*console.log(this.final['decree_1'] + ' ' +  this.final['decree_2'] + ' ' +  this.final['decree_3'] + ' ' +  this.final['decree_4'] + ' ' +  this.final['decree_5'] + ' ' +
+                this.final['decree_6'] + ' ' +  this.final['decree_7'] + ' ' +  this.final['decree_8'] + ' ' +  this.final['decree_9'] + ' ' +  this.final['decree_10'] + ' ' +  this.final['decree_11'] + ' ' +
+                this.final['decree_12'] + ' ' +  this.final['decree_13'] + ' ' +  this.final['decree_14'] + ' ' +  this.final['decree_15'] + ' ' +  this.final['decree_16']);*/
+
+
+            /*let check = this.final['decree_1'] + this.final['decree_2'] + this.final['decree_3'] + this.final['decree_4'] + this.final['decree_5'] +
+                this.final['decree_6'] + this.final['decree_7'] + this.final['decree_8'] + this.final['decree_9'] + this.final['decree_10'] + this.final['decree_11'] +
+                this.final['decree_12'] + this.final['decree_13'] + this.final['decree_14'] + this.final['decree_15'] + this.final['decree_16'];*/
+
+            console.log(operating_costs_throughout_lifecycle);
+
+            let costs_throughout_lifecycle = (Number(operating_costs_throughout_lifecycle) + Number(this.final['j37']) + Number(this.final['j39']) +
+                Number(this.final['j40']) + Number(this.final['j41']) + Number(this.final['j42']) + Number(this.final['j46']) + Number(this.final['j48'])).toFixed(2);
+
+            console.log(costs_throughout_lifecycle);
+
+            this.lifecycle.construction_cost = this.final['j37'];
+            this.lifecycle.construction_cost = this.final['j37'];
+            this.lifecycle.construction_cost = this.final['j37'];
+            this.lifecycle.construction_cost = this.final['j37'];
+            this.lifecycle.construction_cost = this.final['j37'];
+
+
+
+
+            this.lifecycle.lifecycle_end_date = this.lifecycle.commissioning_date + this.lifecycle.lifecycle_duration;
+
+            console.log(this.final);
         },
     },
 };
