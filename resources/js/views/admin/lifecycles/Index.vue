@@ -6,11 +6,14 @@
                 <!-- 1. Общая информация -->
                 <h3>1. Общая информация</h3>
                 <div class="row g-3">
+                    <!-- 1.1 Отдельно -->
                     <div class="col-12">
                         <label class="form-label">1.1 Наименование объекта</label>
                         <input type="text" class="form-control" v-model="lifecycle.name">
                     </div>
-                    <div class="col-12">
+
+                    <!-- 1.2, 1.3, 1.4, 1.5 вместе -->
+                    <div class="col-md-3">
                         <label class="form-label">1.2 Область</label>
                         <select class="form-select" v-model="lifecycle.region">
                             <option value="брестская">Брестская</option>
@@ -22,11 +25,11 @@
                             <option value="минск">г. Минск</option>
                         </select>
                     </div>
-                    <div class="col-12">
-                        <label class="form-label">1.3 Населенный пункт</label>
+                    <div class="col-md-3">
+                        <label class="form-label">1.3 Населённый пункт</label>
                         <input type="text" class="form-control" v-model="lifecycle.city">
                     </div>
-                    <div class="col-12">
+                    <div class="col-md-3">
                         <label class="form-label">1.4 Материал стен</label>
                         <select class="form-select" v-model="lifecycle.wall_material">
                             <option value="крупнопанельные">Крупнопанельные</option>
@@ -35,31 +38,35 @@
                             <option value="деревянные">Деревянные</option>
                         </select>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <label class="form-label">1.5 Этажность</label>
                         <input type="number" class="form-control" v-model="lifecycle.floors">
                     </div>
-                    <div class="col-md-6">
-                        <label class="form-label">1.6 Общая площадь жилых помещений (м²)</label>
+
+                    <!-- 1.6, 1.7, 1.8 вместе -->
+                    <div class="col-md-4">
+                        <label class="form-label">1.6 Общая площадь жил. помещений (м²)</label>
                         <input type="number" step="0.01" class="form-control" v-model="lifecycle.living_area" @input="handleInput">
                     </div>
-                    <div class="col-md-6">
-                        <label class="form-label">1.7 Общая площадь вспомогательных помещений (м²)</label>
+                    <div class="col-md-4">
+                        <label class="form-label">1.7 Общая площадь вспом. помещений (м²)</label>
                         <input type="number" step="0.01" class="form-control" v-model="lifecycle.auxiliary_area">
                     </div>
-                    <div class="col-md-6">
-                        <label class="form-label">1.8 Общая площадь жилого дома (м²)</label>
+                    <div class="col-md-4">
+                        <label class="form-label">1.8 Общая площадь жил. дома (м²)</label>
                         <input type="number" step="0.01" class="form-control" v-model="lifecycle.total_area">
                     </div>
-                    <div class="col-md-6">
-                        <label class="form-label">1.9 Количество квартир</label>
+
+                    <!-- 1.9, 1.10, 1.11, 1.12 вместе (оставляем как было) -->
+                    <div class="col-md-3">
+                        <label class="form-label">1.9 Кол-во квартир</label>
                         <input type="number" class="form-control" v-model="lifecycle.apartments_count">
                     </div>
-                    <div class="col-md-6">
-                        <label class="form-label">1.10 Количество проживающих</label>
+                    <div class="col-md-3">
+                        <label class="form-label">1.10 Кол-во проживающих</label>
                         <input type="number" class="form-control" v-model="lifecycle.residents_count">
                     </div>
-                    <div class="col-12">
+                    <div class="col-md-3">
                         <label class="form-label">1.11 Система отопления здания</label>
                         <select class="form-select" v-model="lifecycle.heating_system">
                             <option value="централизованный источник">От централизованного источника</option>
@@ -68,91 +75,85 @@
                             <option value="другое">Другое</option>
                         </select>
                     </div>
-                    <div class="col-12">
-                        <label class="form-label">1.11 Плиты пищеприготовления</label>
+                    <div class="col-md-3">
+                        <label class="form-label">1.12 Плиты пищеприготовления</label>
                         <select class="form-select" v-model="lifecycle.cooking_plates">
                             <option value="электрические">Электрические</option>
                             <option value="газовые">Газовые</option>
                         </select>
                     </div>
+                    <!-- Остальные пункты (1.13-1.19) - по 3 в строке (оставляем как было) -->
                     <div class="col-md-4">
-                        <label class="form-label">1.12 Мусоропровод</label>
+                        <label class="form-label">1.13 Мусоропровод</label>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" v-model="lifecycle.has_garbage_chute">
                             <label class="form-check-label">Есть</label>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <label class="form-label">1.13 Лифт</label>
+                        <label class="form-label">1.14 Лифт</label>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" v-model="lifecycle.has_elevator">
                             <label class="form-check-label">Есть</label>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <label class="form-label">1.14 Запорно-переговорные устройства</label>
+                        <label class="form-label">1.15 Запорно-переговорные устр-ва</label>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" v-model="lifecycle.has_intercom">
                             <label class="form-check-label">Есть</label>
                         </div>
                     </div>
 
-                    <!-- TODO: эти приборы нужно указывать? Иначе расчёты по указам хз как делать -->
                     <div class="col-md-4">
-                        <label class="form-label">1.15 Приборы учёта расхода газа</label>
+                        <label class="form-label">1.16 Приборы учёта расхода газа</label>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" v-model="lifecycle.has_gas_flow_meters">
                             <label class="form-check-label">Есть</label>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <label class="form-label">1.16 Индивидуальные газовые отопительные приборы</label>
+                        <label class="form-label">1.17 Индивидуальные газовые отопит. приборы</label>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" v-model="lifecycle.has_gas_heating_appliances">
                             <label class="form-check-label">Есть</label>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <label class="form-label">1.17 Эл. энергия используется для нужд отопления, отопления и гор. водоснабжения</label>
+                        <label class="form-label">1.18 Эл. энергия используется для нужд отопления</label>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" v-model="lifecycle.electricity_is_used_for_heating">
                             <label class="form-check-label">Да</label>
                         </div>
                     </div>
+
                     <div class="col-md-4">
-                        <label class="form-label">1.18 Прибор для учёта расхода эл. энергии на отопление, отопление и гор. водоснабжение</label>
+                        <label class="form-label">1.19 Прибор для учёта расхода эл. энергии</label>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" v-model="lifecycle.has_electricity_consumption_meter">
                             <label class="form-check-label">Есть</label>
                         </div>
                     </div>
                 </div>
+                <hr class="my-4 border-4 border-dark">
                 <!-- 2. Контрольные события -->
                 <h3 class="mt-4">2. Контрольные события</h3>
                 <div class="row g-3">
-                    <div class="col-md-6">
-                        <label class="form-label">2.1 Длительность жизненного цикла здания</label>
+                    <!-- 2.1, 2.2, 2.3 в одной строке -->
+                    <div class="col-md-4">
+                        <label class="form-label">2.1 Длительность ЖЦ здания</label>
                         <input type="number" class="form-control" v-model="lifecycle.lifecycle_duration">
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label class="form-label">2.2 Стоимостные показатели в ценах на (год)</label>
                         <input type="number" min="1991" max="2100" step="1" class="form-control" v-model="lifecycle.price_year">
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label class="form-label">2.3 Дата выдачи задания на проектирование</label>
                         <input type="date" class="form-control" v-model="lifecycle.design_task_date">
                     </div>
-<!--                    <div class="col-md-6">
-                        <VueFlatpickr
-                            v-model="lifecycle.design_task_date"
-                            :config="flatpickrOptions"
-                            placeholder="Выберите дату"
-                        />
-                    </div>-->
-<!--                    <div class="col-md-6">
-                        <label class="form-label">2.4 Дата начала строительства</label>
-                        <input type="date" class="form-control" v-model="lifecycle.construction_start_date">
-                    </div>-->
+
+                    <!-- 2.4 и 2.5 во второй строке -->
                     <div class="col-md-6">
                         <label class="form-label">2.4 Дата начала строительства</label>
                         <VueFlatpickr
@@ -163,43 +164,35 @@
                         />
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">2.5 Дата приемки объекта в эксплуатацию</label>
+                        <label class="form-label">2.5 Дата приёмки объекта в эксплуатацию</label>
                         <input type="number" min="1991" max="2100" step="1" class="form-control" v-model="lifecycle.commissioning_date">
                     </div>
+
+                    <!-- Остальные пункты (2.6-2.14) - по 2 в строке -->
                     <div class="col-md-6">
-                        <label class="form-label">2.6 Дата планируемого проведения текущего ремонта 1</label>
+                        <label class="form-label">2.6 Дата план. пров. тек. ремонта 1</label>
                         <input type="date" class="form-control" v-model="lifecycle.maintenance_date_1">
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">2.7 Дата планируемого проведения текущего ремонта 2</label>
+                        <label class="form-label">2.7 Дата план. пров. тек. ремонта 2</label>
                         <input type="date" class="form-control" v-model="lifecycle.maintenance_date_2">
                     </div>
+
                     <div class="col-md-6">
-                        <label class="form-label">2.8 Дата планируемого проведения текущего ремонта 3</label>
+                        <label class="form-label">2.8 Дата план. пров. тек. ремонта 3</label>
                         <input type="date" class="form-control" v-model="lifecycle.maintenance_date_3">
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">2.9 Дата планируемого проведения текущего ремонта 4</label>
+                        <label class="form-label">2.9 Дата план. пров. тек. ремонта 4</label>
                         <input type="date" class="form-control" v-model="lifecycle.maintenance_date_4">
                     </div>
-<!--                    <div class="col-md-6">
-                        <label class="form-label">2.10 Дата планируемого проведения текущего ремонта 5</label>
-                        <input type="date" class="form-control" v-model="lifecycle.maintenance_date_5">
-                    </div>
+
                     <div class="col-md-6">
-                        <label class="form-label">2.11 Дата планируемого проведения текущего ремонта 6</label>
-                        <input type="date" class="form-control" v-model="lifecycle.maintenance_date_6">
-                    </div>-->
-                    <div class="col-md-6">
-                        <label class="form-label">2.12 Дата планируемого проведения капитального ремонта 1</label>
+                        <label class="form-label">2.12 Дата план. пров. кап. ремонта 1</label>
                         <input type="date" class="form-control" v-model="lifecycle.overhaul_date_1">
                     </div>
-<!--                    <div class="col-md-6">
-                        <label class="form-label">2.13 Дата планируемого проведения капитального ремонта 2</label>
-                        <input type="date" class="form-control" v-model="lifecycle.overhaul_date_2">
-                    </div>-->
                     <div class="col-md-6">
-                        <label class="form-label">2.14 Дата окончания жизненного цикла</label>
+                        <label class="form-label">2.14 Дата окончания ЖЦ</label>
                         <input type="number" min="1991" max="2100" step="1" class="form-control" v-model="lifecycle.lifecycle_end_date">
                     </div>
                 </div>
@@ -207,121 +200,133 @@
                 <!-- 3. Стоимостные показатели -->
                 <h3 class="mt-4">3. Стоимостные показатели</h3>
                 <div class="row g-3">
-                    <div class="col-md-6">
-                        <label class="form-label">Дата начала строительства</label>
+                    <!-- Первая строка: Дата начала строительства, 3.1, 3.2 -->
+                    <div class="col-md-4">
+                        <label class="form-label">Дата начала стр-ва</label>
                         <input type="date" class="form-control" v-model="lifecycle.cost_indicators_date">
                     </div>
-                    <div class="col-md-6">
-                        <label class="form-label">3.1 Стоимость строительства с учётом продолжительности строительства (тыс. руб.)</label>
+                    <div class="col-md-4">
+                        <label class="form-label">3.1 Стоимость стр-ва с учётом продолж-ти (тыс. руб.)</label>
                         <input type="number" step="0.001" class="form-control" v-model="lifecycle.construction_cost">
                     </div>
-                    <div class="col-md-6">
-                        <label class="form-label">3.2 Стоимость строительства на дату расчётов (тыс. руб.)</label>
+                    <div class="col-md-4">
+                        <label class="form-label">3.2 Стоимость стр-ва на дату расчётов (тыс. руб.)</label>
                         <input type="number" step="0.001" class="form-control" v-model="lifecycle.construction_cost_date">
                     </div>
+
+                    <!-- Левый столбец: 3.3-3.6 -->
                     <div class="col-md-6">
-                        <label class="form-label">3.3 Стоимость текущего ремонта 1 (тыс. руб.)</label>
-                        <input type="number" step="0.001" class="form-control" v-model="lifecycle.maintenance_cost_1">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label class="form-label">3.3 Стоимость тек. ремонта 1 (тыс. руб.)</label>
+                                <input type="number" step="0.001" class="form-control" v-model="lifecycle.maintenance_cost_1">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">3.4 Стоимость тек. ремонта 2 (тыс. руб.)</label>
+                                <input type="number" step="0.001" class="form-control" v-model="lifecycle.maintenance_cost_2">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">3.5 Стоимость тек. ремонта 3 (тыс. руб.)</label>
+                                <input type="number" step="0.001" class="form-control" v-model="lifecycle.maintenance_cost_3">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">3.6 Стоимость тек. ремонта 4 (тыс. руб.)</label>
+                                <input type="number" step="0.001" class="form-control" v-model="lifecycle.maintenance_cost_4">
+                            </div>
+                        </div>
                     </div>
+
+                    <!-- Правый столбец: Кап. ремонт -->
                     <div class="col-md-6">
-                        <label class="form-label">3.4 Стоимость текущего ремонта 2 (тыс. руб.)</label>
-                        <input type="number" step="0.001" class="form-control" v-model="lifecycle.maintenance_cost_2">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label class="form-label">3.9 Стоимость кап. ремонта 1 (тыс. руб.)</label>
+                                <input type="number" step="0.001" class="form-control" v-model="lifecycle.overhaul_cost_1">
+                            </div>
+                            <!-- Можно раскомментировать при необходимости -->
+                            <!-- <div class="col-12">
+                                <label class="form-label">3.10 Стоимость кап. ремонта 2 (тыс. руб.)</label>
+                                <input type="number" step="0.001" class="form-control" v-model="lifecycle.overhaul_cost_2">
+                            </div> -->
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <label class="form-label">3.5 Стоимость текущего ремонта 3 (тыс. руб.)</label>
-                        <input type="number" step="0.001" class="form-control" v-model="lifecycle.maintenance_cost_3">
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label">3.6 Стоимость текущего ремонта 4 (тыс. руб.)</label>
-                        <input type="number" step="0.001" class="form-control" v-model="lifecycle.maintenance_cost_4">
-                    </div>
-<!--                    <div class="col-md-6">
-                        <label class="form-label">3.7 Стоимость текущего ремонта 5 (тыс. руб.)</label>
-                        <input type="number" step="0.01" class="form-control" v-model="lifecycle.maintenance_cost_5">
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label">3.8 Стоимость текущего ремонта 6 (тыс. руб.)</label>
-                        <input type="number" step="0.01" class="form-control" v-model="lifecycle.maintenance_cost_6">
-                    </div>-->
-                    <div class="col-md-6">
-                        <label class="form-label">3.9 Стоимость капитального ремонта 1 (тыс. руб.)</label>
-                        <input type="number" step="0.001" class="form-control" v-model="lifecycle.overhaul_cost_1">
-                    </div>
-<!--                    <div class="col-md-6">
-                        <label class="form-label">3.10 Стоимость капитального ремонта 2 (тыс. руб.)</label>
-                        <input type="number" step="0.01" class="form-control" v-model="lifecycle.overhaul_cost_2">
-                    </div>-->
-                    <div class="col-md-6">
-                        <label class="form-label">3.11 Стоимость сноса (тыс. руб.)</label>
+
+                    <!-- Отдельная строка: Снос -->
+                    <div class="col-6">
+                        <label class="form-label">3.10 Стоимость сноса (тыс. руб.)</label>
                         <input type="number" step="0.001" class="form-control" v-model="lifecycle.demolition_cost">
                     </div>
                 </div>
+                <hr class="my-4 border-4 border-dark">
                 <!-- 4. Эксплуатационные ресурсы -->
                 <h3 class="mt-4">4. Эксплуатационные ресурсы</h3>
                 <div class="row g-3">
-<!--                    <div class="col-12">
-                        <label class="form-label">4.1 Потребление электроэнергии, всего (кВт*ч)</label>
-                        <input type="number" step="0.01" class="form-control" v-model="lifecycle.total_electricity">
-                    </div>-->
-                    <div class="col-md-6">
-                        <label class="form-label">4.1.1 Электроэнергия на освещение вспомогательных помещений (кВт*ч)</label>
+                    <!-- 4.1.1, 4.1.2, 4.1.3, 4.1.4 в одной строке -->
+                    <div class="col-md-3">
+                        <label class="form-label">4.1.1 Эл. энерг. (освещ. вспом. помещ.) кВт·ч</label>
                         <input type="number" min="0" step="0.01" class="form-control" v-model="lifecycle.auxiliary_electricity">
                     </div>
-                    <div class="col-md-6">
-                        <label class="form-label">4.1.2 Электроэнергия на работу лифта (кВт*ч)</label>
+                    <div class="col-md-3">
+                        <label class="form-label">4.1.2 Эл. энерг. на работу лифта (кВт·ч)</label>
                         <input type="number" min="0" step="0.01" class="form-control" v-model="lifecycle.elevator_electricity">
                     </div>
-                    <div class="col-md-6">
-                        <label class="form-label">4.1.3 Электроэнергия, потребляемая домохозяйствами (кВт*ч)</label>
+                    <div class="col-md-3">
+                        <label class="form-label">4.1.3 Эл. энерг., потребляемая домохозяйствами (кВт·ч)</label>
                         <input type="number" min="0" step="0.01" class="form-control" v-model="lifecycle.household_electricity">
                     </div>
-                    <div class="col-md-6">
-                        <label class="form-label">4.1.4 Электроэнергия на отопление (кВт*ч)</label>
+                    <div class="col-md-3">
+                        <label class="form-label">4.1.4 Эл. энерг. на отопление (кВт·ч)</label>
                         <input type="number" min="0" step="0.01" class="form-control" v-model="lifecycle.heating_electricity">
                     </div>
-                    <div class="col-md-6">
-                        <label class="form-label">4.2 Потребление природного газа (куб. метр)</label>
+
+                    <!-- 4.1.4, 4.2, 4.3 в одной строке -->
+                    <div class="col-md-4">
+                        <label class="form-label">4.1.4 Эл. энерг. на отопление (кВт·ч)</label>
+                        <input type="number" min="0" step="0.01" class="form-control" v-model="lifecycle.heating_electricity">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">4.2 Потребление природного газа (м³)</label>
                         <input type="number" min="0" step="0.01" class="form-control" v-model="lifecycle.natural_gas">
                     </div>
-                    <div class="col-12">
-                        <label class="form-label">4.3 Тепловая энергия, всего (Гкал)</label>
+                    <div class="col-md-4">
+                        <label class="form-label">4.3 Тепл. энергия, всего (Гкал)</label>
                         <input type="number" min="0" step="0.01" class="form-control" v-model="lifecycle.total_thermal_energy">
                     </div>
-                    <div class="col-md-6">
+
+                    <!-- 4.3, 4.3.1, 4.3.2 в одной строке -->
+                    <div class="col-md-4">
+                        <label class="form-label">4.3 Тепл. энергия, всего (Гкал)</label>
+                        <input type="number" min="0" step="0.01" class="form-control" v-model="lifecycle.total_thermal_energy">
+                    </div>
+                    <div class="col-md-4">
                         <label class="form-label">4.3.1 Теплоснабжение (отопление) (Гкал)</label>
                         <input type="number" min="0" step="0.01" class="form-control" v-model="lifecycle.heating_thermal_energy">
                     </div>
-                    <div class="col-md-6">
-                        <label class="form-label">4.3.2 Горячее водоснабжение (Гкал)</label>
+                    <div class="col-md-4">
+                        <label class="form-label">4.3.2 Гор. водоснабжение (Гкал)</label>
                         <input type="number" min="0" step="0.01" class="form-control" v-model="lifecycle.hot_water_thermal_energy">
                     </div>
+
+                    <!-- Остальные поля как есть -->
                     <div class="col-12">
-                        <label class="form-label">4.4 Вода, всего (куб. метр)</label>
+                        <label class="form-label">4.4 Вода, всего (м³)</label>
                         <input type="number" min="0" step="0.01" class="form-control" v-model="lifecycle.total_water">
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">4.4.1 Холодная вода (куб. метр)</label>
+                        <label class="form-label">4.4.1 Хол. вода (м³)</label>
                         <input type="number" min="0" step="0.01" class="form-control" v-model="lifecycle.cold_water">
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">4.4.2 Горячая вода (куб. метр)</label>
+                        <label class="form-label">4.4.2 Гор. вода (м³)</label>
                         <input type="number" min="0" step="0.01" class="form-control" v-model="lifecycle.hot_water">
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">4.5 Водоотведение (канализация) (куб. метр)</label>
+                        <label class="form-label">4.5 Водоотведение (канализация) (м³)</label>
                         <input type="number" step="0.01" class="form-control" v-model="lifecycle.sewage">
                     </div>
-                    <!-- TODO: перепроверить ввод (например, можно ввести минус в конце и получить по итогу 0) -->
                     <div class="col-md-6">
-                        <label class="form-label">4.6 Обращение с твердыми коммунальными отходами (куб. метр)</label>
-                        <input
-                            type="number"
-                            min="0"
-                            step="0.01"
-                            class="form-control"
-                            v-model="lifecycle.solid_waste"
-                            oninput="this.value = Math.abs(this.value)"
-                        >
+                        <label class="form-label">4.6 Обращение с ТКО (м³)</label>
+                        <input type="number" min="0" step="0.01" class="form-control" v-model="lifecycle.solid_waste" oninput="this.value = Math.abs(this.value)">
                     </div>
                 </div>
                 <div class="row mt-4">
@@ -337,10 +342,13 @@
                     </select>
                 </div>
             </form>
-            <div class="row mt-4">
-                <div class="col-12">
-                    <button @click="calculate" class="btn btn-primary" style="margin-left: 20px;">Рассчитать</button>
-                </div>
+            <div class="col-lg-2 d-flex align-items-start">
+                <button
+                    class="btn btn-primary w-100 mt-4"
+                    @click="calculate"
+                >
+                    Рассчитать
+                </button>
             </div>
             <div class="container mt-4">
                 <h3 class="mb-3">Результаты (на основе тарифов):</h3>
