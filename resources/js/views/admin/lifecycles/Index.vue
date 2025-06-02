@@ -161,7 +161,7 @@
 
                     <!-- Остальные пункты (2.6-2.14) - по 2 в строке -->
                     <div class="col-md-6">
-                        <label class="form-label">2.6 Дата планинруемого проведения текущего ремонта 1</label>
+                        <label class="form-label">2.6 Дата планинруемого проведения текущего ремонта 1 ПРОБА</label>
                         <input type="date" class="form-control" v-model="lifecycle.maintenance_date_1">
                     </div>
                     <div class="col-md-6">
