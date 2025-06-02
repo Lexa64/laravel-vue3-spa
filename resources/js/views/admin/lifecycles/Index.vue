@@ -120,15 +120,7 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <label class="form-label">1.18 Эл. энергия используется для нужд отопления</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" v-model="lifecycle.electricity_is_used_for_heating">
-                            <label class="form-check-label">Да</label>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <label class="form-label">1.19 Прибор для учёта расхода эл. энергии</label>
+                        <label class="form-label">1.18 Прибор для учёта расхода эл. энергии</label>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" v-model="lifecycle.has_electricity_consumption_meter">
                             <label class="form-check-label">Есть</label>
@@ -141,7 +133,7 @@
                 <div class="row g-3">
                     <!-- 2.1, 2.2, 2.3 в одной строке -->
                     <div class="col-md-4">
-                        <label class="form-label">2.1 Длительность ЖЦ здания</label>
+                        <label class="form-label">2.1 Срок эксплуатации здания (лет)</label>
                         <input type="number" class="form-control" v-model="lifecycle.lifecycle_duration">
                     </div>
                     <div class="col-md-4">
@@ -152,7 +144,6 @@
                         <label class="form-label">2.3 Дата выдачи задания на проектирование</label>
                         <input type="date" class="form-control" v-model="lifecycle.design_task_date">
                     </div>
-
                     <!-- 2.4 и 2.5 во второй строке -->
                     <div class="col-md-6">
                         <label class="form-label">2.4 Дата начала строительства</label>
@@ -170,29 +161,29 @@
 
                     <!-- Остальные пункты (2.6-2.14) - по 2 в строке -->
                     <div class="col-md-6">
-                        <label class="form-label">2.6 Дата план. пров. тек. ремонта 1</label>
+                        <label class="form-label">2.6 Дата планинруемого проведения текущего ремонта 1</label>
                         <input type="date" class="form-control" v-model="lifecycle.maintenance_date_1">
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">2.7 Дата план. пров. тек. ремонта 2</label>
+                        <label class="form-label">2.7 Дата планинруемого проведения текущего ремонта 2</label>
                         <input type="date" class="form-control" v-model="lifecycle.maintenance_date_2">
                     </div>
 
                     <div class="col-md-6">
-                        <label class="form-label">2.8 Дата план. пров. тек. ремонта 3</label>
+                        <label class="form-label">2.8 Дата планинруемого проведения текущего ремонта 3</label>
                         <input type="date" class="form-control" v-model="lifecycle.maintenance_date_3">
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">2.9 Дата план. пров. тек. ремонта 4</label>
+                        <label class="form-label">2.9 Дата планинруемого проведения текущего ремонта 4</label>
                         <input type="date" class="form-control" v-model="lifecycle.maintenance_date_4">
                     </div>
 
                     <div class="col-md-6">
-                        <label class="form-label">2.12 Дата план. пров. кап. ремонта 1</label>
+                        <label class="form-label">2.10 Дата план. пров. кап. ремонта 1</label>
                         <input type="date" class="form-control" v-model="lifecycle.overhaul_date_1">
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">2.14 Дата окончания ЖЦ</label>
+                        <label class="form-label">2.11 Дата окончания ЖЦ</label>
                         <input type="number" min="1991" max="2100" step="1" class="form-control" v-model="lifecycle.lifecycle_end_date">
                     </div>
                 </div>
