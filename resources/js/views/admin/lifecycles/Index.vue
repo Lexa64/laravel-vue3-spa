@@ -231,7 +231,7 @@
                     <div class="col-md-6">
                         <div class="row g-3">
                             <div class="col-12">
-                                <label class="form-label">3.9 Стоимость кап. ремонта 1 (тыс. руб.)</label>
+                                <label class="form-label">3.4 Стоимость кап. ремонта 1 (тыс. руб.)</label>
                                 <input type="number" step="0.001" class="form-control" v-model="lifecycle.overhaul_cost_1">
                             </div>
                             <!-- Можно раскомментировать при необходимости -->
@@ -244,7 +244,7 @@
 
                     <!-- Отдельная строка: Снос -->
                     <div class="col-6">
-                        <label class="form-label">3.10 Стоимость сноса (тыс. руб.)</label>
+                        <label class="form-label">3.5 Стоимость сноса (тыс. руб.)</label>
                         <input type="number" step="0.001" class="form-control" v-model="lifecycle.demolition_cost">
                     </div>
                 </div>
@@ -254,7 +254,7 @@
                 <div class="row g-3">
                     <!-- 4.1.1, 4.1.2, 4.1.3, 4.1.4 в одной строке -->
                     <div class="col-md-3">
-                        <label class="form-label">4.1.1 Эл. энерг. (освещ. вспом. помещ.) кВт·ч</label>
+                        <label class="form-label">4.1.1 Эл. энерг. (освещ. вспом. помещ.) (кВт·ч)</label>
                         <input type="number" min="0" step="0.01" class="form-control" v-model="lifecycle.auxiliary_electricity">
                     </div>
                     <div class="col-md-3">
@@ -326,7 +326,7 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <label class="form-label">Расчет годовых эксплуатационных затрат, тыс. руб. (полное возмещение затрат)</label>
+                    <label class="form-label">Тариф, обеспечивающий полное возмещение затрат на их оказание</label>
                     <select class="form-select" v-model="lifecycle.full_tariffs">
                         <option value=true>Да</option>
                         <option value=false>Нет</option>
