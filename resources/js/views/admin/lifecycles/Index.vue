@@ -113,7 +113,7 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <label class="form-label">1.17 Индивидуальные газовые отопит. приборы</label>
+                        <label class="form-label">1.17 Приборы индивидуального учёта расхода газа</label>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" v-model="lifecycle.has_gas_heating_appliances">
                             <label class="form-check-label">Есть</label>
