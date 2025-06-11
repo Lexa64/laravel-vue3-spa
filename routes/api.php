@@ -4,10 +4,12 @@ use App\Http\Controllers\Api\BuildingCostController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CostEstimateController;
 use App\Http\Controllers\Api\ForecastIndexController;
+use App\Http\Controllers\Api\MaterialFileController;
 use App\Http\Controllers\Api\PermissionController;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\ProjectController;
+use App\Http\Controllers\Api\RegisterOfMaterialController;
 use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\UtilityCostController;
@@ -33,6 +35,8 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
     Route::put('/forecast-indices/bulk-update', [ForecastIndexController::class, 'bulkUpdate']);
     Route::apiResource('forecast-indices', ForecastIndexController::class);
     Route::apiResource('building-costs', BuildingCostController::class);
+    Route::apiResource('register-of-materials', RegisterOfMaterialController::class);
+    Route::post('/material-files', [MaterialFileController::class, 'store']);
 
     Route::get('role-list', [RoleController::class, 'getList']);
     Route::get('role-permissions/{id}', [PermissionController::class, 'getRolePermissions']);

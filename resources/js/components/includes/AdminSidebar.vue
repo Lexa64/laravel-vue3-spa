@@ -36,9 +36,14 @@
                     </ul>
                 </li>
                 <li v-if="can('user-list')" class="nav-item">
-                    <a href="#submenu3" data-bs-toggle="collapse" class="nav-link">
+<!--                    <a href="#submenu3" data-bs-toggle="collapse" class="nav-link">
                         <i class="bi bi-book"></i>
                         <span class="d-none d-sm-inline ps-2 text-dark">{{ $t('projects.projects')}}</span>
+                        <i class="bi bi-chevron-expand float-end"></i>
+                    </a>-->
+                    <a href="#submenu3" data-bs-toggle="collapse" class="nav-link">
+                        <i class="bi bi-book"></i>
+                        <span class="d-none d-sm-inline ps-2 text-dark">Личный кабинет</span>
                         <i class="bi bi-chevron-expand float-end"></i>
                     </a>
                     <ul class="collapse nav ms-1" id="submenu3" data-bs-parent="#menu">
@@ -78,10 +83,40 @@
                                 <span class="d-none d-sm-inline ps-2 text-dark">Стоимость ремонта и модернизации</span>
                             </router-link>
                         </li>-->
-                        <li v-if="can('user-list')" class="nav-link container rounded-pill">
+<!--                        <li v-if="can('user-list')" class="nav-link container rounded-pill">
                             <router-link :to="{ name: 'lifecycles.index' }" class="nav-link px-0" style="margin-left: 15px;">
                                 <i class="bi bi-coin"></i>
                                 <span class="d-none d-sm-inline ps-2 text-dark">Тестирование расчётов</span>
+                            </router-link>
+                        </li>-->
+                        <li v-if="can('user-list')" class="nav-link container rounded-pill">
+                            <router-link :to="{ name: 'lifecycles.index' }" class="nav-link px-0" style="margin-left: 15px;">
+                                <i class="bi bi-coin"></i>
+                                <span class="d-none d-sm-inline ps-2 text-dark">Учетная запись</span>
+                            </router-link>
+                        </li>
+                        <li v-if="can('user-list')" class="nav-link container rounded-pill">
+                            <router-link :to="{ name: 'register-of-materials.index' }" class="nav-link px-0" style="margin-left: 15px;">
+                                <i class="bi bi-coin"></i>
+                                <span class="d-none d-sm-inline ps-2 text-dark">Реестр свидетельств</span>
+                            </router-link>
+                        </li>
+                        <li v-if="can('user-list')" class="nav-link container rounded-pill">
+                            <router-link :to="{ name: 'lifecycles.index' }" class="nav-link px-0" style="margin-left: 15px;">
+                                <i class="bi bi-coin"></i>
+                                <span class="d-none d-sm-inline ps-2 text-dark">Зарегистрировать свидетельство</span>
+                            </router-link>
+                        </li>
+                        <li v-if="can('user-list')" class="nav-link container rounded-pill">
+                            <router-link :to="{ name: 'lifecycles.index' }" class="nav-link px-0" style="margin-left: 15px;">
+                                <i class="bi bi-coin"></i>
+                                <span class="d-none d-sm-inline ps-2 text-dark">Мои свидетельства</span>
+                            </router-link>
+                        </li>
+                        <li v-if="can('user-list')" class="nav-link container rounded-pill">
+                            <router-link :to="{ name: 'lifecycles.index' }" class="nav-link px-0" style="margin-left: 15px;">
+                                <i class="bi bi-coin"></i>
+                                <span class="d-none d-sm-inline ps-2 text-dark">Черновики</span>
                             </router-link>
                         </li>
                     </ul>

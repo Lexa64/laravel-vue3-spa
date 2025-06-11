@@ -287,6 +287,25 @@ export default [
                 component: () => import('../views/admin/lifecycles/Index.vue'),
                 meta: {breadCrumb: 'breadcrumb_labels_admin.estimates'}
             },
+            {
+                name: 'register-of-materials.index',
+                path: 'register-of-materials',
+                component: () => import('../views/admin/register_of_materials/Index.vue'),
+                meta: {breadCrumb: "breadcrumb_labels_admin.estimates"}
+            },
+            {
+                name: 'register-of-materials.create',
+                path: 'register-of-materials',
+                component: () => import('../views/admin/register_of_materials/Create.vue'),
+                meta: {breadCrumb: 'breadcrumb_labels_admin.estimates'}
+            },
+            {
+                name: 'register-of-materials.edit',
+                path: 'register-of-materials/:id/edit',
+                component: () => import('../views/admin/register_of_materials/Edit.vue'),
+                meta: {breadCrumb: 'breadcrumb_labels_admin.estimates'},
+                props: true
+            },
         ]
     },
     {
