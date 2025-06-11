@@ -14,66 +14,66 @@
                                class="form-control w-25">
                     </div>
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table table-bordered table-hover mb-4">
                             <thead>
-                            <tr>
-                                <th class="px-6 py-3 bg-gray-50 text-left">
+                            <tr style="border: none !important; background-color: white !important;">
+                                <th class="px-6 py-3 bg-gray-50 text-left" style="border: none !important; background-color: white !important;">
                                     <input v-model="search_authorized_body" type="text"
                                            class="inline-block mt-1 form-control"
                                            placeholder="Уполномоченный орган">
                                 </th>
-                                <th class="px-6 py-3 bg-gray-50 text-left">
+                                <th class="px-6 py-3 bg-gray-50 text-left" style="border: none !important; background-color: white !important;">
                                     <input v-model="search_name_of_material" type="text"
                                            class="inline-block mt-1 form-control"
                                            placeholder="Наименование продукции">
                                 </th>
-                                <th class="px-6 py-3 bg-gray-50 text-left">
+                                <th class="px-6 py-3 bg-gray-50 text-left" style="border: none !important; background-color: white !important;">
                                     <input v-model="search_date_of_registration" type="text"
                                            class="inline-block mt-1 form-control"
                                            placeholder="Дата регистрации свидетельства">
                                 </th>
-                                <th class="px-6 py-3 bg-gray-50 text-left">
+                                <th class="px-6 py-3 bg-gray-50 text-left" style="border: none !important; background-color: white !important;">
                                     <input v-model="search_valid_until" type="text"
                                            class="inline-block mt-1 form-control"
                                            placeholder="Действительно до">
                                 </th>
-                                <th class="px-6 py-3 bg-gray-50 text-left">
+                                <th class="px-6 py-3 bg-gray-50 text-left" style="border: none !important; background-color: white !important;">
                                 </th>
-                                <th class="px-6 py-3 bg-gray-50 text-left">
+                                <th class="px-6 py-3 bg-gray-50 text-left" style="border: none !important; background-color: white !important;">
                                 </th>
-                                <th class="px-6 py-3 bg-gray-50 text-left">
+                                <th class="px-6 py-3 bg-gray-50 text-left" style="border: none !important; background-color: white !important;">
                                 </th>
-                                <th class="px-6 py-3 bg-gray-50 text-left">
+                                <th class="px-6 py-3 bg-gray-50 text-left" style="border: none !important; background-color: white !important;">
                                 </th>
                             </tr>
                             <tr>
-                                <th class="px-6 py-3 bg-gray-50 text-left">
+                                <th class="px-6 py-3 bg-gray-50 text-left" style="border: none !important; background-color: white !important;">
                                     <input v-model="search_protocol_number" type="text"
                                            class="inline-block mt-1 form-control"
                                            placeholder="Регистрационный номер свидетельства">
                                 </th>
-                                <th class="px-6 py-3 bg-gray-50 text-left">
+                                <th class="px-6 py-3 bg-gray-50 text-left" style="border: none !important; background-color: white !important;">
                                     <input v-model="search_applicant" type="text"
                                            class="inline-block mt-1 form-control"
                                            placeholder="Заявитель">
                                 </th>
-                                <th class="px-6 py-3 bg-gray-50 text-left">
+                                <th class="px-6 py-3 bg-gray-50 text-left" style="border: none !important; background-color: white !important;">
                                     <input v-model="search_manufacturer" type="text"
                                            class="inline-block mt-1 form-control"
                                            placeholder="Изготовитель">
                                 </th>
-                                <th class="px-6 py-3 bg-gray-50 text-left">
+                                <th class="px-6 py-3 bg-gray-50 text-left" style="border: none !important; background-color: white !important;">
                                     <input v-model="search_status" type="text"
                                            class="inline-block mt-1 form-control"
                                            placeholder="Статус свидетельства">
                                 </th>
-                                <th class="px-6 py-3 bg-gray-50 text-left">
+                                <th class="px-6 py-3 bg-gray-50 text-left" style="border: none !important; background-color: white !important;">
                                 </th>
-                                <th class="px-6 py-3 bg-gray-50 text-left">
+                                <th class="px-6 py-3 bg-gray-50 text-left" style="border: none !important; background-color: white !important;">
                                 </th>
-                                <th class="px-6 py-3 bg-gray-50 text-left">
+                                <th class="px-6 py-3 bg-gray-50 text-left" style="border: none !important; background-color: white !important;">
                                 </th>
-                                <th class="px-6 py-3 bg-gray-50 text-left">
+                                <th class="px-6 py-3 bg-gray-50 text-left" style="border: none !important; background-color: white !important;">
                                 </th>
                             </tr>
                             <tr>
@@ -276,5 +276,19 @@ function handleUploadSuccess(files) {
     alert(`Загружено файлов: ${files.length}`);
     // Обновить список файлов и т.д.
 }
-
 </script>
+
+<style scoped>
+.table {
+    font-size: 0.85rem;
+}
+.table th {
+    background-color: #D8DEDF;
+    font-weight: 600;
+    text-align: center;
+    vertical-align: middle;
+}
+.table td {
+    vertical-align: middle;
+}
+</style>
