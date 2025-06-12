@@ -295,7 +295,7 @@ export default [
             },
             {
                 name: 'register-of-materials.create',
-                path: 'register-of-materials',
+                path: 'register-of-materials/create',
                 component: () => import('../views/admin/register_of_materials/Create.vue'),
                 meta: {breadCrumb: 'breadcrumb_labels_admin.estimates'}
             },

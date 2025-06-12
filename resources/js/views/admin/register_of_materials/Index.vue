@@ -9,18 +9,28 @@
                     </router-link>
                 </div>
                 <div class="card-body shadow-sm">
-                    <div class="mb-4">
+<!--                    <div class="mb-4">
                         <input v-model="search_global" type="text" placeholder="Номер протокола + ID"
                                class="form-control w-25">
-                    </div>
+                    </div>-->
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover mb-4">
                             <thead>
                             <tr style="border: none !important; background-color: white !important;">
                                 <th class="px-6 py-3 bg-gray-50 text-left" style="border: none !important; background-color: white !important;">
-                                    <input v-model="search_authorized_body" type="text"
-                                           class="inline-block mt-1 form-control"
-                                           placeholder="Уполномоченный орган">
+                                    <vSelect
+                                        v-model="search_authorized_body"
+                                        :options="authorities"
+                                        :reduce="authority => authority.value"
+                                        label="text"
+                                        placeholder="Уполномоченный орган"
+                                        :clearable="true"
+                                        class="form-control"
+                                    >
+                                        <template #option="{ text }">
+                                            <span>{{ text }}</span>
+                                        </template>
+                                    </vSelect>
                                 </th>
                                 <th class="px-6 py-3 bg-gray-50 text-left" style="border: none !important; background-color: white !important;">
                                     <input v-model="search_name_of_material" type="text"
@@ -173,7 +183,7 @@
                                     {{ material.applicant }}
                                 </td>
                                 <td class="px-6 py-4 text-sm">
-                                    {{ material.date_of_registration }}
+                                    {{ material.date_of_registration + ' - ' + material.valid_until }}
                                 </td>
                                 <td class="px-6 py-4 text-sm">
                                     <router-link v-if="can('user-edit')"
@@ -208,7 +218,9 @@ import useMaterials from "../../../composables/materials";
 import {useAbility} from '@casl/vue';
 import moment from 'moment';
 import _ from 'lodash';
-import MaterialFileUpload from '../../../components/MaterialFileUpload.vue'
+import MaterialFileUpload from '../../../components/MaterialFileUpload.vue';
+import vSelect from 'vue-select';
+import 'vue-select/dist/vue-select.css';
 
 const search_global = ref('');
 const search_id = ref('');
@@ -270,6 +282,19 @@ watch(search_name_of_material, (current, previous) => {
         search_global.value
     );
 });
+
+const authorities = [
+    { value: 'РУП "СтройМедиаПроект"', text: 'РУП "СтройМедиаПроект"' },
+    { value: 'РУП "СТРОЙТЕХНОРМ"', text: 'РУП "СТРОЙТЕХНОРМ"' },
+    { value: 'РУП "Институт БелНИИС"', text: 'РУП "Институт БелНИИС"' },
+    {
+        value: 'РУП "БИСП" Управление делами Президента Республики Беларусь',
+        text: 'РУП "БИСП" Управление делами Президента Республики Беларусь'
+    },
+    { value: 'УП "БелДорНИИ"', text: 'УП "БелДорНИИ"' },
+    { value: 'УП "Институт НИИСМ"', text: 'УП "Институт НИИСМ"' },
+    { value: 'РУП "Сертис" РУП "Белстройцентр"', text: 'РУП "Сертис" РУП "Белстройцентр"' }
+];
 
 const currentMaterialId = ref(1);
 function handleUploadSuccess(files) {

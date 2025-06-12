@@ -14,7 +14,7 @@ class StoreRegisterOfMaterialRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'wall_material' => 'nullable|in:РУП "СтройМедиаПроект",РУП "СТРОЙТЕХНОРМ",РУП "Институт БелНИИС",РУП "БИСП" Управление делами Президента Республики Беларусь,УП "БелДорНИИ",УП "Институт НИИСМ",РУП "Сертис" РУП "Белстройцентр"',
+            'authorized_body' => 'nullable|in:РУП "СтройМедиаПроект",РУП "СТРОЙТЕХНОРМ",РУП "Институт БелНИИС",РУП "БИСП" Управление делами Президента Республики Беларусь,УП "БелДорНИИ",УП "Институт НИИСМ",РУП "Сертис" РУП "Белстройцентр"',
             'date_of_registration' => 'nullable|date',
             'valid_until' => 'nullable|date',
             'extended_until' => 'nullable|date',
@@ -23,10 +23,11 @@ class StoreRegisterOfMaterialRequest extends FormRequest
             'manufacturer' => 'nullable|string|max:255',
             'applicant' => 'nullable|string|max:255',
             'testing_laboratory' => 'nullable|in:Лаборатория 1,Лаборатория 2,Лаборатория 3',
-            'protocol_number' => 'required|string|max:255',
-            'date_expert_opinions' => 'required|date',
+            'protocol_number' => 'nullable|string|max:255',
+            'date_expert_opinions' => 'nullable|date',
             'certificate_is_valid_for' => 'nullable|in:Опция 1,Опция 2,Опция 3',
-            'special_marks' => 'required|string|max:255',
+            'special_marks' => 'nullable|string|max:255',
+            'is_draft' => 'nullable|string|max:255',
         ];
     }
 }

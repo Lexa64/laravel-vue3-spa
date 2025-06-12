@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\BuildingCostController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CostEstimateController;
 use App\Http\Controllers\Api\ForecastIndexController;
+use App\Http\Controllers\Api\GenerateMaterialPdfController;
 use App\Http\Controllers\Api\MaterialFileController;
 use App\Http\Controllers\Api\PermissionController;
 use App\Http\Controllers\Api\PostController;
@@ -65,3 +66,5 @@ Route::get('category-list', [CategoryController::class, 'getList']);
 Route::get('get-posts', [PostController::class, 'getPosts']);
 Route::get('get-category-posts/{id}', [PostController::class, 'getCategoryByPosts']);
 Route::get('get-post/{id}', [PostController::class, 'getPost']);
+
+Route::get('/generate-pdf/{id}', [GenerateMaterialPdfController::class, 'generatePdf'])->name('generate.pdf');

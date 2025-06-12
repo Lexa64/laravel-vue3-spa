@@ -1,37 +1,19 @@
-import { ref } from 'vue';
+import {inject, ref} from 'vue';
 import axios from 'axios';
+import {useRouter} from "vue-router";
+import {useI18n} from "vue-i18n";
 
 export default function useMaterials() {
     const materials = ref({});
-    const errors = ref({});
+    const material = ref({
+        protocol_number: ''
+    });
 
-    /*const getMaterials = async (
-        page = 1,
-        id = '',
-        name = '',
-        global = '',
-        orderColumn = 'date_of_registration',
-        orderDirection = 'desc'
-    ) => {
-        try {
-            const response = await axios.get('/api/register-of-materials', {
-                headers: {
-                    'Accept': 'application/json'
-                },
-                params: {
-                    page,
-                    id,
-                    name,
-                    global,
-                    orderColumn,
-                    orderDirection
-                }
-            });
-            materials.value = response.data;
-        } catch (error) {
-            console.error(error);
-        }
-    };*/
+    const router = useRouter();
+    const validationErrors = ref({});
+    const isLoading = ref(false);
+    const swal = inject('$swal');
+    const {t} = useI18n();
 
     const getMaterials = async (
         page = 1,
@@ -52,22 +34,109 @@ export default function useMaterials() {
             });
     };
 
-    const deleteMaterial = async (id) => {
-        if (!confirm('Are you sure you want to delete this material?')) {
+    const getMaterial = async (id) => {
+        axios.get('/api/register-of-materials/' + id)
+            .then(response => {
+                material.value = response.data.data;
+            });
+    }
+
+    const storeMaterial = async (material) => {
+        if (isLoading.value) {
             return;
         }
-        try {
-            await axios.delete(`/api/register-of-materials/${id}`);
-            await getMaterials();
-        } catch (error) {
-            console.error(error);
+
+        isLoading.value = true;
+        validationErrors.value = {};
+
+        let serializedMaterial = new FormData();
+        for (let item in material) {
+            if (material.hasOwnProperty(item)) {
+                serializedMaterial.append(item, material[item]);
+            }
         }
-    };
+
+        axios.post('/api/register-of-materials', serializedMaterial)
+            .then(response => {
+                router.push({name: 'register-of-materials.index'});
+                swal({
+                    icon: 'success',
+                    title: 'Сохранено успешно'
+                });
+            })
+            .catch(error => {
+                if (error.response?.data) {
+                    validationErrors.value = error.response.data.errors;
+                }
+            })
+            .finally(() => isLoading.value = false);
+    }
+
+    const updateMaterial = async (material) => {
+        if (isLoading.value) return;
+
+        isLoading.value = true;
+        validationErrors.value = {};
+
+        axios.put('/api/register-of-materials/' + material.id, material)
+            .then(response => {
+                router.push({name: 'register-of-materials.index'});
+                swal({
+                    icon: 'success',
+                    title: 'Запись успешно обновлена'
+                })
+            })
+            .catch(error => {
+                if (error.response?.data) {
+                    validationErrors.value = error.response.data.errors;
+                }
+            })
+            .finally(() => isLoading.value = false);
+    }
+
+    const deleteMaterial = async (id) => {
+        swal({
+            title: t('global_buttons.delete_confirmation'),
+            text: t('global_buttons.delete_warning'),
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: t('users.delete_confirm_ok'),
+            cancelButtonText: t('global_buttons.delete_confirm_cancel'),
+            confirmButtonColor: '#ef4444',
+            timer: 20000,
+            timerProgressBar: true,
+            reverseButtons: true
+        })
+            .then(result => {
+                if (result.isConfirmed) {
+                    axios.delete('/api/register-of-materials/' + id)
+                        .then(response => {
+                            getMaterials();
+                            router.push({name: 'register-of-materials.index'});
+                            swal({
+                                icon: 'success',
+                                title: t('users.delete_successfully')
+                            });
+                        })
+                        .catch(error => {
+                            swal({
+                                icon: 'error',
+                                title: t('users.delete_error')
+                            })
+                        });
+                }
+            });
+    }
 
     return {
         materials,
-        errors,
+        material,
         getMaterials,
-        deleteMaterial
+        getMaterial,
+        storeMaterial,
+        updateMaterial,
+        deleteMaterial,
+        validationErrors,
+        isLoading
     };
 }
