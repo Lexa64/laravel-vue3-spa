@@ -19,6 +19,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Spatie\LaravelPdf\Facades\Pdf;
 
 Route::post('forget-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('forget.password.post');
 Route::post('reset-password', [ResetPasswordController::class, 'reset'])->name('password.reset');
@@ -68,3 +69,6 @@ Route::get('get-category-posts/{id}', [PostController::class, 'getCategoryByPost
 Route::get('get-post/{id}', [PostController::class, 'getPost']);
 
 Route::get('/generate-pdf/{id}', [GenerateMaterialPdfController::class, 'generatePdf'])->name('generate.pdf');
+/*Route::get('/test-pdf', function() {
+    return Pdf::view('pdf.test')->download('test.pdf');
+});*/

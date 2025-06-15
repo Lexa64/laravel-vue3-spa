@@ -12,7 +12,7 @@ class RegisterOfMaterial extends Model
     protected $table = 'register_of_materials';
 
     protected $fillable = [
-        'wall_material',
+        'authorized_body',
         'date_of_registration',
         'valid_until',
         'extended_until',
@@ -25,7 +25,8 @@ class RegisterOfMaterial extends Model
         'date_expert_opinions',
         'certificate_is_valid_for',
         'special_marks',
-        'user_id'
+        'is_draft',
+        'user_id',
     ];
 
     protected $casts = [
@@ -33,6 +34,7 @@ class RegisterOfMaterial extends Model
         'valid_until' => 'date',
         'extended_until' => 'date',
         'date_expert_opinions' => 'date',
+        'is_draft' => 'boolean',
     ];
 
     public function user()

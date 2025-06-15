@@ -30,7 +30,7 @@
             </div>
         </div>
 
-        <button class="inline-block mt-1 form-control" @click="submitFiles" :disabled="!hasFiles">Сохранить файлы</button>
+        <button class="btn" style="background-color: #7CA9CA !important; border: 2px; border-radius: 56px; margin-left: 10px;" @click="submitFiles" :disabled="!hasFiles">Загрузить файл(ы)</button>
     </div>
 </template>
 

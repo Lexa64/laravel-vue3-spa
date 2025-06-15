@@ -5,9 +5,7 @@ import {useI18n} from "vue-i18n";
 
 export default function useMaterials() {
     const materials = ref({});
-    const material = ref({
-        protocol_number: ''
-    });
+    const material = ref({});
 
     const router = useRouter();
     const validationErrors = ref({});
@@ -17,16 +15,29 @@ export default function useMaterials() {
 
     const getMaterials = async (
         page = 1,
-        search_id = '',
-        search_title = '',
+
         search_global = '',
+        search_id = '',
+        search_authorized_body = '',
+        search_name_of_material = '',
+        search_date_of_registration = '',
+        search_protocol_number = '',
+        search_applicant = '',
+        search_valid_until = '',
+
         order_column = 'created_at',
         order_direction = 'desc'
     ) => {
         axios.get('/api/register-of-materials?page=' + page +
-            '&search_id=' + search_id +
-            '&search_title=' + search_title +
             '&search_global=' + search_global +
+            '&search_id=' + search_id +
+            '&search_authorized_body=' + search_authorized_body +
+            '&search_name_of_material=' + search_name_of_material +
+            '&search_date_of_registration=' + search_date_of_registration +
+            '&search_protocol_number=' + search_protocol_number +
+            '&search_applicant=' + search_applicant +
+            '&search_valid_until=' + search_valid_until +
+
             '&order_column=' + order_column +
             '&order_direction=' + order_direction)
             .then(response => {

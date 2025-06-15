@@ -16,10 +16,19 @@ class RegisterOfMaterialController extends Controller
     public function index()
     {
         $orderColumn = request('order_column', 'created_at');
-        if (!in_array($orderColumn, ['id', 'name', 'email', 'created_at'])) {
+        if (!in_array($orderColumn, [
+            'id',
+            'protocol_number',
+            'authorized_body',
+            'name_of_material',
+            'manufacturer',
+            'applicant',
+            'date_of_registration'
+        ])) {
             $orderColumn = 'created_at';
         }
 
+        // TODO: тут мб нужно проверить, стоит ли указывать значение по умолчанию
         $orderDirection = request('order_direction', 'desc');
         if (!in_array($orderDirection, ['asc', 'desc'])) {
             $orderDirection = 'desc';
@@ -27,8 +36,18 @@ class RegisterOfMaterialController extends Controller
 
         $materials = RegisterOfMaterial::when(request('search_id'), function ($query) {
             $query->where('id', request('search_id'));
-        })->when(request('search_title'), function ($query) {
-            $query->where('name', 'like', '%' . request('search_title') . '%');
+        })->when(request('search_authorized_body'), function ($query) {
+            $query->where('authorized_body', 'like', '%' . request('search_authorized_body') . '%');
+        })->when(request('search_name_of_material'), function ($query) {
+            $query->where('name_of_material', 'like', '%' . request('search_name_of_material') . '%');
+        })->when(request('search_date_of_registration'), function ($query) {
+            $query->where('date_of_registration', request('search_date_of_registration'));
+        })->when(request('search_protocol_number'), function ($query) {
+            $query->where('protocol_number', 'like', '%' . request('search_protocol_number') . '%');
+        })->when(request('search_applicant'), function ($query) {
+            $query->where('applicant', 'like', '%' . request('search_applicant') . '%');
+        })->when(request('search_valid_until'), function ($query) {
+            $query->where('valid_until', request('search_valid_until'));
         })->when(request('search_global'), function ($query) {
             $query->where(function ($q) {
                 $q->where('id', request('search_global'))

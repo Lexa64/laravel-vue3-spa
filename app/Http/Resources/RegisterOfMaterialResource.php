@@ -11,7 +11,7 @@ class RegisterOfMaterialResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'wall_material' => $this->wall_material,
+            'authorized_body' => $this->authorized_body,
             'date_of_registration' => $this->date_of_registration?->format('Y-m-d'),
             'valid_until' => $this->valid_until?->format('Y-m-d'),
             'extended_until' => $this->extended_until?->format('Y-m-d'),
@@ -24,6 +24,7 @@ class RegisterOfMaterialResource extends JsonResource
             'date_expert_opinions' => $this->date_expert_opinions?->format('Y-m-d'),
             'certificate_is_valid_for' => $this->certificate_is_valid_for,
             'special_marks' => $this->special_marks,
+            'is_draft' => $this->is_draft,
             'user_id' => $this->user_id,
             'created_at' => $this->created_at?->format('Y-m-d H:i:s'),
             'updated_at' => $this->updated_at?->format('Y-m-d H:i:s'),

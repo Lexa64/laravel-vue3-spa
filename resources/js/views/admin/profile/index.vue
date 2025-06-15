@@ -1,12 +1,12 @@
 <template>
     <div class="card border-0">
         <div class="card-header bg-transparent">
-            <h5 class="float-start">{{ $t('profile.profile') }}</h5>
+            <h5 class="float-start">Учетная запись</h5>
         </div>
         <div class="card-body">
             <form @submit.prevent="submitForm">
                 <div class="mb-3">
-                    <label for="name" class="form-label">{{ $t('profile.name') }}</label>
+                    <label for="name" class="form-label">Уполномоченный орган</label>
                     <input type="text" v-model="profile.name" class="form-control" id="name">
                     <div class="text-danger mt-1">
                         {{ errors.name }}
@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <button :disabled="isLoading" class="btn btn-primary">
+                    <button :disabled="isLoading" class="btn" style="background-color: #7CA9CA !important; border: 2px; border-radius: 56px; margin-left: 10px;">
                         <div v-show="isLoading" class=""></div>
                         <span v-if="isLoading">{{ $t('profile.in_progress') }}</span>
                         <span v-else>{{ $t('profile.update') }}</span>

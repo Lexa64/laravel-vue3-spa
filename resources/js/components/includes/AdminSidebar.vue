@@ -1,7 +1,13 @@
 <template>
-    <nav class="bg-light-subtle sidebar position-fixed">
-        <div class="pt-3 sidebar-sticky">
-            <ul id="menu" class="nav flex-column mb-2">
+    <nav class="sidebar position-fixed" :class="{'collapsed': isCollapsed}">
+        <div class="sidebar-inner">
+            <div class="sidebar-toggle" @click="toggleSidebar">
+                <i class="bi" :class="isCollapsed ? 'bi-list' : 'bi-x-lg'"></i>
+            </div>
+
+            <div class="sidebar-content" v-show="!isCollapsed">
+
+            <ul id="menu" class="nav flex-column mb-2" v-show="!isCollapsed">
                 <li class="nav-item">
                     <router-link to="/admin" class="nav-link">
                         <i class="bi bi-pc-display-horizontal"></i>
@@ -36,61 +42,14 @@
                     </ul>
                 </li>
                 <li v-if="can('user-list')" class="nav-item">
-<!--                    <a href="#submenu3" data-bs-toggle="collapse" class="nav-link">
-                        <i class="bi bi-book"></i>
-                        <span class="d-none d-sm-inline ps-2 text-dark">{{ $t('projects.projects')}}</span>
-                        <i class="bi bi-chevron-expand float-end"></i>
-                    </a>-->
                     <a href="#submenu3" data-bs-toggle="collapse" class="nav-link">
                         <i class="bi bi-book"></i>
                         <span class="d-none d-sm-inline ps-2 text-dark">Личный кабинет</span>
                         <i class="bi bi-chevron-expand float-end"></i>
                     </a>
                     <ul class="collapse nav ms-1" id="submenu3" data-bs-parent="#menu">
-<!--                        <li v-if="can('user-list')" class="nav-link container">
-                            <router-link :to="{ name: 'projects.index' }" class="nav-link px-0" style="margin-left: 15px;">
-                                <i class="bi bi-building-add"></i>
-                                <span class="d-none d-sm-inline ps-2 text-dark">{{ $t('projects.list')}}</span>
-                            </router-link>
-                        </li>-->
-<!--                        <li v-if="can('user-list')" class="nav-link container rounded-pill">
-                            <router-link :to="{ name: 'tariffs.index' }" class="nav-link px-0" style="margin-left: 15px;">
-                                <i class="bi bi-card-checklist"></i>
-                                <span class="d-none d-sm-inline ps-2 text-dark">{{ $t('projects.utilities')}}</span>
-                            </router-link>
-                        </li>-->
-<!--                        <li v-if="can('user-list')" class="nav-link container rounded-pill">
-                            <router-link :to="{ name: 'costs.index' }" class="nav-link px-0" style="margin-left: 15px;">
-                                <i class="bi bi-coin"></i>
-                                <span class="d-none d-sm-inline ps-2 text-dark">{{ $t('projects.utility_costs')}}</span>
-                            </router-link>
-                        </li>-->
-<!--                        <li v-if="can('user-list')" class="nav-link container rounded-pill">
-                            <router-link :to="{ name: 'estimates.index' }" class="nav-link px-0" style="margin-left: 15px;">
-                                <i class="bi bi-coin"></i>
-                                <span class="d-none d-sm-inline ps-2 text-dark">{{ $t('projects.cost_estimates')}}</span>
-                            </router-link>
-                        </li>-->
-<!--                       <li v-if="can('user-list')" class="nav-link container rounded-pill">
-                            <router-link :to="{ name: 'forecast_indices.index' }" class="nav-link px-0" style="margin-left: 15px;">
-                                <i class="bi bi-coin"></i>
-                                <span class="d-none d-sm-inline ps-2 text-dark">Прогнозные индексы</span>
-                            </router-link>
-                        </li>-->
-<!--                        <li v-if="can('user-list')" class="nav-link container rounded-pill">
-                            <router-link :to="{ name: 'building_costs.index' }" class="nav-link px-0" style="margin-left: 15px;">
-                                <i class="bi bi-coin"></i>
-                                <span class="d-none d-sm-inline ps-2 text-dark">Стоимость ремонта и модернизации</span>
-                            </router-link>
-                        </li>-->
-<!--                        <li v-if="can('user-list')" class="nav-link container rounded-pill">
-                            <router-link :to="{ name: 'lifecycles.index' }" class="nav-link px-0" style="margin-left: 15px;">
-                                <i class="bi bi-coin"></i>
-                                <span class="d-none d-sm-inline ps-2 text-dark">Тестирование расчётов</span>
-                            </router-link>
-                        </li>-->
                         <li v-if="can('user-list')" class="nav-link container rounded-pill">
-                            <router-link :to="{ name: 'lifecycles.index' }" class="nav-link px-0" style="margin-left: 15px;">
+                            <router-link :to="{ name: 'profile.index' }" class="nav-link px-0" style="margin-left: 15px;">
                                 <i class="bi bi-coin"></i>
                                 <span class="d-none d-sm-inline ps-2 text-dark">Учетная запись</span>
                             </router-link>
@@ -121,29 +80,76 @@
                         </li>
                     </ul>
                 </li>
-                <!--<li v-if="can('post-list')" class="nav-item">
-                    <router-link :to="{ name: 'posts.index' }" class="nav-link">
-                        <i class="bi bi-emoji-wink"></i>
-                        <span class="d-none d-sm-inline ps-2 text-dark">Posts</span>
-                    </router-link>
-                </li>
-                <li v-if="can('category-list')" class="nav-item">
-                    <router-link :to="{ name: 'categories.index' }" class="nav-link">
-                        <i class="bi bi-emoji-wink"></i>
-                        <span class="d-none d-sm-inline ps-2 text-dark">Categories</span>
-                    </router-link>
-                </li>-->
             </ul>
+        </div>
         </div>
     </nav>
 </template>
 
 <script setup>
 import {useAbility} from '@casl/vue'
+import {ref} from 'vue'
+
 const {can} = useAbility();
+const isCollapsed = ref(false);
+
+const emit = defineEmits(['toggle']);
+const toggleSidebar = () => {
+    isCollapsed.value = !isCollapsed.value;
+    emit('toggle', isCollapsed.value); // Важно: это уже есть в вашем коде
+};
 </script>
 
 <style scoped>
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #f8f9fa;
+    transition: width 0.3s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+.sidebar.collapsed {
+    width: 50px;
+    min-width: 50px;
+}
+
+.sidebar-toggle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    background-color: #f8f9fa;
+}
+
+.sidebar.collapsed .sidebar-toggle {
+    right: 0;
+    width: 100%;
+}
+
+.bi {
+    font-size: 1.2rem;
+    color: #6c757d;
+}
+
+.bi:hover {
+    color: #495057;
+}
+
+.sidebar-content {
+    padding-top: 40px; /* Отступ для кнопки */
+    height: calc(100% - 40px);
+    overflow-y: auto;
+}
+
+/* Ваши существующие стили меню */
 ul.nav a:hover {
     color: black !important;
     background-color: #f8f9fa !important;

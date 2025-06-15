@@ -1,9 +1,9 @@
 <template>
     <AdminNavbar/>
-    <div class="d-flex align-items-stretch w-100">
-        <AdminSidebar/>
-        <div class="container-fluid" style="margin-left: 250px;">
-            <Breadcrumb class="row justify-content-center mt-4" :crumbs="crumbs" @selected="selected"/>
+    <div class="d-flex align-items-stretch w-100" style="--bs-gutter-x: 0 !important;">
+        <AdminSidebar @toggle="handleSidebarToggle"/>
+        <div class="container-fluid" :class="{ 'collapsed-margin': isSidebarCollapsed }" style="--bs-gutter-x: 0; padding-right: 0; padding-left: 0;">
+<!--            <Breadcrumb class="row justify-content-center mt-4" :crumbs="crumbs" @selected="selected"/>-->
             <div class="main">
                 <Suspense>
                     <router-view></router-view>
@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import {computed} from "vue";
+import {computed, ref} from "vue";
 import {useRoute} from "vue-router";
 import AdminNavbar from "../components/includes/AdminNavbar.vue";
 import AdminSidebar from "../components/includes/AdminSidebar.vue";
@@ -23,6 +23,13 @@ import {useI18n} from 'vue-i18n';
 
 const route = useRoute();
 const {t} = useI18n();
+
+const isSidebarCollapsed = ref(false);
+const contentMargin = ref('250px');
+
+const handleSidebarToggle = (collapsed) => {
+    isSidebarCollapsed.value = collapsed;
+};
 
 const crumbs = computed(() => {
     let pathArray = route.path.split('/');
@@ -46,15 +53,6 @@ const crumbs = computed(() => {
             breadCrumb = '';
         }
     }
-    /*pathArray.shift();
-    const breadCrumbs = [];
-    for (let i = 0; i < route.matched.length; i++) {
-        breadCrumbs.push({
-            href: route.matched[i].path,
-            disabled: i === 0,
-            text: route.matched[i].meta.breadCrumb
-        });
-    }*/
 
     return breadCrumbs;
 });
@@ -121,5 +119,17 @@ function selected(crumb) {
         font-weight: 900;
         overflow: hidden;
     }
+}
+
+.main {
+    transition: margin-left 0.3s ease;
+}
+
+.container-fluid {
+    margin-left: 250px;
+    transition: margin-left 0.3s ease;
+}
+.container-fluid.collapsed-margin {
+    margin-left: 50px !important;
 }
 </style>

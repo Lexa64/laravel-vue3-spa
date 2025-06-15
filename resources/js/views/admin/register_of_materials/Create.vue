@@ -9,12 +9,12 @@
                             <select v-model="material.authorized_body" id="authorized_body" class="form-control">
                                 <option value='' selected disabled>Выберите уполномоченный орган</option>
                                 <option value='РУП "СтройМедиаПроект"'>РУП "СтройМедиаПроект"</option>
-                                <option value='"РУП "СТРОЙТЕХНОРМ""'>РУП "СТРОЙТЕХНОРМ"</option>
-                                <option value='"РУП "Институт БелНИИС""'>РУП "Институт БелНИИС"</option>
-                                <option value='"РУП "БИСП" Управление делами Президента Республики Беларусь"'>РУП "БИСП" Управление делами Президента Республики Беларусь</option>
-                                <option value='"УП "БелДорНИИ""'>УП "БелДорНИИ"</option>
-                                <option value='"УП "Институт НИИСМ""'>УП "Институт НИИСМ"</option>
-                                <option value='"РУП "Сертис" РУП "Белстройцентр""'>РУП "Сертис" РУП "Белстройцентр"</option>
+                                <option value='РУП "СТРОЙТЕХНОРМ"'>РУП "СТРОЙТЕХНОРМ"</option>
+                                <option value='РУП "Институт БелНИИС"'>РУП "Институт БелНИИС"</option>
+                                <option value='РУП "БИСП" Управление делами Президента Республики Беларусь"'>РУП "БИСП" Управление делами Президента Республики Беларусь</option>
+                                <option value='УП "БелДорНИИ"'>УП "БелДорНИИ"</option>
+                                <option value='УП "Институт НИИСМ"'>УП "Институт НИИСМ"</option>
+                                <option value='РУП "Сертис" РУП "Белстройцентр"'>РУП "Сертис" РУП "Белстройцентр"</option>
                             </select>
                             <div class="text-danger mt-1">
                                 {{ errors.authorized_body }}
@@ -205,8 +205,13 @@
                             </div>
                         </div>
 
+                        <MaterialFileUpload
+                            :material-id="currentMaterialId"
+                            @upload-success="handleUploadSuccess"
+                        />
+
                         <div class="mt-4">
-                            <button :disabled="isLoading" class="btn btn-primary">
+                            <button :disabled="isLoading" class="btn" style="background-color: #7CA9CA !important; border: 2px; border-radius: 56px; margin-left: 10px;">
                                 <span v-if="isLoading">{{ $t('profile.in_progress') }}</span>
                                 <span v-else>{{ $t('users.save') }}</span>
                             </button>
@@ -219,13 +224,14 @@
 </template>
 
 <script setup>
-import {onMounted, reactive} from "vue";
+import {onMounted, reactive, ref} from "vue";
 import useRoles from "@/composables/roles";
 import useMaterials from "@/composables/materials";
 import {configure, useForm, useField, defineRule} from "vee-validate";
 import {min} from '@vee-validate/rules';
 import {email as emailCheck} from '@vee-validate/rules';
 import {useI18n} from 'vue-i18n';
+import MaterialFileUpload from "../../../components/MaterialFileUpload.vue";
 
 const {roleList, getRoleList} = useRoles();
 const {storeMaterial, validationErrors, isLoading} = useMaterials();
@@ -289,7 +295,7 @@ const {value: protocol_number} = useField('protocol_number', null, {initialValue
 const {value: date_expert_opinions} = useField('date_expert_opinions', null, {initialValue: ''});
 const {value: certificate_is_valid_for} = useField('certificate_is_valid_for', null, {initialValue: ''});
 const {value: special_marks} = useField('special_marks', null, {initialValue: ''});
-const {value: is_draft} = useField('is_draft', null, {initialValue: ''});
+const {value: is_draft} = useField('is_draft', null, {initialValue: true});
 
 const material = reactive({
     authorized_body,
@@ -313,12 +319,17 @@ function submitForm() {
         if (form.valid) {
             storeMaterial(material);
         }
-    })
-    //storeMaterial(material);
+    });
 }
 
 onMounted(() => {
     getRoleList();
 });
+
+const currentMaterialId = ref(1);
+function handleUploadSuccess(files) {
+    alert(`Загружено файлов: ${files.length}`);
+    // Обновить список файлов и т.д.
+}
 
 </script>

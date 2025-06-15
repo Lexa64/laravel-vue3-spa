@@ -27,7 +27,7 @@ class StoreRegisterOfMaterialRequest extends FormRequest
             'date_expert_opinions' => 'nullable|date',
             'certificate_is_valid_for' => 'nullable|in:Опция 1,Опция 2,Опция 3',
             'special_marks' => 'nullable|string|max:255',
-            'is_draft' => 'nullable|string|max:255',
+            //'is_draft' => 'nullable|boolean',
         ];
     }
 }
