@@ -1,11 +1,9 @@
 <?php
 
 use App\Http\Controllers\Api\BuildingCostController;
-use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CostEstimateController;
 use App\Http\Controllers\Api\ForecastIndexController;
 use App\Http\Controllers\Api\PermissionController;
-use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\ProjectController;
 use App\Http\Controllers\Api\RoleController;
@@ -22,8 +20,6 @@ Route::post('reset-password', [ResetPasswordController::class, 'reset'])->name('
 
 Route::group(['middleware' => 'auth:sanctum'], function() {
     Route::apiResource('users', UserController::class);
-    Route::apiResource('posts', PostController::class);
-    Route::apiResource('categories', CategoryController::class);
     Route::apiResource('roles', RoleController::class);
     Route::apiResource('permissions', PermissionController::class);
     Route::apiResource('projects', ProjectController::class);
@@ -36,7 +32,6 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
 
     Route::get('role-list', [RoleController::class, 'getList']);
     Route::get('role-permissions/{id}', [PermissionController::class, 'getRolePermissions']);
-    Route::get('category-list', [CategoryController::class, 'getList']);
     Route::get('/user', [ProfileController::class, 'user']);
     Route::get('abilities', function(Request $request) {
         return $request->user()->roles()->with('permissions')
@@ -57,7 +52,4 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
     Route::get('/lifecycle/get-data', [ProjectController::class, 'getData']);
 });
 
-Route::get('category-list', [CategoryController::class, 'getList']);
-Route::get('get-posts', [PostController::class, 'getPosts']);
-Route::get('get-category-posts/{id}', [PostController::class, 'getCategoryByPosts']);
-Route::get('get-post/{id}', [PostController::class, 'getPost']);
+Route::get('/lifecycle/get-data', [ProjectController::class, 'getData']);
